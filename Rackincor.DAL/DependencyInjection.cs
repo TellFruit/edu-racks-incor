@@ -22,9 +22,8 @@ namespace Racksincor.DAL
 
         public static void AddIdentity(this IServiceCollection services)
         {
-            services.AddIdentityCore<User>()
+            services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<RacksincorDbContext>()
-                .AddRoles<IdentityRole>()
                 .AddDefaultTokenProviders();
         }
     }
