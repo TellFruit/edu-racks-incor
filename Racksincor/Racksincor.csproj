@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Rackincor.DAL\Rackincor.DAL.csproj" />
+    <ProjectReference Include="..\Rackincor.DAL\Racksincor.DAL.csproj" />
   </ItemGroup>
 
 </Project>
