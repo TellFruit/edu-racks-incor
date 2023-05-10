@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Rackincor.DAL.Models;
+using Racksincor.DAL.Models;
 using System.Text;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace Rackincor.DAL
+namespace Racksincor.DAL
 {
     public static class DependencyInjection
     {

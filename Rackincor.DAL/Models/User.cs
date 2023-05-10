@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Rackincor.DAL.Models
+namespace Racksincor.DAL.Models
 {
     public class User : IdentityUser
     {

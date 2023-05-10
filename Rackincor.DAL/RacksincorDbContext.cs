@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Rackincor.DAL.Models;
+using Racksincor.DAL.Models;
 
-namespace Rackincor.DAL
+namespace Racksincor.DAL
 {
     public class RacksincorDbContext : IdentityDbContext<User>
     {

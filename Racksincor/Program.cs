@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using Rackincor.DAL;
+using Racksincor.DAL;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
