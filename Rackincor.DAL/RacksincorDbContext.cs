@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Racksincor.DAL.Models;
 using Racksincor.DAL.Models.Abstract;
+using Racksincor.DAL.Models.Promotions;
 
 namespace Racksincor.DAL
 {
@@ -12,8 +13,9 @@ namespace Racksincor.DAL
         public DbSet<Device> Devices { get; set; }
         public DbSet<Shop> Shops { get; set; }
         public DbSet<Company> Companies { get; set; }
-        public DbSet<User> Users { get; set; }
         public DbSet<Promotion> Promotions { get; set; }
+        public DbSet<Discount> Discounts { get; set; }
+        public DbSet<Gift> Gifts { get; set; }
         public DbSet<Reaction> Reactions { get; set; }
         public DbSet<Record> Records { get; set; }
 
@@ -24,6 +26,8 @@ namespace Racksincor.DAL
         {
             modelBuilder.Entity<Reaction>()
                 .HasKey(sc => new { sc.UserId, sc.ProductId });
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Racksincor.DAL.Models.Promotions
 {
-    public class Gift : Promotion 
+    public class Gift : Promotion
     {
         public int GiftProductId { get; set; }
     }

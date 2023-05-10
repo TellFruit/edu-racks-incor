@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Racksincor.DAL.Models
 {
-    public class Product
+    public class Product : BaseEntity
     {
         public string Name { get; set; }
         public decimal Price { get; set; }

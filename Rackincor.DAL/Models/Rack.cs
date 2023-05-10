@@ -12,7 +12,6 @@ namespace Racksincor.DAL.Models
         public string Name { get; set; }
 
         // One-to-One relation: Device and Rack
-        public int? DeviceId { get; set; }
         public Device Device { get; set; }
 
         // One-to-Many relation: Rack and Shop
