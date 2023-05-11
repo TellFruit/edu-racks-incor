@@ -1,6 +1,6 @@
 ﻿namespace Racksincor.DAL.Models
 {
-    public class Reaction
+    internal class Reaction
     {
         public bool IsPositive { get; set; }
 

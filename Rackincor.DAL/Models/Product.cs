@@ -2,7 +2,7 @@
 
 namespace Racksincor.DAL.Models
 {
-    public class Product : BaseEntity
+    internal class Product : BaseEntity
     {
         public string Name { get; set; }
         public decimal Price { get; set; }

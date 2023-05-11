@@ -2,7 +2,7 @@
 
 namespace Racksincor.DAL.Models
 {
-    public class Rack : BaseEntity
+    internal class Rack : BaseEntity
     {
         public string Name { get; set; }
 

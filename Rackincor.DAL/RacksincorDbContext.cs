@@ -6,7 +6,7 @@ using Racksincor.DAL.Models.Promotions;
 
 namespace Racksincor.DAL
 {
-    public class RacksincorDbContext : IdentityDbContext<User>
+    internal class RacksincorDbContext : IdentityDbContext<User>
     {
         public DbSet<Rack> Racks { get; set; }
         public DbSet<Product> Products { get; set; }

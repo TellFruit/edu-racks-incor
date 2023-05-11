@@ -2,7 +2,7 @@
 
 namespace Racksincor.DAL.Models
 {
-    public class User : IdentityUser
+    internal class User : IdentityUser
     {
         // One-to-Many relation: User and Shop
         public int ShopId { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Racksincor.DAL.Models
 {
-    public class Company : BaseEntity
+    internal class Company : BaseEntity
     {
         public string Name { get; set; }
         public string Url { get; set; }

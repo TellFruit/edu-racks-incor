@@ -2,7 +2,7 @@
 
 namespace Racksincor.DAL.Models
 {
-    public class Device : BaseEntity
+    internal class Device : BaseEntity
     {
         // One-to-One relation: Device and Rack
         public int RackId { get; set; }

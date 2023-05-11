@@ -2,7 +2,7 @@
 
 namespace Racksincor.DAL.Models
 {
-    public class Record : BaseEntity
+    internal class Record : BaseEntity
     {
         public DateTime BeginningTime { get; set; }
         public DateTime EndingTime { get; set; }
