@@ -1,16 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Rackincor.DAL.Models;
-using System.Text;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Racksincor.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Rackincor.DAL
+namespace Racksincor.DAL
 {
     public static class DependencyInjection
     {
@@ -22,9 +16,8 @@ namespace Rackincor.DAL
 
         public static void AddIdentity(this IServiceCollection services)
         {
-            services.AddIdentityCore<User>()
+            services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<RacksincorDbContext>()
-                .AddRoles<IdentityRole>()
                 .AddDefaultTokenProviders();
         }
     }

@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Racksincor", "Racksincor\Racksincor.csproj", "{839CFA03-63F8-4DC6-8D2B-C9282244AEA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rackincor.DAL", "Rackincor.DAL\Rackincor.DAL.csproj", "{D2138D7D-0A3D-4D19-AD21-87124F18A8AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Racksincor.DAL", "Rackincor.DAL\Racksincor.DAL.csproj", "{D2138D7D-0A3D-4D19-AD21-87124F18A8AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
