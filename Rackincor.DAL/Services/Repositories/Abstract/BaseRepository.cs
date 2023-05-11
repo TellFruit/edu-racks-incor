@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace Racksincor.DAL.Repositories.Abstract
+namespace Racksincor.DAL.Services.Repositories.Abstract
 {
     internal abstract class BaseRepository : IDisposable
     {
