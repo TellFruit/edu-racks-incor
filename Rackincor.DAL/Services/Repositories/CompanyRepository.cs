@@ -1,13 +1,9 @@
-﻿using Racksincor.BLL.DTO.Abstract;
-using Racksincor.BLL.DTO.Query;
+﻿using Racksincor.BLL.DTO.Queries;
 using Racksincor.BLL.Interfaces;
 using Racksincor.DAL.Services.Repositories.Abstract;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using Dapper;
-using System.Linq;
-using System.Threading.Tasks;
+using Racksincor.BLL.DTO;
 
 namespace Racksincor.DAL.Services.Repositories
 {
