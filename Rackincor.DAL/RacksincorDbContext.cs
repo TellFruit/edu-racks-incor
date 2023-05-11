@@ -27,6 +27,8 @@ namespace Racksincor.DAL
             modelBuilder.Configure();
 
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Seed();
         }
     }
 }
