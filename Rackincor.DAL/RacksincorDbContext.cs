@@ -24,8 +24,7 @@ namespace Racksincor.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Reaction>()
-                .HasKey(sc => new { sc.UserId, sc.ProductId });
+            modelBuilder.Configure();
 
             base.OnModelCreating(modelBuilder);
         }
