@@ -2,11 +2,13 @@
 
 namespace Racksincor.BLL.Interfaces
 {
-    public interface IMediateService<TEntity> where TEntity : BaseDTO
+    public interface IMediateService<TEntity, TQuery>
+        where TEntity : BaseDTO
+        where TQuery : BaseDTO
     {
-        Task<BaseDTO> Create(BaseDTO entry);
-        Task<BaseDTO> Get(int entryId);
-        Task<BaseDTO> Update(BaseDTO entry);
-        Task Delete(int idd);
+        Task<TEntity> Create(TEntity entry);
+        Task<TEntity> Get (TQuery query);
+        Task<TEntity> Update(TEntity entry);
+        Task Delete(int id);
     }
 }
