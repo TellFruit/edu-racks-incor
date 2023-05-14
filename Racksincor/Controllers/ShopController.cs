@@ -6,54 +6,105 @@ using Racksincor.BLL.Interfaces;
 
 namespace Racksincor.Controllers
 {
-    [Authorize(Roles = "Admin")]
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "Admin")]
     public class ShopController : ControllerBase
     {
-        private readonly IRepository<ShopDTO, ShopQuery> _shopRepository;
+        private readonly IMediateService<ShopDTO, ShopQuery> _shopService;
 
-        public ShopController(IRepository<ShopDTO, ShopQuery> shopRepository)
+        public ShopController(IMediateService<ShopDTO, ShopQuery> shopService)
         {
-            _shopRepository = shopRepository;
+            _shopService = shopService;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(ShopDTO shopDTO)
+        public async Task<IActionResult> Create(ShopDTO shop)
         {
-            var createdShop = await _shopRepository.Create(shopDTO);
-            return Ok(createdShop);
+            try
+            {
+                var createdShop = await _shopService.Create(shop);
+                return Ok(createdShop);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpGet]
-        public async Task<IActionResult> Read()
+        public async Task<IActionResult> GetAll()
         {
-            var shops = await _shopRepository.ReadWithQuery(default);
-
-            return Ok(shops);
+            try
+            {
+                var shops = await _shopService.ReadWithQuery(default);
+                return Ok(shops);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Read(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            var shopQuery = new ShopQuery { Id = id };
-            var shops = await _shopRepository.ReadWithQuery(shopQuery);
-            return Ok(shops);
+            try
+            {
+                var shopQuery = new ShopQuery { Id = id };
+                var shop = await _shopService.ReadWithQuery(shopQuery);
+
+                if (shop.Any())
+                {
+                    return Ok(shop);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Update(ShopDTO shopDTO)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, ShopDTO shop)
         {
-            var updatedShop = await _shopRepository.Update(shopDTO);
-            return Ok(updatedShop);
+            try
+            {
+                shop.Id = id;
+                var updatedShop = await _shopService.Update(shop);
+
+                if (updatedShop != null)
+                {
+                    return Ok(updatedShop);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var shopDTO = new ShopDTO { Id = id };
-            await _shopRepository.Delete(shopDTO);
-            return NoContent();
+            try
+            {
+                await _shopService.Delete(new ShopDTO { Id = id });
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }
