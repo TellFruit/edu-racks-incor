@@ -7,8 +7,7 @@ namespace Racksincor.BLL.Interfaces
         where TQuery : BaseDTO
     {
         Task<TEntity> Create(TEntity entity);
-        Task<IReadOnlyList<TEntity>> Read();
-        Task<IReadOnlyList<TEntity>> ReadWithQuery(TQuery obj);
+        Task<IReadOnlyList<TEntity>> ReadWithQuery(TQuery? obj);
         Task<TEntity> Update(TEntity entity);
         Task Delete(TEntity entity);
     }

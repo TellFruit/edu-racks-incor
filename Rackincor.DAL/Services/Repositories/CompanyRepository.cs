@@ -78,7 +78,7 @@ namespace Racksincor.DAL.Services.Repositories
             return (await _connection.QueryAsync<CompanyDTO>("SELECT * FROM Companies")).ToList();
         }
 
-        public async Task<IReadOnlyList<CompanyDTO>> ReadWithQuery(CompanyQuery obj)
+        public async Task<IReadOnlyList<CompanyDTO>> ReadWithQuery(CompanyQuery? obj)
         {
             return await Read();
         }

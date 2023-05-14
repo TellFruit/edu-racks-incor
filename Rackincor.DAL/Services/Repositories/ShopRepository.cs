@@ -79,7 +79,7 @@ namespace Racksincor.DAL.Services.Repositories
             return (await _connection.QueryAsync<ShopDTO>("SELECT * FROM Shops")).ToList();
         }
 
-        public async Task<IReadOnlyList<ShopDTO>> ReadWithQuery(ShopQuery obj)
+        public async Task<IReadOnlyList<ShopDTO>> ReadWithQuery(ShopQuery? obj)
         {
             return await Read();
         }

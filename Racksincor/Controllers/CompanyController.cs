@@ -6,53 +6,107 @@ using Racksincor.BLL.Interfaces;
 
 namespace Racksincor.Controllers
 {
-    [Authorize(Roles = "Admin")]
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "Admin")]
     public class CompanyController : ControllerBase
     {
-        private readonly IRepository<CompanyDTO, CompanyQuery> _companyRepository;
+        private readonly IMediateService<CompanyDTO, CompanyQuery> _companyService;
 
-        public CompanyController(IRepository<CompanyDTO, CompanyQuery> companyRepository)
+        public CompanyController(IMediateService<CompanyDTO, CompanyQuery> companyService)
         {
-            _companyRepository = companyRepository;
+            _companyService = companyService;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CompanyDTO companyDTO)
+        public async Task<IActionResult> Create(CompanyDTO company)
         {
-            var createdCompany = await _companyRepository.Create(companyDTO);
-            return Ok(createdCompany);
+            try
+            {
+                var createdCompany = await _companyService.Create(company);
+
+                return Ok(createdCompany);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpGet]
-        public async Task<IActionResult> Read()
+        public async Task<IActionResult> GetAll()
         {
-            var companies = await _companyRepository.Read();
-            return Ok(companies);
+            try
+            {
+                var companies = await _companyService.ReadWithQuery(default);
+
+                return Ok(companies);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Read(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            var companyQuery = new CompanyQuery { Id = id };
-            var companies = await _companyRepository.ReadWithQuery(companyQuery);
-            return Ok(companies);
+            try
+            {
+                var companyQuery = new CompanyQuery { Id = id };
+                
+                var company = await _companyService.ReadWithQuery(companyQuery);
+
+                if (company.Any())
+                {
+                    return Ok(company);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Update(CompanyDTO companyDTO)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, CompanyDTO company)
         {
-            var updatedCompany = await _companyRepository.Update(companyDTO);
-            return Ok(updatedCompany);
+            try
+            {
+                company.Id = id;
+                var updatedCompany = await _companyService.Update(company);
+                if (updatedCompany != null)
+                {
+                    return Ok(updatedCompany);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var companyDTO = new CompanyDTO { Id = id };
-            await _companyRepository.Delete(companyDTO);
-            return NoContent();
+            try
+            {
+                await _companyService.Delete(new CompanyDTO { Id = id });
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }

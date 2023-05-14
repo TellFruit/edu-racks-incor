@@ -20,7 +20,7 @@ namespace Racksincor.BLL.Services.Mediates
             return await _companyRepository.Create(entry);
         }
 
-        public async Task<IReadOnlyList<CompanyDTO>> Get(CompanyQuery query)
+        public async Task<IReadOnlyList<CompanyDTO>> ReadWithQuery(CompanyQuery? query)
         {
             // Perform any additional business logic or validation here
 
@@ -34,11 +34,11 @@ namespace Racksincor.BLL.Services.Mediates
             return await _companyRepository.Update(entry);
         }
 
-        public async Task Delete(int id)
+        public async Task Delete(CompanyDTO entry)
         {
             // Perform any additional business logic or validation here
 
-            await _companyRepository.Delete(id);
+            await _companyRepository.Delete(new CompanyDTO { Id = entry.Id });
         }
     }
 }
