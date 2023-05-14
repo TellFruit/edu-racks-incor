@@ -4,6 +4,7 @@ using System.Data;
 using Dapper;
 using Racksincor.BLL.DTO;
 using Racksincor.BLL.DTO.Queries;
+using System.Text;
 
 namespace Racksincor.DAL.Services.Repositories
 {
@@ -74,14 +75,19 @@ namespace Racksincor.DAL.Services.Repositories
             }
         }
 
-        public async Task<IReadOnlyList<ShopDTO>> Read()
-        {
-            return (await _connection.QueryAsync<ShopDTO>("SELECT * FROM Shops")).ToList();
-        }
-
         public async Task<IReadOnlyList<ShopDTO>> ReadWithQuery(ShopQuery? obj)
         {
-            return await Read();
+            var sqlBuilder = new StringBuilder("SELECT * FROM Shops WHERE 1 = 1");
+
+            if (obj != null)
+            {
+                if (obj.Id != default)
+                {
+                    sqlBuilder.Append(" AND Id = @Id");
+                }
+            }
+
+            return (await _connection.QueryAsync<ShopDTO>(sqlBuilder.ToString(), obj)).ToList();
         }
 
         public async Task<ShopDTO> Update(ShopDTO entity)
