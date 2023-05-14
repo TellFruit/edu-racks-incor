@@ -4,6 +4,7 @@ using Racksincor.DAL.Services.Repositories.Abstract;
 using System.Data;
 using Dapper;
 using Racksincor.BLL.DTO;
+using System.Text;
 
 namespace Racksincor.DAL.Services.Repositories
 {
@@ -73,14 +74,19 @@ namespace Racksincor.DAL.Services.Repositories
             }
         }
 
-        public async Task<IReadOnlyList<CompanyDTO>> Read()
-        {
-            return (await _connection.QueryAsync<CompanyDTO>("SELECT * FROM Companies")).ToList();
-        }
-
         public async Task<IReadOnlyList<CompanyDTO>> ReadWithQuery(CompanyQuery? obj)
         {
-            return await Read();
+            var sqlBuilder = new StringBuilder("SELECT * FROM Companies WHERE 1 = 1");
+
+            if (obj != null)
+            {
+                if (obj.Id != default)
+                {
+                    sqlBuilder.Append(" AND Id = @Id");
+                }
+            }
+
+            return (await _connection.QueryAsync<CompanyDTO>(sqlBuilder.ToString(), obj)).ToList();
         }
 
         public async Task<CompanyDTO> Update(CompanyDTO entity)
