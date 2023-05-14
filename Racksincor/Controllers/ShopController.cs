@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Racksincor.BLL.DTO;
 using Racksincor.BLL.DTO.Queries;
@@ -40,6 +41,11 @@ namespace Racksincor.Controllers
                 var shops = await _shopService.ReadWithQuery(default);
                 return Ok(shops);
             }
+            catch (ValidationException ex)
+            {
+                ex.AddToModelState(ModelState);
+                return BadRequest(ModelState);
+            }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
@@ -63,6 +69,11 @@ namespace Racksincor.Controllers
                     return NotFound();
                 }
             }
+            catch (ValidationException ex)
+            {
+                ex.AddToModelState(ModelState);
+                return BadRequest(ModelState);
+            }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
@@ -85,6 +96,11 @@ namespace Racksincor.Controllers
                 {
                     return NotFound();
                 }
+            }
+            catch (ValidationException ex)
+            {
+                ex.AddToModelState(ModelState);
+                return BadRequest(ModelState);
             }
             catch (Exception ex)
             {
