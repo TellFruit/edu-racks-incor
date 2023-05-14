@@ -4,7 +4,7 @@ using Racksincor.BLL.DTO;
 using Racksincor.BLL.DTO.Queries;
 using Racksincor.BLL.Interfaces;
 
-namespace YourNamespace.Controllers
+namespace Racksincor.Controllers
 {
     [Authorize(Roles = "Admin")]
     [ApiController]
@@ -28,7 +28,8 @@ namespace YourNamespace.Controllers
         [HttpGet]
         public async Task<IActionResult> Read()
         {
-            var shops = await _shopRepository.Read();
+            var shops = await _shopRepository.ReadWithQuery(default);
+
             return Ok(shops);
         }
 
