@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Racksincor.BLL.DTO;
 using Racksincor.BLL.DTO.Queries;
@@ -25,6 +26,12 @@ namespace Racksincor.Controllers
             {
                 var createdShop = await _shopService.Create(shop);
                 return Ok(createdShop);
+            }
+            catch (ValidationException ex)
+            {
+                ex.AddToModelState(ModelState);
+
+                return BadRequest(ModelState);
             }
             catch (Exception ex)
             {
@@ -85,6 +92,12 @@ namespace Racksincor.Controllers
                 {
                     return NotFound();
                 }
+            }
+            catch (ValidationException ex)
+            {
+                ex.AddToModelState(ModelState);
+
+                return BadRequest(ModelState);
             }
             catch (Exception ex)
             {

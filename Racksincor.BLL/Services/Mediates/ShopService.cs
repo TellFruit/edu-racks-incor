@@ -1,4 +1,5 @@
-﻿using Racksincor.BLL.DTO;
+﻿using FluentValidation;
+using Racksincor.BLL.DTO;
 using Racksincor.BLL.DTO.Queries;
 using Racksincor.BLL.Interfaces;
 
@@ -7,15 +8,17 @@ namespace Racksincor.BLL.Services.Mediates
     public class ShopService : IMediateService<ShopDTO, ShopQuery>
     {
         private readonly IRepository<ShopDTO, ShopQuery> _shopRepository;
+        private readonly IValidator<ShopDTO> _shopValidator;
 
-        public ShopService(IRepository<ShopDTO, ShopQuery> shopRepository)
+        public ShopService(IRepository<ShopDTO, ShopQuery> shopRepository, IValidator<ShopDTO> shopValidator)
         {
             _shopRepository = shopRepository;
+            _shopValidator = shopValidator;
         }
 
         public async Task<ShopDTO> Create(ShopDTO entry)
         {
-            // Perform any additional business logic or validation here
+            await _shopValidator.ValidateAndThrowAsync(entry);
 
             return await _shopRepository.Create(entry);
         }
@@ -29,15 +32,17 @@ namespace Racksincor.BLL.Services.Mediates
 
         public async Task<ShopDTO> Update(ShopDTO entry)
         {
-            // Perform any additional business logic or validation here
+            await _shopValidator.ValidateAndThrowAsync(entry);
 
             return await _shopRepository.Update(entry);
         }
 
         public async Task Delete(ShopDTO entry)
         {
-            // Perform any additional business logic or validation here
+            var shop = await _shopRepository.ReadWithQuery(new ShopQuery { Id = entry.Id });
 
+            await _shopValidator.ValidateAndThrowAsync(shop.First());
+            
             await _shopRepository.Delete(new ShopDTO { Id = entry.Id });
         }
     }
