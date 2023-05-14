@@ -3,6 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Racksincor.DAL.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
+using Npgsql;
 
 namespace Racksincor.DAL
 {
@@ -19,6 +21,15 @@ namespace Racksincor.DAL
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<RacksincorDbContext>()
                 .AddDefaultTokenProviders();
+        }
+
+        public static void AddDbConnection(this IServiceCollection services, IConfiguration config)
+        {
+            services.AddTransient<IDbConnection>(
+                provider =>
+            {
+                return new NpgsqlConnection(config.GetConnectionString("ConnectionString"));
+            });
         }
     }
 }

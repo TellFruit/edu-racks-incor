@@ -1,13 +1,8 @@
 ﻿using Racksincor.DAL.Models.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Racksincor.DAL.Models
 {
-    public class Rack : BaseEntity
+    internal class Rack : BaseEntity
     {
         public string Name { get; set; }
 

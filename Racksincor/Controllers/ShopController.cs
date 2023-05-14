@@ -1,0 +1,110 @@
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Racksincor.BLL.DTO;
+using Racksincor.BLL.DTO.Queries;
+using Racksincor.BLL.Interfaces;
+
+namespace Racksincor.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    [Authorize(Roles = "Admin")]
+    public class ShopController : ControllerBase
+    {
+        private readonly IMediateService<ShopDTO, ShopQuery> _shopService;
+
+        public ShopController(IMediateService<ShopDTO, ShopQuery> shopService)
+        {
+            _shopService = shopService;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(ShopDTO shop)
+        {
+            try
+            {
+                var createdShop = await _shopService.Create(shop);
+                return Ok(createdShop);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            try
+            {
+                var shops = await _shopService.ReadWithQuery(default);
+                return Ok(shops);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            try
+            {
+                var shopQuery = new ShopQuery { Id = id };
+                var shop = await _shopService.ReadWithQuery(shopQuery);
+
+                if (shop.Any())
+                {
+                    return Ok(shop);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, ShopDTO shop)
+        {
+            try
+            {
+                shop.Id = id;
+                var updatedShop = await _shopService.Update(shop);
+
+                if (updatedShop != null)
+                {
+                    return Ok(updatedShop);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                await _shopService.Delete(new ShopDTO { Id = id });
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+    }
+}

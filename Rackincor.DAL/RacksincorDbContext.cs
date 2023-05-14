@@ -6,7 +6,7 @@ using Racksincor.DAL.Models.Promotions;
 
 namespace Racksincor.DAL
 {
-    public class RacksincorDbContext : IdentityDbContext<User>
+    internal class RacksincorDbContext : IdentityDbContext<User>
     {
         public DbSet<Rack> Racks { get; set; }
         public DbSet<Product> Products { get; set; }
@@ -24,10 +24,11 @@ namespace Racksincor.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Reaction>()
-                .HasKey(sc => new { sc.UserId, sc.ProductId });
+            modelBuilder.Configure();
 
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Seed();
         }
     }
 }

@@ -1,13 +1,8 @@
 ﻿using Racksincor.DAL.Models.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Racksincor.DAL.Models
 {
-    public class Product : BaseEntity
+    internal class Product : BaseEntity
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
