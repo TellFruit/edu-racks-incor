@@ -1,8 +1,9 @@
-﻿namespace Racksincor.BLL.DTO.User
+﻿using Racksincor.BLL.DTO.Abstract;
+
+namespace Racksincor.BLL.DTO.User
 {
-    public class RegisterDTO
+    public class RegisterDTO : UserDTO
     {
-        public string Password { get; set; }
         public string PasswordConfirm { get; set; }
     }
 }
