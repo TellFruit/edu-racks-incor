@@ -2,6 +2,6 @@
 {
     public interface ILoginService
     {
-        public Task<string> Login(string email, string password);
+        Task<string> Login(string email, string password);
     }
 }
