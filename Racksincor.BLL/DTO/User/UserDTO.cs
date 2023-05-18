@@ -1,4 +1,4 @@
-﻿namespace Racksincor.BLL.DTO.Abstract
+﻿namespace Racksincor.BLL.DTO.User
 {
     public class UserDTO
     {

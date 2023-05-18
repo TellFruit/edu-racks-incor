@@ -1,6 +1,4 @@
-﻿using Racksincor.BLL.DTO.Abstract;
-
-namespace Racksincor.BLL.DTO.User
+﻿namespace Racksincor.BLL.DTO.User
 {
     public class RegisterDTO : UserDTO
     {

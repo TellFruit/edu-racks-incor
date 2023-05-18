@@ -14,15 +14,15 @@ namespace Racksincor.DAL.Services.Auth
             _userManager = userManager;
         }
 
-        public async Task Register(RegisterDTO registerDTO)
+        public async Task Register(string email, string password)
         {
             User? user = new User
             {
-                UserName = registerDTO.Email,
-                Email = registerDTO.Email
+                UserName = email,
+                Email = email
             };
 
-            var result = await _userManager.CreateAsync(user, registerDTO.Password);
+            var result = await _userManager.CreateAsync(user, password);
             if (!result.Succeeded)
             {
                 throw new InvalidOperationException("Email is already taken.");
