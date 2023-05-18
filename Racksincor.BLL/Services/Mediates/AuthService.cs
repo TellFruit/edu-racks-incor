@@ -5,12 +5,12 @@ namespace Racksincor.BLL.Services.Mediates
 {
     public class AuthService : IAuthService
     {
-        public Task<string> Login(string email, string password)
+        public Task<string> Login(UserDTO user)
         {
             throw new NotImplementedException();
         }
 
-        public Task Register(string email, string password)
+        public Task Register(RegisterDTO user)
         {
             throw new NotImplementedException();
         }
