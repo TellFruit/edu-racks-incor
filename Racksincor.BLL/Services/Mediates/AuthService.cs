@@ -1,18 +1,37 @@
-﻿using Racksincor.BLL.DTO.User;
+﻿using FluentValidation;
+using Racksincor.BLL.DTO.User;
 using Racksincor.BLL.Interfaces;
+using Racksincor.BLL.Interfaces.Outer;
 
 namespace Racksincor.BLL.Services.Mediates
 {
     public class AuthService : IAuthService
     {
-        public Task<string> Login(UserDTO user)
+        private ILoginService _loginService;
+        private IRegisterService _registerService;
+        private IValidator<UserDTO> _userValidator;
+        private IValidator<RegisterDTO> _registerValidator;
+
+        public AuthService(ILoginService loginService, IRegisterService registerService, IValidator<UserDTO> userValidator, IValidator<RegisterDTO> registerValidator)
         {
-            throw new NotImplementedException();
+            _loginService = loginService;
+            _registerService = registerService;
+            _userValidator = userValidator;
+            _registerValidator = registerValidator;
         }
 
-        public Task Register(RegisterDTO user)
+        public async Task<string> Login(UserDTO user)
         {
-            throw new NotImplementedException();
+            await _userValidator.ValidateAndThrowAsync(user);
+
+            return await _loginService.Login(user.Email, user.Password);
+        }
+
+        public async Task Register(RegisterDTO user)
+        {
+            await _registerValidator.ValidateAndThrowAsync(user);
+
+            await _registerService.Register(user.Email, user.Password);
         }
     }
 }
