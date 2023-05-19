@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Racksincor.BLL.DTO;
 using Racksincor.BLL.DTO.Queries;
@@ -9,30 +8,24 @@ namespace Racksincor.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")]
-    public class CompanyController : ControllerBase
+    public class ProductController : ControllerBase
     {
-        private readonly IMediateService<CompanyDTO, CompanyQuery> _companyService;
+        private readonly IMediateService<ProductDTO, ProductQuery> _productService;
 
-        public CompanyController(IMediateService<CompanyDTO, CompanyQuery> companyService)
+        public ProductController(IMediateService<ProductDTO, ProductQuery> productService)
         {
-            _companyService = companyService;
+            _productService = productService;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CompanyDTO company)
+        [Authorize(Roles = "Employee")]
+        public async Task<IActionResult> Create(ProductDTO product)
         {
             try
             {
-                var createdCompany = await _companyService.Create(company);
+                var createdProduct = await _productService.Create(product);
 
-                return Ok(createdCompany);
-            }
-            catch (ValidationException ex)
-            {
-                ex.AddToModelState(ModelState);
-
-                return BadRequest(ModelState);
+                return Ok(createdProduct);
             }
             catch (Exception ex)
             {
@@ -45,9 +38,9 @@ namespace Racksincor.Controllers
         {
             try
             {
-                var companies = await _companyService.ReadWithQuery(default);
+                var products = await _productService.ReadWithQuery(default);
 
-                return Ok(companies);
+                return Ok(products);
             }
             catch (Exception ex)
             {
@@ -60,13 +53,13 @@ namespace Racksincor.Controllers
         {
             try
             {
-                var companyQuery = new CompanyQuery { Id = id };
-                
-                var company = await _companyService.ReadWithQuery(companyQuery);
+                var productQuery = new ProductQuery { Id = id };
 
-                if (company.Any())
+                var product = await _productService.ReadWithQuery(productQuery);
+
+                if (product.Any())
                 {
-                    return Ok(company);
+                    return Ok(product);
                 }
                 else
                 {
@@ -80,26 +73,21 @@ namespace Racksincor.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, CompanyDTO company)
+        [Authorize(Roles = "Employee")]
+        public async Task<IActionResult> Update(int id, ProductDTO product)
         {
             try
             {
-                company.Id = id;
-                var updatedCompany = await _companyService.Update(company);
-                if (updatedCompany != null)
+                product.Id = id;
+                var updatedProduct = await _productService.Update(product);
+                if (updatedProduct != null)
                 {
-                    return Ok(updatedCompany);
+                    return Ok(updatedProduct);
                 }
                 else
                 {
                     return NotFound();
                 }
-            }
-            catch (ValidationException ex)
-            {
-                ex.AddToModelState(ModelState);
-
-                return BadRequest(ModelState);
             }
             catch (Exception ex)
             {
@@ -108,15 +96,15 @@ namespace Racksincor.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Employee")]
         public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                await _companyService.Delete(new CompanyDTO { Id = id });
+                await _productService.Delete(new ProductDTO { Id = id });
 
                 return NoContent();
             }
-            // TODO: lacks validation exception handler
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);

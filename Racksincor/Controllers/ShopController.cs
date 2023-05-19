@@ -114,6 +114,7 @@ namespace Racksincor.Controllers
 
                 return NoContent();
             }
+            // TODO: lacks validation exception handler
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
