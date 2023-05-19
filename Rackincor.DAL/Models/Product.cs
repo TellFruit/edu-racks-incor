@@ -2,6 +2,7 @@
 
 namespace Racksincor.DAL.Models
 {
+    // TODO: add many-to-one relationship with shop
     internal class Product : BaseEntity
     {
         public string Name { get; set; }
