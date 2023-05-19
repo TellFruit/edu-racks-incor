@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Racksincor.BLL.DTO;
 using Racksincor.BLL.DTO.Queries;
@@ -9,30 +8,24 @@ namespace Racksincor.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")]
-    public class CompanyController : ControllerBase
+    public class RackController : ControllerBase
     {
-        private readonly IMediateService<CompanyDTO, CompanyQuery> _companyService;
+        private readonly IMediateService<RackDTO, RackQuery> _rackService;
 
-        public CompanyController(IMediateService<CompanyDTO, CompanyQuery> companyService)
+        public RackController(IMediateService<RackDTO, RackQuery> rackService)
         {
-            _companyService = companyService;
+            _rackService = rackService;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CompanyDTO company)
+        [Authorize(Roles = "Employee")]
+        public async Task<IActionResult> Create(RackDTO rack)
         {
             try
             {
-                var createdCompany = await _companyService.Create(company);
+                var createdRack = await _rackService.Create(rack);
 
-                return Ok(createdCompany);
-            }
-            catch (ValidationException ex)
-            {
-                ex.AddToModelState(ModelState);
-
-                return BadRequest(ModelState);
+                return Ok(createdRack);
             }
             catch (Exception ex)
             {
@@ -45,9 +38,9 @@ namespace Racksincor.Controllers
         {
             try
             {
-                var companies = await _companyService.ReadWithQuery(default);
+                var racks = await _rackService.ReadWithQuery(default);
 
-                return Ok(companies);
+                return Ok(racks);
             }
             catch (Exception ex)
             {
@@ -60,13 +53,13 @@ namespace Racksincor.Controllers
         {
             try
             {
-                var companyQuery = new CompanyQuery { Id = id };
-                
-                var company = await _companyService.ReadWithQuery(companyQuery);
+                var rackQuery = new RackQuery { Id = id };
 
-                if (company.Any())
+                var rack = await _rackService.ReadWithQuery(rackQuery);
+
+                if (rack.Any())
                 {
-                    return Ok(company);
+                    return Ok(rack);
                 }
                 else
                 {
@@ -80,26 +73,21 @@ namespace Racksincor.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, CompanyDTO company)
+        [Authorize(Roles = "Employee")]
+        public async Task<IActionResult> Update(int id, RackDTO rack)
         {
             try
             {
-                company.Id = id;
-                var updatedCompany = await _companyService.Update(company);
-                if (updatedCompany != null)
+                rack.Id = id;
+                var updatedRack = await _rackService.Update(rack);
+                if (updatedRack != null)
                 {
-                    return Ok(updatedCompany);
+                    return Ok(updatedRack);
                 }
                 else
                 {
                     return NotFound();
                 }
-            }
-            catch (ValidationException ex)
-            {
-                ex.AddToModelState(ModelState);
-
-                return BadRequest(ModelState);
             }
             catch (Exception ex)
             {
@@ -108,15 +96,15 @@ namespace Racksincor.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Employee")]
         public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                await _companyService.Delete(new CompanyDTO { Id = id });
+                await _rackService.Delete(new RackDTO { Id = id });
 
                 return NoContent();
             }
-            // TODO: lacks validation exception handler
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
