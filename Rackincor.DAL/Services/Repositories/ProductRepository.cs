@@ -76,24 +76,24 @@ namespace Racksincor.DAL.Services.Repositories
             }
         }
 
-        public async Task<IReadOnlyList<ProductDTO>> ReadWithQuery(ProductQuery? query)
+        public async Task<IReadOnlyList<ProductDTO>> ReadWithQuery(ProductQuery? obj)
         {
             var sqlBuilder = new StringBuilder("SELECT * FROM Products WHERE 1 = 1");
 
-            if (query != null)
+            if (obj != null)
             {
-                if (query.Id != default)
+                if (obj.Id != default)
                 {
                     sqlBuilder.Append(" AND Id = @Id");
                 }
 
-                if (query.RackId != default)
+                if (obj.RackId != default)
                 {
                     sqlBuilder.Append(" AND RackId = @RackId");
                 }
             }
 
-            return (await _connection.QueryAsync<ProductDTO>(sqlBuilder.ToString(), query)).ToList();
+            return (await _connection.QueryAsync<ProductDTO>(sqlBuilder.ToString(), obj)).ToList();
         }
 
         public async Task<ProductDTO> Update(ProductDTO entity)
