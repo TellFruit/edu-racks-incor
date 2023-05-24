@@ -17,6 +17,8 @@ namespace Racksincor.Controllers
             _authService = authService;
         }
 
+        [HttpPost]
+        [Route(nameof(Login))]
         public async Task<IActionResult> Login(UserDTO user)
         {
             try
@@ -39,6 +41,8 @@ namespace Racksincor.Controllers
             }
         }
 
+        [HttpPost]
+        [Route(nameof(Register))]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Register(RegisterDTO user)
         {
