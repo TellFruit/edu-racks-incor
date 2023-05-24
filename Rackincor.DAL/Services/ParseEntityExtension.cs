@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Racksincor.DAL.Services
+﻿namespace Racksincor.DAL.Services
 {
     internal static class ParseEntityExtension
     {

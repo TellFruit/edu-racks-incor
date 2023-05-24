@@ -7,8 +7,8 @@ using System.Data;
 using Npgsql;
 using Racksincor.DAL.Interfaces;
 using Racksincor.DAL.Services.Auth;
-using Racksincor.BLL.Interfaces;
 using Racksincor.BLL.Interfaces.Outer;
+using Racksincor.BLL.Interfaces;
 using Racksincor.DAL.Services.Repositories;
 using Racksincor.BLL.DTO;
 using Racksincor.BLL.DTO.Queries;
@@ -44,16 +44,16 @@ namespace Racksincor.DAL
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<IRegisterService, RegisterService>();
-        }
+        } 
 
         public static void AddRepositories(this IServiceCollection services)
         {
             services.AddScoped(typeof(IRepository<,>), typeof(PromotionRepository<,>));
             services.AddScoped<IRepository<CompanyDTO, CompanyQuery>, CompanyRepository>();
-            services.AddScoped<IRepository<ProductDTO, ProductQuery>, ProductRepository>();
-            services.AddScoped<IRepository<RackDTO, RackQuery>, RackRepository>();
-            services.AddScoped<IRepository<ReactionDTO, ReactionQuery>, ReactionRepository>();
             services.AddScoped<IRepository<ShopDTO, ShopQuery>, ShopRepository>();
+            services.AddScoped<IRepository<ProductDTO, ProductQuery>, ProductRepository>();
+            services.AddScoped<IRepository<ReactionDTO, ReactionQuery>, ReactionRepository>();
+            services.AddScoped<IRepository<RackDTO, RackQuery>, RackRepository>();
         }
     }
 }
