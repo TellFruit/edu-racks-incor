@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Racksincor.BLL;
 using Racksincor.DAL;
 using System.Text;
 
@@ -12,6 +13,12 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext(builder.Configuration);
 builder.Services.AddIdentity();
 builder.Services.AddDbConnection(builder.Configuration);
+builder.Services.AddAuthServices();
+builder.Services.AddRepositories();
+
+builder.Services.AddAuthMediate();
+builder.Services.AddEntityMediates();
+builder.Services.AddValidators();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
