@@ -13,7 +13,7 @@ namespace Racksincor.DAL.Models
         public int RackId { get; set; }
         public Rack Rack { get; set; }
 
-        // One-to-Many relation: Promotion and Product
+        // Many-to-Many relation: Promotion and Product
         public ICollection<Promotion> Promotions { get; set; }
 
         // Many-to-Many relation: User and Product

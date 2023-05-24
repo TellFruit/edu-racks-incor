@@ -1,18 +1,20 @@
-﻿using Racksincor.BLL.DTO.Queries;
+﻿using Dapper;
+using Racksincor.BLL.DTO.Abstract;
+using Racksincor.BLL.DTO.Queries;
 using Racksincor.BLL.Interfaces;
 using Racksincor.DAL.Services.Repositories.Abstract;
 using System.Data;
-using Dapper;
-using Racksincor.BLL.DTO;
 using System.Text;
 
 namespace Racksincor.DAL.Services.Repositories
 {
-    internal class ProductRepository : BaseRepository, IRepository<ProductDTO, ProductQuery>
+    internal class PromotionRepositor<TEntity, TQuery> : BaseRepository, IRepository<TEntity, TQuery>
+        where TEntity : PromotionDTO, new()
+        where TQuery : PromotionQuery
     {
-        public ProductRepository(IDbConnection connection) : base(connection) { }
+        public PromotionRepositor(IDbConnection connection) : base(connection) { }
 
-        public async Task<ProductDTO> Create(ProductDTO entity)
+        public async Task<TEntity> Create(TEntity entity)
         {
             using (var transaction = _connection.BeginTransaction())
             {
@@ -20,21 +22,20 @@ namespace Racksincor.DAL.Services.Repositories
                 {
                     DateTime now = DateTime.Now;
 
-                    await _connection.ExecuteAsync(@"
-                        INSERT INTO Products (Name, Price, IsInStock, RackId, CreatedAt, UpdatedAt)
-                            VALUES (@Name, @Price, @IsInStock, @RackId, @CreatedAt, @UpdatedAt)",
+                    string columnList = entity.GetColumnList();
+                    string valueList = entity.GetPropertyValueList();
+                    string query = $"INSERT INTO Promotion (CreatedAt, {columnList}) VALUES (@CreatedAt, {valueList})";
+
+                    await _connection.ExecuteAsync(
+                        query,
                         new
                         {
-                            entity.Name,
-                            entity.Price,
-                            entity.IsInStock,
-                            entity.RackId,
-                            CreatedAt = now,
-                            UpdatedAt = now
+                            entity,
+                            CreatedAt = now
                         },
                         transaction);
 
-                    var found = await _connection.QueryFirstAsync<ProductDTO>(
+                    var found = await _connection.QueryFirstAsync<TEntity>(
                         "SELECT * FROM Products WHERE CreatedAt = @CreatedAt",
                         new { CreatedAt = now },
                         transaction);
@@ -49,19 +50,19 @@ namespace Racksincor.DAL.Services.Repositories
 
                     transaction.Rollback();
 
-                    return new ProductDTO();
+                    return new TEntity();
                 }
             }
         }
 
-        public async Task Delete(ProductDTO entity)
+        public async Task Delete(TEntity entity)
         {
             using (var transaction = _connection.BeginTransaction())
             {
                 try
                 {
                     await _connection.ExecuteAsync(
-                        "DELETE FROM Products WHERE Id = @Id",
+                        "DELETE FROM Promotion WHERE Id = @Id",
                         new { entity.Id },
                         transaction);
 
@@ -76,7 +77,7 @@ namespace Racksincor.DAL.Services.Repositories
             }
         }
 
-        public async Task<IReadOnlyList<ProductDTO>> ReadWithQuery(ProductQuery? obj)
+        public async Task<IReadOnlyList<TEntity>> ReadWithQuery(TQuery? obj)
         {
             var sqlBuilder = new StringBuilder("SELECT * FROM Products WHERE 1 = 1");
 
@@ -86,17 +87,12 @@ namespace Racksincor.DAL.Services.Repositories
                 {
                     sqlBuilder.Append(" AND Id = @Id");
                 }
-
-                if (obj.RackId != default)
-                {
-                    sqlBuilder.Append(" AND RackId = @RackId");
-                }
             }
 
-            return (await _connection.QueryAsync<ProductDTO>(sqlBuilder.ToString(), obj)).ToList();
+            return (await _connection.QueryAsync<TEntity>(sqlBuilder.ToString(), obj)).ToList();
         }
 
-        public async Task<ProductDTO> Update(ProductDTO entity)
+        public async Task<TEntity> Update(TEntity entity)
         {
             using (var transaction = _connection.BeginTransaction())
             {
@@ -104,22 +100,19 @@ namespace Racksincor.DAL.Services.Repositories
                 {
                     DateTime now = DateTime.Now;
 
-                    await _connection.ExecuteAsync(
-                        "UPDATE Products SET Name = @Name, Price = @Price, IsInStock = @IsInStock, RackId = @RackId, UpdatedAt = @UpdatedAt WHERE Id = @Id",
+                    string columnValueList = entity.GetColumnValueList();
+                    string query = $"UPDATE Promotion SET UpdatedAt = @UpdatedAt, {columnValueList} WHERE Id = @Id";
+                    _connection.Execute(
+                        query,
                         new
                         {
-                            entity.Id,
-                            entity.Name,
-                            entity.Price,
-                            entity.IsInStock,
-                            entity.RackId,
+                            entity,
                             UpdatedAt = now
-                        },
-                        transaction);
+                        });
 
                     transaction.Commit();
 
-                    return await _connection.QueryFirstAsync<ProductDTO>(
+                    return await _connection.QueryFirstAsync<TEntity>(
                         "SELECT * FROM Products WHERE UpdatedAt = @UpdatedAt",
                         new { UpdatedAt = now });
                 }
@@ -129,7 +122,7 @@ namespace Racksincor.DAL.Services.Repositories
 
                     transaction.Rollback();
 
-                    return new ProductDTO();
+                    return new TEntity();
                 }
             }
         }
