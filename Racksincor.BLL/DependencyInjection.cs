@@ -1,8 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 using Racksincor.BLL.DTO;
 using Racksincor.BLL.DTO.Queries;
+using Racksincor.BLL.DTO.User;
 using Racksincor.BLL.Interfaces;
 using Racksincor.BLL.Services.Mediates;
+using Racksincor.BLL.Validators;
 
 namespace Racksincor.BLL
 {
@@ -21,6 +24,15 @@ namespace Racksincor.BLL
             services.AddScoped<IMediateService<RackDTO, RackQuery>, RackService>();
             services.AddScoped<IMediateService<ReactionDTO, ReactionQuery>, ReactionService>();
             services.AddScoped<IMediateService<ProductDTO, ProductQuery>, ProductService>();
+        }
+
+        public static void AddValidators(this IServiceCollection services)
+        {
+            services.AddScoped<IValidator<CompanyDTO>, CompanyValidator>();
+            services.AddScoped<IValidator<ShopDTO>, ShopValidator>();
+            services.AddScoped<IValidator<RegisterDTO>, RegisterValidator>();
+            services.AddScoped<IValidator<UserDTO>, UserValidator>();
+
         }
     }
 }

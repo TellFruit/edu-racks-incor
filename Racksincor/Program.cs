@@ -18,6 +18,7 @@ builder.Services.AddRepositories();
 
 builder.Services.AddAuthMediate();
 builder.Services.AddEntityMediates();
+builder.Services.AddValidators();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
