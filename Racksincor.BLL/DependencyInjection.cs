@@ -8,12 +8,12 @@ namespace Racksincor.BLL
 {
     public static class DependencyInjection
     {
-        public static void AddAuthService(this IServiceCollection services)
+        public static void AddAuthMediate(this IServiceCollection services)
         {
             services.AddScoped<IAuthService, AuthService>();
         }
 
-        public static void AddMediateServices(this IServiceCollection services)
+        public static void AddEntityMediates(this IServiceCollection services)
         {
             services.AddScoped(typeof(IMediateService<,>), typeof(PromotionService<,>));
             services.AddScoped<IMediateService<CompanyDTO, CompanyQuery>, CompanyService>();
