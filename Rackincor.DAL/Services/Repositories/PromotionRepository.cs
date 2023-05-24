@@ -8,11 +8,11 @@ using System.Text;
 
 namespace Racksincor.DAL.Services.Repositories
 {
-    internal class PromotionRepositor<TEntity, TQuery> : BaseRepository, IRepository<TEntity, TQuery>
+    internal class PromotionRepository<TEntity, TQuery> : BaseRepository, IRepository<TEntity, TQuery>
         where TEntity : PromotionDTO, new()
         where TQuery : PromotionQuery
     {
-        public PromotionRepositor(IDbConnection connection) : base(connection) { }
+        public PromotionRepository(IDbConnection connection) : base(connection) { }
 
         public async Task<TEntity> Create(TEntity entity)
         {
