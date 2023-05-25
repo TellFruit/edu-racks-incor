@@ -35,7 +35,7 @@ namespace Racksincor.DAL
             services.AddTransient<IDbConnection>(
                 provider =>
             {
-                return new NpgsqlConnection(config.GetConnectionString("ConnectionString"));
+                return new NpgsqlConnection(config["ConnectionString"]);
             });
         }
 

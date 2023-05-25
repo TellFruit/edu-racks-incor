@@ -51,21 +51,21 @@ namespace Racksincor.DAL.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "5e45f6ae-1265-432f-ae8b-bea98022cde6",
+                            ConcurrencyStamp = "676e80d4-1979-4a52-b224-3fdb92e6b8f7",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "8509b876-dc1a-4242-b9de-5176950f7b02",
+                            ConcurrencyStamp = "e074ac47-b1b6-4f1a-931a-89b23771e465",
                             Name = "Shopper",
                             NormalizedName = "SHOPPER"
                         },
                         new
                         {
                             Id = "3",
-                            ConcurrencyStamp = "690d757e-5e33-48b2-8cc2-cf8fe2fd058f",
+                            ConcurrencyStamp = "da111b47-14c0-4f41-9505-830f39384ec0",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -501,7 +501,7 @@ namespace Racksincor.DAL.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text");
 
-                    b.Property<int>("ShopId")
+                    b.Property<int?>("ShopId")
                         .HasColumnType("integer");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -529,16 +529,15 @@ namespace Racksincor.DAL.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5123b1a0-e341-4735-a533-d01ba242f720",
+                            ConcurrencyStamp = "8ef185ba-b632-4ea3-892d-8041308c8ad9",
                             Email = "admin@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGU7hsOg0fPyJJnP5frYzgzP7TMkBr1VDoFEMFyY2o+aG/b6OhO04cME99TV/i0sFQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEE6WZuxUmyCU5SCAdbw2MKn6RrxcfkIrZ+T8wkuCalCShd3TEhHD8QL/Xuzc71hWCQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
-                            ShopId = 0,
                             TwoFactorEnabled = false,
                             UserName = "admin@example.com"
                         });
@@ -723,9 +722,7 @@ namespace Racksincor.DAL.Migrations
                 {
                     b.HasOne("Racksincor.DAL.Models.Shop", "Shop")
                         .WithMany("Users")
-                        .HasForeignKey("ShopId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ShopId");
 
                     b.Navigation("Shop");
                 });
