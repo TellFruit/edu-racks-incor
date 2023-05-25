@@ -18,7 +18,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Employee")]
+        [JwtAuthorize(Roles = "Employee")]
         public async Task<IActionResult> Create(ProductDTO product)
         {
             try
@@ -73,7 +73,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Employee")]
+        [JwtAuthorize(Roles = "Employee")]
         public async Task<IActionResult> Update(int id, ProductDTO product)
         {
             try
@@ -96,7 +96,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Employee")]
+        [JwtAuthorize(Roles = "Employee")]
         public async Task<IActionResult> Delete(int id)
         {
             try

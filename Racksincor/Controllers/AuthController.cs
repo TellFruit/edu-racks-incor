@@ -44,7 +44,7 @@ namespace Racksincor.Controllers
 
         [HttpPost]
         [Route(nameof(Register))]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
+        [JwtAuthorize(Roles = "Admin")]
         public async Task<IActionResult> Register(RegisterDTO user)
         {
 

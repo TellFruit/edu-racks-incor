@@ -9,7 +9,7 @@ namespace Racksincor.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")]
+    [JwtAuthorize(Roles = "Admin")]
     public class ShopController : ControllerBase
     {
         private readonly IMediateService<ShopDTO, ShopQuery> _shopService;
