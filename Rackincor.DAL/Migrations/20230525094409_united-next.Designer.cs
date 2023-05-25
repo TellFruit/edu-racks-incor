@@ -12,8 +12,8 @@ using Racksincor.DAL;
 namespace Racksincor.DAL.Migrations
 {
     [DbContext(typeof(RacksincorDbContext))]
-    [Migration("20230511102300_seed")]
-    partial class seed
+    [Migration("20230525094409_united-next")]
+    partial class unitednext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,21 +53,21 @@ namespace Racksincor.DAL.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "65d2cf05-28d8-455b-843d-d4160c64f0d8",
+                            ConcurrencyStamp = "676e80d4-1979-4a52-b224-3fdb92e6b8f7",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "b47629af-730e-4e1c-bac5-721fb2361d10",
+                            ConcurrencyStamp = "e074ac47-b1b6-4f1a-931a-89b23771e465",
                             Name = "Shopper",
                             NormalizedName = "SHOPPER"
                         },
                         new
                         {
                             Id = "3",
-                            ConcurrencyStamp = "bfaa5397-d7cc-4b85-8bc4-10c95675acef",
+                            ConcurrencyStamp = "da111b47-14c0-4f41-9505-830f39384ec0",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -186,6 +186,21 @@ namespace Racksincor.DAL.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("ProductPromotion", b =>
+                {
+                    b.Property<int>("ProductsId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("PromotionsId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ProductsId", "PromotionsId");
+
+                    b.HasIndex("PromotionsId");
+
+                    b.ToTable("ProductPromotion");
+                });
+
             modelBuilder.Entity("Racksincor.DAL.Models.Abstract.Promotion", b =>
                 {
                     b.Property<int>("Id")
@@ -208,9 +223,6 @@ namespace Racksincor.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("integer");
-
                     b.Property<int?>("ShopId")
                         .HasColumnType("integer");
 
@@ -218,8 +230,6 @@ namespace Racksincor.DAL.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
 
                     b.HasIndex("ShopId");
 
@@ -493,7 +503,7 @@ namespace Racksincor.DAL.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text");
 
-                    b.Property<int>("ShopId")
+                    b.Property<int?>("ShopId")
                         .HasColumnType("integer");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -521,16 +531,15 @@ namespace Racksincor.DAL.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "20342dd5-f76b-41e2-be9e-d01e07d7f947",
+                            ConcurrencyStamp = "8ef185ba-b632-4ea3-892d-8041308c8ad9",
                             Email = "admin@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFvwTsv1NnN8dvMSq8UOarWovcK2zSyz19/8uobjksTqA/90I1qXhJm2aZdaciGPyQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEE6WZuxUmyCU5SCAdbw2MKn6RrxcfkIrZ+T8wkuCalCShd3TEhHD8QL/Xuzc71hWCQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
-                            ShopId = 0,
                             TwoFactorEnabled = false,
                             UserName = "admin@example.com"
                         });
@@ -607,12 +616,23 @@ namespace Racksincor.DAL.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Racksincor.DAL.Models.Abstract.Promotion", b =>
+            modelBuilder.Entity("ProductPromotion", b =>
                 {
                     b.HasOne("Racksincor.DAL.Models.Product", null)
-                        .WithMany("Promotions")
-                        .HasForeignKey("ProductId");
+                        .WithMany()
+                        .HasForeignKey("ProductsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
+                    b.HasOne("Racksincor.DAL.Models.Abstract.Promotion", null)
+                        .WithMany()
+                        .HasForeignKey("PromotionsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Racksincor.DAL.Models.Abstract.Promotion", b =>
+                {
                     b.HasOne("Racksincor.DAL.Models.Shop", null)
                         .WithMany("Promotions")
                         .HasForeignKey("ShopId");
@@ -704,9 +724,7 @@ namespace Racksincor.DAL.Migrations
                 {
                     b.HasOne("Racksincor.DAL.Models.Shop", "Shop")
                         .WithMany("Users")
-                        .HasForeignKey("ShopId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ShopId");
 
                     b.Navigation("Shop");
                 });
@@ -718,8 +736,6 @@ namespace Racksincor.DAL.Migrations
 
             modelBuilder.Entity("Racksincor.DAL.Models.Product", b =>
                 {
-                    b.Navigation("Promotions");
-
                     b.Navigation("Reactions");
                 });
 
