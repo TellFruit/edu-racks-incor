@@ -21,7 +21,7 @@ namespace Racksincor.DAL.Services.Auth
             var user = await _userManager.FindByEmailAsync(email);
             if (user != null && await _userManager.CheckPasswordAsync(user, password))
             {
-                return _tokenService.GenerateToken(user);
+                return _tokenService.GenerateToken(user, await _userManager.GetRolesAsync(user));
             }
 
             throw new InvalidOperationException("Invalid email or password.");

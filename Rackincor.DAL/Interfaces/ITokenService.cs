@@ -4,6 +4,6 @@ namespace Racksincor.DAL.Interfaces
 {
     internal interface ITokenService
     {
-        public string GenerateToken(User user);
+        public string GenerateToken(User user, IList<string> roles);
     }
 }

@@ -18,7 +18,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Shopper")]
+        [JwtAuthorize(Roles = "Shopper")]
         public async Task<IActionResult> Create(ReactionDTO reaction)
         {
             try
@@ -73,7 +73,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Shopper")]
+        [JwtAuthorize(Roles = "Shopper")]
         public async Task<IActionResult> Update(int id, ReactionDTO reaction)
         {
             try
@@ -96,7 +96,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Shopper")]
+        [JwtAuthorize(Roles = "Shopper")]
         public async Task<IActionResult> Delete(int id)
         {
             try

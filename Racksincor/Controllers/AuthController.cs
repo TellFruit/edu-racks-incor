@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Racksincor.BLL.DTO.User;
@@ -43,7 +44,7 @@ namespace Racksincor.Controllers
 
         [HttpPost]
         [Route(nameof(Register))]
-        [Authorize(Roles = "Admin")]
+        [JwtAuthorize(Roles = "Admin")]
         public async Task<IActionResult> Register(RegisterDTO user)
         {
 
