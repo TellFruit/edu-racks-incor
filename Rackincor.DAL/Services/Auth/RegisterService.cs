@@ -14,7 +14,7 @@ namespace Racksincor.DAL.Services.Auth
             _userManager = userManager;
         }
 
-        public async Task Register(string email, string password)
+        public async Task Register(string email, string password, string role)
         {
             User? user = new User
             {
@@ -27,6 +27,8 @@ namespace Racksincor.DAL.Services.Auth
             {
                 throw new InvalidOperationException("Email is already taken.");
             }
+
+            await _userManager.AddToRoleAsync(user, role);
         }
     }
 }
