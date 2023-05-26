@@ -21,12 +21,14 @@ namespace Racksincor.DAL.Services.Repositories
                     DateTime now = DateTime.Now;
 
                     await _connection.ExecuteAsync(@"
-                        INSERT INTO Companies (Name, Address, CreatedAt, UpdatedAt)
+                        INSERT INTO Companies (Name, Url, ContactPhone, ContactEmail, CreatedAt, UpdatedAt)
                             VALUES (@Name, @Address, @CreatedAt, @UpdatedAt)",
                         new
                         {
                             entity.Name,
-                            entity.Address,
+                            entity.Url,
+                            entity.ContactPhone,
+                            entity.ContactEmail,
                             CreatedAt = now,
                             UpdatedAt = now
                         },
@@ -98,12 +100,14 @@ namespace Racksincor.DAL.Services.Repositories
                     DateTime now = DateTime.Now;
 
                     await _connection.ExecuteAsync(
-                        "UPDATE Companies SET Name = @Name, Address = @Address, UpdatedAt = @UpdatedAt WHERE Id = @Id",
+                        "UPDATE Companies SET Name = @Name, Url = @Url, ContactPhone = @ContactPhone, ContactEmail = @ContactEmail, UpdatedAt = @UpdatedAt WHERE Id = @Id",
                         new
                         {
                             entity.Id,
                             entity.Name,
-                            entity.Address,
+                            entity.Url,
+                            entity.ContactPhone,
+                            entity.ContactEmail,
                             UpdatedAt = now
                         },
                         transaction);
