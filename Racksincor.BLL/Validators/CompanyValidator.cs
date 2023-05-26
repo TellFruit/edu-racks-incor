@@ -11,9 +11,9 @@ namespace Racksincor.BLL.Validators
                 .NotEmpty().WithMessage("Company name is required.")
                 .MaximumLength(100).WithMessage("Company name cannot exceed 100 characters.");
 
-            RuleFor(company => company.Address)
-                .NotEmpty().WithMessage("Company address is required.")
-                .MaximumLength(200).WithMessage("Company address cannot exceed 200 characters.");
+            RuleFor(company => company.Url)
+                .NotEmpty().WithMessage("Company URL is required.")
+                .MaximumLength(100).WithMessage("Company URL cannot exceed 100 characters.");
         }
     }
 }

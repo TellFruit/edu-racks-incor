@@ -22,21 +22,23 @@ namespace Racksincor.DAL.Services.Repositories
                 {
                     DateTime now = DateTime.Now;
 
-                    string columnList = entity.GetColumnList();
-                    string valueList = entity.GetPropertyValueList();
-                    string query = $"INSERT INTO Promotion (CreatedAt, {columnList}) VALUES (@CreatedAt, {valueList})";
-
-                    await _connection.ExecuteAsync(
-                        query,
+                    await _connection.ExecuteAsync(@"
+                        INSERT INTO Promotions (Discriminator, Name, ExpirationDate, Percenatage, GiftProductId, CreatedAt, UpdatedAt)
+                            VALUES (@Discriminator, @Name, @ExpirationDate, @Percenatage, @GiftProductId, @CreatedAt, @UpdatedAt)",
                         new
                         {
-                            entity,
-                            CreatedAt = now
+                            Discriminator = entity.GetType().Name,
+                            Name = entity.Name,
+                            ExpirationDate = entity.ExpirationDate,
+                            Percenatage = entity.GetPropertyValue("Percenatage"),
+                            GiftProductId = entity.GetPropertyValue("GiftProductId"),
+                            CreatedAt = now,
+                            UpdatedAt = now
                         },
                         transaction);
 
                     var found = await _connection.QueryFirstAsync<TEntity>(
-                        "SELECT * FROM Products WHERE CreatedAt = @CreatedAt",
+                        "SELECT * FROM Promotions WHERE CreatedAt = @CreatedAt",
                         new { CreatedAt = now },
                         transaction);
 
@@ -62,7 +64,7 @@ namespace Racksincor.DAL.Services.Repositories
                 try
                 {
                     await _connection.ExecuteAsync(
-                        "DELETE FROM Promotion WHERE Id = @Id",
+                        "DELETE FROM Promotions WHERE Id = @Id",
                         new { entity.Id },
                         transaction);
 
@@ -79,7 +81,7 @@ namespace Racksincor.DAL.Services.Repositories
 
         public async Task<IReadOnlyList<TEntity>> ReadWithQuery(TQuery? obj)
         {
-            var sqlBuilder = new StringBuilder("SELECT * FROM Products WHERE 1 = 1");
+            var sqlBuilder = new StringBuilder("SELECT * FROM Promotions WHERE 1 = 1");
 
             if (obj != null)
             {
@@ -100,20 +102,24 @@ namespace Racksincor.DAL.Services.Repositories
                 {
                     DateTime now = DateTime.Now;
 
-                    string columnValueList = entity.GetColumnValueList();
-                    string query = $"UPDATE Promotion SET UpdatedAt = @UpdatedAt, {columnValueList} WHERE Id = @Id";
-                    _connection.Execute(
-                        query,
+                    _connection.Execute(@"
+                        UPDATE Promotions
+                        SET Name = @Name, ExpirationDate = @ExpirationDate, Percenatage = @Percenatage, GiftProductId = @GiftProductId, UpdatedAt = @UpdatedAt
+                        WHERE Id = @Id",
                         new
                         {
-                            entity,
+                            Id = entity.Id,
+                            Name = entity.Name,
+                            ExpirationDate = entity.ExpirationDate,
+                            Percenatage = entity.GetPropertyValue("Percenatage"),
+                            GiftProductId = entity.GetPropertyValue("GiftProductId"),
                             UpdatedAt = now
                         });
 
                     transaction.Commit();
 
                     return await _connection.QueryFirstAsync<TEntity>(
-                        "SELECT * FROM Products WHERE UpdatedAt = @UpdatedAt",
+                        "SELECT * FROM Promotions WHERE UpdatedAt = @UpdatedAt",
                         new { UpdatedAt = now });
                 }
                 catch (Exception ex)
