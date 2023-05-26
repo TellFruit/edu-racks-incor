@@ -31,7 +31,7 @@ namespace Racksincor.BLL.Services.Mediates
         {
             await _registerValidator.ValidateAndThrowAsync(user);
 
-            await _registerService.Register(user.Email, user.Password);
+            await _registerService.Register(user.Email, user.Password, user.Role);
         }
     }
 }

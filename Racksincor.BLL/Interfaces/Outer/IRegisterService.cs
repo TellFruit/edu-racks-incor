@@ -4,6 +4,6 @@ namespace Racksincor.BLL.Interfaces.Outer
 {
     public interface IRegisterService
     {
-        Task Register(string email, string password);
+        Task Register(string email, string password, string role);
     }
 }
