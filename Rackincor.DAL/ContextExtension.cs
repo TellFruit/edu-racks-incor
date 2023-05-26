@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Racksincor.DAL.Conventions;
 using Racksincor.DAL.Models;
 
 namespace Racksincor.DAL
