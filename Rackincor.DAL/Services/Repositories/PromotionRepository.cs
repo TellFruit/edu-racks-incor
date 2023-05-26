@@ -28,8 +28,8 @@ namespace Racksincor.DAL.Services.Repositories
                         new
                         {
                             Discriminator = entity.GetType().Name,
-                            Name = entity.GetPropertyValue("Name"),
-                            ExpirationDate = entity.GetPropertyValue("ExpirationDate"),
+                            Name = entity.Name,
+                            ExpirationDate = entity.ExpirationDate,
                             Percenatage = entity.GetPropertyValue("Percenatage"),
                             GiftProductId = entity.GetPropertyValue("GiftProductId"),
                             CreatedAt = now,
@@ -105,11 +105,12 @@ namespace Racksincor.DAL.Services.Repositories
                     _connection.Execute(@"
                         UPDATE Promotions
                         SET Name = @Name, ExpirationDate = @ExpirationDate, Percenatage = @Percenatage, GiftProductId = @GiftProductId, UpdatedAt = @UpdatedAt
-                        WHERE PromotionId = @PromotionId",
+                        WHERE Id = @Id",
                         new
                         {
-                            Name = entity.GetPropertyValue("Name"),
-                            ExpirationDate = entity.GetPropertyValue("ExpirationDate"),
+                            Id = entity.Id,
+                            Name = entity.Name,
+                            ExpirationDate = entity.ExpirationDate,
                             Percenatage = entity.GetPropertyValue("Percenatage"),
                             GiftProductId = entity.GetPropertyValue("GiftProductId"),
                             UpdatedAt = now
