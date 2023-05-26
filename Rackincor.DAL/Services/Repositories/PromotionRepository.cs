@@ -24,7 +24,7 @@ namespace Racksincor.DAL.Services.Repositories
 
                     string columnList = entity.GetColumnList();
                     string valueList = entity.GetPropertyValueList();
-                    string query = $"INSERT INTO Promotion (CreatedAt, {columnList}) VALUES (@CreatedAt, {valueList})";
+                    string query = $"INSERT INTO Promotions (CreatedAt, {columnList}) VALUES (@CreatedAt, {valueList})";
 
                     await _connection.ExecuteAsync(
                         query,
