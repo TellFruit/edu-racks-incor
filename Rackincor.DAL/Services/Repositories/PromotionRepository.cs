@@ -64,7 +64,7 @@ namespace Racksincor.DAL.Services.Repositories
                 try
                 {
                     await _connection.ExecuteAsync(
-                        "DELETE FROM Promotion WHERE Id = @Id",
+                        "DELETE FROM Promotions WHERE Id = @Id",
                         new { entity.Id },
                         transaction);
 
