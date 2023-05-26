@@ -27,24 +27,24 @@ namespace Racksincor.DAL.Services.Repositories
                             VALUES (@Discriminator, @Name, @ExpirationDate, @Percenatage, @GiftProductId, @CreatedAt, @UpdatedAt)",
                         new
                         {
-                            CreatedAt = now,
-                            UpdatedAt = now,
                             Discriminator = entity.GetType().Name,
                             Name = entity.GetPropertyValue("Name"),
                             ExpirationDate = entity.GetPropertyValue("ExpirationDate"),
                             Percenatage = entity.GetPropertyValue("Percenatage"),
-                            GiftProductId = entity.GetPropertyValue("GiftProductId")
+                            GiftProductId = entity.GetPropertyValue("GiftProductId"),
+                            CreatedAt = now,
+                            UpdatedAt = now
                         },
                         transaction);
-
-                    transaction.Commit();
 
                     var found = await _connection.QueryFirstAsync<TEntity>(
                         "SELECT * FROM Promotions WHERE CreatedAt = @CreatedAt",
                         new { CreatedAt = now },
                         transaction);
 
-                    return new TEntity();
+                    transaction.Commit();
+
+                    return found;
                 }
                 catch (Exception ex)
                 {
@@ -102,13 +102,16 @@ namespace Racksincor.DAL.Services.Repositories
                 {
                     DateTime now = DateTime.Now;
 
-                    string columnValueList = entity.GetColumnValueList();
-                    string query = $"UPDATE Promotions SET UpdatedAt = @UpdatedAt, {columnValueList} WHERE Id = @Id";
-                    _connection.Execute(
-                        query,
+                    _connection.Execute(@"
+                        UPDATE Promotions
+                        SET Name = @Name, ExpirationDate = @ExpirationDate, Percenatage = @Percenatage, GiftProductId = @GiftProductId, UpdatedAt = @UpdatedAt
+                        WHERE PromotionId = @PromotionId",
                         new
                         {
-                            entity,
+                            Name = entity.GetPropertyValue("Name"),
+                            ExpirationDate = entity.GetPropertyValue("ExpirationDate"),
+                            Percenatage = entity.GetPropertyValue("Percenatage"),
+                            GiftProductId = entity.GetPropertyValue("GiftProductId"),
                             UpdatedAt = now
                         });
 
