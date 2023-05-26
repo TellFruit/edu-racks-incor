@@ -22,27 +22,29 @@ namespace Racksincor.DAL.Services.Repositories
                 {
                     DateTime now = DateTime.Now;
 
-                    string columnList = entity.GetColumnList();
-                    string valueList = entity.GetPropertyValueList();
-                    string query = $"INSERT INTO Promotions (CreatedAt, {columnList}) VALUES (@CreatedAt, {valueList})";
-
-                    await _connection.ExecuteAsync(
-                        query,
+                    await _connection.ExecuteAsync(@"
+                        INSERT INTO Promotions (Discriminator, Name, ExpirationDate, Percenatage, GiftProductId, CreatedAt, UpdatedAt)
+                            VALUES (@Discriminator, @Name, @ExpirationDate, @Percenatage, @GiftProductId, @CreatedAt, @UpdatedAt)",
                         new
                         {
-                            entity,
-                            CreatedAt = now
+                            CreatedAt = now,
+                            UpdatedAt = now,
+                            Discriminator = entity.GetType().Name,
+                            Name = entity.GetPropertyValue("Name"),
+                            ExpirationDate = entity.GetPropertyValue("ExpirationDate"),
+                            Percenatage = entity.GetPropertyValue("Percenatage"),
+                            GiftProductId = entity.GetPropertyValue("GiftProductId")
                         },
-                        transaction);
-
-                    var found = await _connection.QueryFirstAsync<TEntity>(
-                        "SELECT * FROM Products WHERE CreatedAt = @CreatedAt",
-                        new { CreatedAt = now },
                         transaction);
 
                     transaction.Commit();
 
-                    return found;
+                    var found = await _connection.QueryFirstAsync<TEntity>(
+                        "SELECT * FROM Promotions WHERE CreatedAt = @CreatedAt",
+                        new { CreatedAt = now },
+                        transaction);
+
+                    return new TEntity();
                 }
                 catch (Exception ex)
                 {
@@ -79,7 +81,7 @@ namespace Racksincor.DAL.Services.Repositories
 
         public async Task<IReadOnlyList<TEntity>> ReadWithQuery(TQuery? obj)
         {
-            var sqlBuilder = new StringBuilder("SELECT * FROM Products WHERE 1 = 1");
+            var sqlBuilder = new StringBuilder("SELECT * FROM Promotions WHERE 1 = 1");
 
             if (obj != null)
             {
@@ -101,7 +103,7 @@ namespace Racksincor.DAL.Services.Repositories
                     DateTime now = DateTime.Now;
 
                     string columnValueList = entity.GetColumnValueList();
-                    string query = $"UPDATE Promotion SET UpdatedAt = @UpdatedAt, {columnValueList} WHERE Id = @Id";
+                    string query = $"UPDATE Promotions SET UpdatedAt = @UpdatedAt, {columnValueList} WHERE Id = @Id";
                     _connection.Execute(
                         query,
                         new
@@ -113,7 +115,7 @@ namespace Racksincor.DAL.Services.Repositories
                     transaction.Commit();
 
                     return await _connection.QueryFirstAsync<TEntity>(
-                        "SELECT * FROM Products WHERE UpdatedAt = @UpdatedAt",
+                        "SELECT * FROM Promotions WHERE UpdatedAt = @UpdatedAt",
                         new { UpdatedAt = now });
                 }
                 catch (Exception ex)
