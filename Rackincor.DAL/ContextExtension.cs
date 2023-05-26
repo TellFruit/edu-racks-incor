@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Racksincor.DAL.Conventions;
 using Racksincor.DAL.Models;
 
 namespace Racksincor.DAL
@@ -10,6 +11,17 @@ namespace Racksincor.DAL
         {
             builder.Entity<Reaction>()
                 .HasKey(sc => new { sc.UserId, sc.ProductId });
+
+            builder.Model.GetEntityTypes().ToList().ForEach(entityType =>
+            {
+                entityType.SetTableName(entityType.GetTableName().ToLower());
+
+                entityType.GetProperties().ToList().ForEach(property =>
+                {
+                    property.SetColumnName(property.GetColumnBaseName().ToLower());
+                });
+            });
+
         }
 
         public static void Seed(this ModelBuilder builder)

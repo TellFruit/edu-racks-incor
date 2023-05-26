@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Racksincor.DAL;
@@ -11,9 +12,10 @@ using Racksincor.DAL;
 namespace Racksincor.DAL.Migrations
 {
     [DbContext(typeof(RacksincorDbContext))]
-    partial class RacksincorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230526042116_lowercase")]
+    partial class lowercase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
