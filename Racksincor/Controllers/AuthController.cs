@@ -47,7 +47,6 @@ namespace Racksincor.Controllers
         [JwtAuthorize(Roles = "Admin")]
         public async Task<IActionResult> Register(RegisterDTO user)
         {
-
             try
             {
                 await _authService.Register(user);
@@ -71,3 +70,4 @@ namespace Racksincor.Controllers
         }
     }
 }
+ 
