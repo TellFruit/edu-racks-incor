@@ -22,7 +22,7 @@ namespace Racksincor.DAL.Services.Repositories
 
                     await _connection.ExecuteAsync(@"
                         INSERT INTO Companies (Name, Url, ContactPhone, ContactEmail, CreatedAt, UpdatedAt)
-                            VALUES (@Name, @Address, @CreatedAt, @UpdatedAt)",
+                            VALUES (@Name, @Url, @ContactPhone, @ContactEmail, @CreatedAt, @UpdatedAt)",
                         new
                         {
                             entity.Name,

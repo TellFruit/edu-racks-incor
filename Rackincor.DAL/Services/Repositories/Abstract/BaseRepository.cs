@@ -10,10 +10,12 @@ namespace Racksincor.DAL.Services.Repositories.Abstract
         public BaseRepository(IDbConnection connection)
         {
             _connection = connection;
+            _connection.Open();
         }
 
         public void Dispose()
         {
+            _connection.Close();
             _connection.Dispose();
         }
     }
