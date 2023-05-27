@@ -7,7 +7,7 @@ namespace Racksincor.DAL.Models
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public int IsInStock { get; set; }
+        public bool IsInStock { get; set; }
 
         // One-to-Many relation: Rack and Product
         public int RackId { get; set; }
