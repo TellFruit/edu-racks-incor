@@ -13,10 +13,13 @@ namespace Racksincor.DAL.Models
         public int ShopId { get; set; }
         public Shop Shop { get; set; }
 
-        // One-to-Many relation: Rack and Product
-        public ICollection<Product> Products { get; set; }
-
         // One-to-Many relation: Rack and Record
         public ICollection<Record> Records { get; set; }
+
+        // Many-to-Many relation: Rack and Product
+        public ICollection<Product> Products { get; set; }
+
+        // Many-to-Many relation: Rack and User
+        public ICollection<User> Users { get; set; }
     }
 }

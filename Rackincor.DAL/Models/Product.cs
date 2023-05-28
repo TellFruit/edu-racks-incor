@@ -9,14 +9,13 @@ namespace Racksincor.DAL.Models
         public decimal Price { get; set; }
         public bool IsInStock { get; set; }
 
-        // One-to-Many relation: Rack and Product
-        public int RackId { get; set; }
-        public Rack Rack { get; set; }
-
         // Many-to-Many relation: Promotion and Product
         public ICollection<Promotion> Promotions { get; set; }
 
         // Many-to-Many relation: User and Product
         public ICollection<Reaction> Reactions { get; set; }
+
+        // Many-to-Many relation: User and Rack
+        public ICollection<Rack> Racks { get; set; }
     }
 }
