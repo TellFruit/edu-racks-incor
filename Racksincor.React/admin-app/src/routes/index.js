@@ -5,12 +5,16 @@ import {
   Routes as Switch,
   Navigate,
 } from "react-router-dom";
+import Login from "../pages/login";
+import Register from "../pages/register";
 
 const Routes = () => {
 
   return (
       <Router>
         <Switch>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Switch>
       </Router>
   );
