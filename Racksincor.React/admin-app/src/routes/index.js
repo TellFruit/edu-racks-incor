@@ -2,8 +2,7 @@ import React from "react";
 import {
   Route,
   BrowserRouter as Router,
-  Routes as Switch,
-  Navigate,
+  Routes as Switch
 } from "react-router-dom";
 import Login from "../pages/login";
 import Register from "../pages/register";

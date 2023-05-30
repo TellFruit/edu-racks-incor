@@ -7,7 +7,7 @@ const Register = () => {
 
   const handleRegistration = async () => {
     try {
-      const response = await axios.post("/signup", {
+      const response = await axios.post("/register", {
         username,
         password,
       });
