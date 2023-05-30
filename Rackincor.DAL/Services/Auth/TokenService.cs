@@ -35,6 +35,11 @@ namespace Racksincor.DAL.Services.Auth
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
 
+            if (user.ShopId != null)
+            {
+                claims.Add(new Claim("ShopId", user.ShopId.ToString()));
+            }
+
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
