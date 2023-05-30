@@ -6,12 +6,16 @@ import {
 } from "react-router-dom";
 import PrivateRoute from "./private-route";
 import LoginPage from "../pages/login";
+import CompanyPage from "../pages/company";
 
 const Routes = () => {
     return (
         <Router>
             <Switch>
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/companies" element={<PrivateRoute />}>
+                    <Route path="/companies" element={<CompanyPage />} />
+                </Route>
             </Switch>
         </Router>
     );
