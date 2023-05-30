@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("/login", {
-        username,
+      const response = await axios.post("/auth/login", {
+        email,
         password,
       });
 
@@ -29,9 +29,9 @@ const Login = () => {
       <h2>Login</h2>
       <input
         type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <input
         type="password"

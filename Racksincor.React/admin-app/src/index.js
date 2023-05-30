@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import Routes from "./routes";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://localhost:7232";
+axios.defaults.baseURL = "https://localhost:7232/api/";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const Register = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleRegistration = async () => {
     try {
-      const response = await axios.post("/register", {
-        username,
+      const response = await axios.post("/auth/register", {
+        email,
         password,
       });
 
       if (response.status === 200) {
-        window.location.href = "/login";
+        window.location.href = "/auth/login";
       } else {
         console.error("Registration failed");
       }
@@ -27,9 +27,9 @@ const Register = () => {
       <h2>Registration</h2>
       <input
         type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <input
         type="password"

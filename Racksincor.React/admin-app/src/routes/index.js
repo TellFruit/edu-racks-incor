@@ -12,7 +12,7 @@ const Routes = () => {
   return (
       <Router>
         <Switch>
-          <Route path="/login" element={<Login />} />
+                    <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Switch>
       </Router>
