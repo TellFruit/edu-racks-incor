@@ -4,6 +4,7 @@ import {
     BrowserRouter as Router,
     Routes as Switch,
 } from "react-router-dom";
+import PrivateRoute from "./private-route";
 import LoginPage from "../pages/login";
 
 const Routes = () => {
