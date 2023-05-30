@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "../api/instance";
+import { setToken } from "../api/token";
 import { Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -19,7 +20,7 @@ const Login = () => {
 
       if (response.status === 200) {
         const token = response.data.token;
-        localStorage.setItem("token", token);
+        setToken(token);
         window.location.href = "/";
       } else {
         console.error("Login failed");

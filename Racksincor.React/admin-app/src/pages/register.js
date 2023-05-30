@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import axios from "../api/instance";
+import { getToken } from '../api/token';
 import { Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
+
+const token = getToken()
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -13,11 +16,19 @@ const Register = () => {
 
   const handleRegistration = async () => {
     try {
-      const response = await axios.post('/auth/register', {
-        email,
-        password,
-        passwordConfirm
-      });
+        const response = await axios.post(
+            '/auth/register',
+            {
+              email,
+              password,
+              passwordConfirm
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            }
+          );
 
       if (response.status === 200) {
         window.location.href = '/auth/login';
