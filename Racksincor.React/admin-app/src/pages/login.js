@@ -19,7 +19,7 @@ const Login = () => {
       });
 
       if (response.status === 200) {
-        const token = response.data.token;
+        const token = response.data;
         setToken(token);
         window.location.href = "/";
       } else {
