@@ -77,18 +77,24 @@ namespace Racksincor.DAL.Services.Repositories
 
         public async Task<IReadOnlyList<ShopDTO>> ReadWithQuery(ShopQuery? obj)
         {
-            var sqlBuilder = new StringBuilder("SELECT * FROM Shops WHERE 1 = 1");
+            var sqlBuilder = new StringBuilder("SELECT s.* FROM Shops s");
 
             if (obj != null)
             {
-                if (obj.Id != default)
+                if (obj.UserId != default)
                 {
-                    sqlBuilder.Append(" AND Id = @Id");
+                    sqlBuilder.Append(" INNER JOIN Users u ON s.Id = u.ShopId");
+                    sqlBuilder.Append(" WHERE u.UserId = @UserId");
+                }
+                else if (obj.Id != default)
+                {
+                    sqlBuilder.Append(" WHERE s.Id = @Id");
                 }
             }
 
             return (await _connection.QueryAsync<ShopDTO>(sqlBuilder.ToString(), obj)).ToList();
         }
+
 
         public async Task<ShopDTO> Update(ShopDTO entity)
         {
