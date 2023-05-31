@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from '../api/instance';
 import { getToken } from '../api/token';
 import Button from '@mui/material/Button';
@@ -15,6 +16,7 @@ const CompanyPage = () => {
   const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
   const [editModalIsOpen, setEditModalIsOpen] = useState(false);
   const [selectedCompany, setSelectedCompany] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchCompanies();
@@ -89,9 +91,7 @@ const CompanyPage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(
-        `/company/${id}`,
-      {
+      await axios.delete(`/company/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -100,6 +100,10 @@ const CompanyPage = () => {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const handleViewShops = (companyId) => {
+    navigate(`/company/${companyId}/shops`);
   };
 
   const openCreateModal = () => {
@@ -140,6 +144,7 @@ const CompanyPage = () => {
             companies={companies}
             onDelete={handleDelete}
             onOpenEditModal={openEditModal}
+            onViewShops={handleViewShops}
           />
           {selectedCompany && (
             <CompanyEditModal

@@ -16,6 +16,9 @@ const Routes = () => {
                 <Route path="/company" element={<PrivateRoute />}>
                     <Route path="/company" element={<CompanyPage />} />
                 </Route>
+                <Route path="/company/:id/shops" element={<PrivateRoute />}>
+                    <Route path="/company/:id/shops" element={<CompanyPage />} />
+                </Route>
             </Switch>
         </Router>
     );
