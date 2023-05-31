@@ -138,7 +138,6 @@ const CompanyPage = () => {
           <h3>Company List</h3>
           <CompanyList
             companies={companies}
-            onUpdate={handleUpdate}
             onDelete={handleDelete}
             onOpenEditModal={openEditModal}
           />
