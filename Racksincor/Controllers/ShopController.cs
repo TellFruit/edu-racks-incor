@@ -77,7 +77,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpGet("/company/{id}")]
-        public async Task<IActionResult> GetByUserId(int id)
+        public async Task<IActionResult> GetByCompanyId(int id)
         {
             try
             {
