@@ -75,7 +75,7 @@ namespace Racksincor.DAL.Services.Repositories
             }
         }
 
-        public async Task<IReadOnlyList<ShopDTO>> ReadWithQuery(ShopQuery obj)
+        public async Task<IReadOnlyList<ShopDTO>> ReadWithQuery(ShopQuery? obj)
         {
             var sqlBuilder = new StringBuilder("SELECT * FROM Shops WHERE 1 = 1");
 
