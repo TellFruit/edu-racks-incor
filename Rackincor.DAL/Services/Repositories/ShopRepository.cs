@@ -81,7 +81,11 @@ namespace Racksincor.DAL.Services.Repositories
 
             if (obj != null)
             {
-                if (obj.Id != default)
+                if (obj.CompanyId != default)
+                {
+                    sqlBuilder.Append(" AND CompanyId = @CompanyId");
+                }
+                else if (obj.Id != default)
                 {
                     sqlBuilder.Append(" AND Id = @Id");
                 }
@@ -89,6 +93,7 @@ namespace Racksincor.DAL.Services.Repositories
 
             return (await _connection.QueryAsync<ShopDTO>(sqlBuilder.ToString(), obj)).ToList();
         }
+
 
         public async Task<ShopDTO> Update(ShopDTO entity)
         {

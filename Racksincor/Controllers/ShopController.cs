@@ -76,6 +76,29 @@ namespace Racksincor.Controllers
             }
         }
 
+        [HttpGet("/company/{id}")]
+        public async Task<IActionResult> GetByCompanyId(int id)
+        {
+            try
+            {
+                var shopQuery = new ShopQuery { CompanyId = id };
+                var shop = await _shopService.ReadWithQuery(shopQuery);
+
+                if (shop.Any())
+                {
+                    return Ok(shop);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, ShopDTO shop)
         {
