@@ -5,12 +5,13 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Pagination from '@mui/material/Pagination';
 
-const ShopList = ({ shops, onUpdateShop, onDeleteShop, onOpenEditModal }) => {
+const ShopList = ({ shops, onDelete, onOpenEditModal }) => {
   const [page, setPage] = useState(1);
   const shopsPerPage = 5;
   const totalPages = Math.ceil(shops.length / shopsPerPage);
 
   const handlePageChange = (event, value) => {
+    event.preventDefault();
     setPage(value);
   };
 
@@ -35,7 +36,7 @@ const ShopList = ({ shops, onUpdateShop, onDeleteShop, onOpenEditModal }) => {
                   <Button variant="contained" color="primary" onClick={() => onOpenEditModal(shop)}>
                     Update
                   </Button>
-                  <Button variant="contained" color="secondary" onClick={() => onDeleteShop(shop.id)}>
+                  <Button variant="contained" color="secondary" onClick={() => onDelete(shop.id)}>
                     Delete
                   </Button>
                 </div>

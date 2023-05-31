@@ -5,12 +5,13 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Pagination from '@mui/material/Pagination';
 
-const CompanyList = ({ companies, onUpdate, onDelete, onOpenEditModal }) => {
+const CompanyList = ({ companies, onDelete, onOpenEditModal }) => {
   const [page, setPage] = useState(1);
   const companiesPerPage = 5;
   const totalPages = Math.ceil(companies.length / companiesPerPage);
 
   const handlePageChange = (event, value) => {
+    event.preventDefault();
     setPage(value);
   };
 
