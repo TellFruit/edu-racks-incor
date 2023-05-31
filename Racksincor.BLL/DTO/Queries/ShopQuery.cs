@@ -4,6 +4,6 @@ namespace Racksincor.BLL.DTO.Queries
 {
     public class ShopQuery : BaseDTO
     {
-        public int UserId { get; set; } 
+        public int CompanyId { get; set; }
     }
 }

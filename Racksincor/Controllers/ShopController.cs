@@ -76,12 +76,12 @@ namespace Racksincor.Controllers
             }
         }
 
-        [HttpGet("/user/{id}")]
+        [HttpGet("/company/{id}")]
         public async Task<IActionResult> GetByUserId(int id)
         {
             try
             {
-                var shopQuery = new ShopQuery { UserId = id };
+                var shopQuery = new ShopQuery { CompanyId = id };
                 var shop = await _shopService.ReadWithQuery(shopQuery);
 
                 if (shop.Any())
