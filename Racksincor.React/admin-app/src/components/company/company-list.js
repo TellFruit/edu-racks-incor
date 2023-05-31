@@ -1,20 +1,19 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 
-const CompanyList = ({ companies, handleUpdate, handleDelete }) => {
+const CompanyList = ({ companies, onUpdate, onDelete, onOpenEditModal }) => {
   return (
     <div>
-      <h3>Company List</h3>
       {companies.map((company) => (
         <div key={company.id}>
           <p>Name: {company.name}</p>
           <p>URL: {company.url}</p>
           <p>Contact Phone: {company.contactPhone}</p>
           <p>Contact Email: {company.contactEmail}</p>
-          <Button variant="contained" color="primary" onClick={() => handleUpdate(company.id)}>
+          <Button variant="contained" color="primary" onClick={() => onOpenEditModal(company)}>
             Update
           </Button>
-          <Button variant="contained" color="secondary" onClick={() => handleDelete(company.id)}>
+          <Button variant="contained" color="secondary" onClick={() => onDelete(company.id)}>
             Delete
           </Button>
           <hr />
