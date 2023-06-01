@@ -76,7 +76,7 @@ namespace Racksincor.Controllers
             }
         }
 
-        [HttpGet("/company/{id}")]
+        [HttpGet("company/{id}")]
         public async Task<IActionResult> GetByCompanyId(int id)
         {
             try

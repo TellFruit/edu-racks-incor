@@ -55,7 +55,7 @@ const CompanyEditModal = ({ isOpen, onClose, company, onUpdate }) => {
             <Button variant="contained" color="primary" onClick={handleUpdate}>
                 Update
             </Button>
-            <Button variant="contained" color="secondary" onClick={onClose}>
+            <Button variant="contained" color="secondary" onClick={onClose} sx={{ ml: 2 }}>
                 Cancel
             </Button>
         </Modal>

@@ -59,7 +59,7 @@ const CompanyCreateModal = ({ isOpen, onClose, onCreate }) => {
             <Button variant="contained" color="primary" onClick={handleCreate}>
                 Create
             </Button>
-            <Button variant="contained" color="secondary" onClick={onClose}>
+            <Button variant="contained" color="secondary" onClick={onClose} sx={{ ml: 2 }}>
                 Cancel
             </Button>
         </Modal>

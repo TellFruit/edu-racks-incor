@@ -5,12 +5,13 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Pagination from '@mui/material/Pagination';
 
-const CompanyList = ({ companies, onUpdate, onDelete, onOpenEditModal }) => {
+const CompanyList = ({ companies, onDelete, onOpenEditModal, onViewShops }) => {
   const [page, setPage] = useState(1);
   const companiesPerPage = 5;
   const totalPages = Math.ceil(companies.length / companiesPerPage);
 
   const handlePageChange = (event, value) => {
+    event.preventDefault();
     setPage(value);
   };
 
@@ -24,7 +25,7 @@ const CompanyList = ({ companies, onUpdate, onDelete, onOpenEditModal }) => {
         <div key={company.id}>
           <Paper variant="outlined" sx={{ p: 2, mb: 2 }}>
             <Grid container spacing={2} alignItems="center">
-              <Grid item xs={8}>
+              <Grid item xs={6}>
                 <Box>
                   <p>Name: {company.name}</p>
                   <p>URL: {company.url}</p>
@@ -32,15 +33,18 @@ const CompanyList = ({ companies, onUpdate, onDelete, onOpenEditModal }) => {
                   <p>Contact Email: {company.contactEmail}</p>
                 </Box>
               </Grid>
-              <Grid item xs={4}>
-                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <Grid item xs={6}>
+                <Box display="flex" justifyContent="flex-end">
                   <Button variant="contained" color="primary" onClick={() => onOpenEditModal(company)}>
                     Update
                   </Button>
-                  <Button variant="contained" color="secondary" onClick={() => onDelete(company.id)}>
+                  <Button variant="contained" color="secondary" onClick={() => onDelete(company.id)} sx={{ ml: 2 }}>
                     Delete
                   </Button>
-                </div>
+                  <Button variant="contained" color="primary" onClick={() => onViewShops(company.id)} sx={{ ml: 2 }}>
+                    View Shops
+                  </Button>
+                </Box>
               </Grid>
             </Grid>
           </Paper>
