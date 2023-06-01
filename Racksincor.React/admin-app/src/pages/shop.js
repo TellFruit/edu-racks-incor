@@ -57,6 +57,7 @@ const ShopPage = () => {
                 {
                     name,
                     address,
+                    companyId: companyId
                 },
                 {
                     headers: {
