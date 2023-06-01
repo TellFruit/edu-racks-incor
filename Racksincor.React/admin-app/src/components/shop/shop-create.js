@@ -3,12 +3,12 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Modal from "react-modal";
 
-const ShopCreateModal = ({ isOpen, onClose, onCreateShop }) => {
+const ShopCreateModal = ({ isOpen, onClose, onCreateS }) => {
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
 
     const handleCreate = () => {
-        onCreateShop(name, address);
+        onCreateS(name, address);
         setName("");
         setAddress("");
     };

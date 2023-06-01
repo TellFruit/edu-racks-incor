@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -10,13 +11,16 @@ import { getToken } from "../api/token";
 
 const token = getToken();
 
-const ShopPage = ({ companyId }) => {
+const ShopPage = () => {
+    const { companyId } = useParams();
+    const [company, setCompany] = useState(null);
     const [shops, setShops] = useState([]);
     const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
     const [selectedShop, setSelectedShop] = useState(null);
 
     useEffect(() => {
+        fetchParentCompany();
         fetchShops();
     }, []);
 
@@ -33,7 +37,20 @@ const ShopPage = ({ companyId }) => {
         }
     };
 
-    const handleCreateShop = async (name, address) => {
+    const fetchParentCompany = async () => {
+        try {
+            const response = await axios.get(`/company/${companyId}/`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            setCompany(response.data[0]);
+        } catch (error) {
+            console.error("Error fetching shops:", error);
+        }
+    };
+
+    const handleCreate = async (name, address) => {
         try {
             const response = await axios.post(
                 `/shop`,
@@ -55,7 +72,7 @@ const ShopPage = ({ companyId }) => {
         }
     };
 
-    const handleUpdateShop = async (id, name, address) => {
+    const handleUpdate = async (id, name, address) => {
         try {
             const response = await axios.put(
                 `/shop/${id}`,
@@ -81,7 +98,7 @@ const ShopPage = ({ companyId }) => {
         }
     };
 
-    const handleDeleteShop = async (id) => {
+    const handleDelete = async (id) => {
         try {
             await axios.delete(`/shop/${id}`, {
                 headers: {
@@ -114,32 +131,35 @@ const ShopPage = ({ companyId }) => {
 
     return (
         <Container>
-            <Box sx={{ mt: 4 }}>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={openCreateModal}
-                >
-                    Create Shop
-                </Button>
+            <Box sx={{ mt: 8 }}>
+                <h2>{`Shops of ${company?.name}`}</h2>
                 <div>
-                    <ShopList
-                        shops={shops}
-                        onUpdateShop={handleUpdateShop}
-                        onDeleteShop={handleDeleteShop}
-                        onOpenEditModal={openEditModal}
-                    />
+                    <h3>Create shop</h3>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={openCreateModal}
+                    >
+                        Create
+                    </Button>
                     <ShopCreateModal
                         isOpen={createModalIsOpen}
                         onClose={closeCreateModal}
-                        onCreateShop={handleCreateShop}
+                        onCreate={handleCreate}
+                    />
+                </div>
+                <div>
+                    <ShopList
+                        shops={shops}
+                        onDelete={handleDelete}
+                        onOpenEditModal={openEditModal}
                     />
                     {selectedShop && (
                         <ShopEditModal
                             isOpen={editModalIsOpen}
                             onClose={closeEditModal}
                             shop={selectedShop}
-                            onUpdateShop={handleUpdateShop}
+                            onUpdate={handleUpdate}
                         />
                     )}
                 </div>

@@ -125,7 +125,7 @@ const CompanyPage = () => {
 
   return (
     <Container maxWidth="md">
-      <Box sx={{ marginTop: 8 }}>
+      <Box sx={{ mt: 8 }}>
         <h2>Company Page</h2>
         <div>
           <h3>Create Company</h3>

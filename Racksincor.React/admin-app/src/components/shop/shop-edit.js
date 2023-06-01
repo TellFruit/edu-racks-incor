@@ -3,12 +3,12 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Modal from "react-modal";
 
-const ShopEditModal = ({ isOpen, onClose, shop, onUpdateShop }) => {
+const ShopEditModal = ({ isOpen, onClose, shop, onUpdate }) => {
     const [name, setName] = useState(shop.name);
     const [address, setAddress] = useState(shop.address);
 
     const handleUpdate = () => {
-        onUpdateShop(shop.id, name, address);
+        onUpdate(shop.id, name, address);
     };
 
     return (
