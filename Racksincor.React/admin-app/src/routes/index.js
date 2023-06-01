@@ -7,6 +7,7 @@ import {
 import PrivateRoute from "./private-route";
 import LoginPage from "../pages/login";
 import CompanyPage from "../pages/company";
+import ShopPage from "../pages/shop";
 
 const Routes = () => {
     return (
@@ -17,7 +18,7 @@ const Routes = () => {
                     <Route path="/company" element={<CompanyPage />} />
                 </Route>
                 <Route path="/company/:id/shops" element={<PrivateRoute />}>
-                    <Route path="/company/:id/shops" element={<CompanyPage />} />
+                    <Route path="/company/:id/shops" element={<ShopPage />} />
                 </Route>
             </Switch>
         </Router>
