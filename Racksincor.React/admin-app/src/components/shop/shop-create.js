@@ -3,12 +3,12 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Modal from "react-modal";
 
-const ShopCreateModal = ({ isOpen, onClose, onCreateS }) => {
+const ShopCreateModal = ({ isOpen, onClose, onCreate }) => {
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
 
     const handleCreate = () => {
-        onCreateS(name, address);
+        onCreate(name, address);
         setName("");
         setAddress("");
     };
@@ -39,7 +39,7 @@ const ShopCreateModal = ({ isOpen, onClose, onCreateS }) => {
             <Button variant="contained" color="primary" onClick={handleCreate}>
                 Create
             </Button>
-            <Button variant="contained" color="secondary" onClick={onClose}>
+            <Button variant="contained" color="secondary" onClick={onClose} sx={{ ml: 2 }}>
                 Cancel
             </Button>
         </Modal>

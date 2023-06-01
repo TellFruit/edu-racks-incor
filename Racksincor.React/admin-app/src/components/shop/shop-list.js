@@ -36,7 +36,7 @@ const ShopList = ({ shops, onDelete, onOpenEditModal }) => {
                   <Button variant="contained" color="primary" onClick={() => onOpenEditModal(shop)}>
                     Update
                   </Button>
-                  <Button variant="contained" color="secondary" onClick={() => onDelete(shop.id)}>
+                  <Button variant="contained" color="secondary" onClick={() => onDelete(shop.id)} sx={{ ml: 2 }}>
                     Delete
                   </Button>
                 </div>

@@ -80,6 +80,7 @@ const ShopPage = () => {
                 {
                     name,
                     address,
+                    companyId: companyId
                 },
                 {
                     headers: {
@@ -150,6 +151,7 @@ const ShopPage = () => {
                     />
                 </div>
                 <div>
+                    <h3>Shop List</h3>
                     <ShopList
                         shops={shops}
                         onDelete={handleDelete}
