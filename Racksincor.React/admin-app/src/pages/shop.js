@@ -132,7 +132,7 @@ const ShopPage = () => {
     };
 
     return (
-        <Container>
+        <Container maxWidth="md">
             <Box sx={{ mt: 8 }}>
                 <h2>{`Shops of ${company?.name}`}</h2>
                 <div>
