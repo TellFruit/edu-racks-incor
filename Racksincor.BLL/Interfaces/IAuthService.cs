@@ -1,11 +1,18 @@
-﻿using Racksincor.BLL.DTO.User;
+﻿using Racksincor.BLL.DTO.Queries;
+using Racksincor.BLL.DTO.User;
 
 namespace Racksincor.BLL.Interfaces
 {
     public interface IAuthService
     {
-        public Task<string> Login(UserDTO user);
+        Task<string> Login(UserDTO user);
 
-        public Task Register(RegisterDTO user);
+        Task<IReadOnlyList<UserDTO>> ReadWithQuery(UserQuery query); 
+
+        Task<UserDTO> Register(RegisterDTO user);
+
+        Task<UserDTO> Update(UserDTO user);
+
+        Task Delete(UserDTO user);
     }
 }
