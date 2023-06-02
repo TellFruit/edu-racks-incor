@@ -10,9 +10,9 @@ namespace Racksincor.Controllers
     [Route("api/[controller]")]
     public class ReactionController : ControllerBase
     {
-        private readonly IMediateService<ReactionDTO, ReactionQuery> _reactionService;
+        private readonly IEntityMediateService<ReactionDTO, ReactionQuery> _reactionService;
 
-        public ReactionController(IMediateService<ReactionDTO, ReactionQuery> reactionService)
+        public ReactionController(IEntityMediateService<ReactionDTO, ReactionQuery> reactionService)
         {
             _reactionService = reactionService;
         }

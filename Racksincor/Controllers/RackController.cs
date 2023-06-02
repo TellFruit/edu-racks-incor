@@ -10,9 +10,9 @@ namespace Racksincor.Controllers
     [Route("api/[controller]")]
     public class RackController : ControllerBase
     {
-        private readonly IMediateService<RackDTO, RackQuery> _rackService;
+        private readonly IEntityMediateService<RackDTO, RackQuery> _rackService;
 
-        public RackController(IMediateService<RackDTO, RackQuery> rackService)
+        public RackController(IEntityMediateService<RackDTO, RackQuery> rackService)
         {
             _rackService = rackService;
         }

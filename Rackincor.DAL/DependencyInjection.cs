@@ -12,6 +12,7 @@ using Racksincor.BLL.Interfaces;
 using Racksincor.DAL.Services.Repositories;
 using Racksincor.BLL.DTO;
 using Racksincor.BLL.DTO.Queries;
+using Racksincor.BLL.DTO.User;
 
 namespace Racksincor.DAL
 {
@@ -54,6 +55,7 @@ namespace Racksincor.DAL
             services.AddScoped<IRepository<ProductDTO, ProductQuery>, ProductRepository>();
             services.AddScoped<IRepository<ReactionDTO, ReactionQuery>, ReactionRepository>();
             services.AddScoped<IRepository<RackDTO, RackQuery>, RackRepository>();
+            services.AddScoped<IRepository<UserDTO, UserQuery>, UserRepository>();
         }
     }
 }

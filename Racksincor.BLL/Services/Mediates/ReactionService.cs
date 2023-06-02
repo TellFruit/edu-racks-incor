@@ -4,7 +4,7 @@ using Racksincor.BLL.Interfaces;
 
 namespace Racksincor.BLL.Services.Mediates
 {
-    public class ReactionService : IMediateService<ReactionDTO, ReactionQuery>
+    public class ReactionService : IEntityMediateService<ReactionDTO, ReactionQuery>
     {
         private readonly IRepository<ReactionDTO, ReactionQuery> _reactionRepository;
 
