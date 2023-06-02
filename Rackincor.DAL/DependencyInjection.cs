@@ -44,7 +44,6 @@ namespace Racksincor.DAL
         {
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<ILoginService, LoginService>();
-            services.AddScoped<IRegisterService, RegisterService>();
         } 
 
         public static void AddRepositories(this IServiceCollection services)
