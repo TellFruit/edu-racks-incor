@@ -10,9 +10,9 @@ namespace Racksincor.Controllers
     [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
-        private readonly IMediateService<ProductDTO, ProductQuery> _productService;
+        private readonly IEntityMediateService<ProductDTO, ProductQuery> _productService;
 
-        public ProductController(IMediateService<ProductDTO, ProductQuery> productService)
+        public ProductController(IEntityMediateService<ProductDTO, ProductQuery> productService)
         {
             _productService = productService;
         }

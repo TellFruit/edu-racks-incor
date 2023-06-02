@@ -4,7 +4,7 @@ using Racksincor.BLL.Interfaces;
 
 namespace Racksincor.BLL.Services.Mediates
 {
-    public class UserService : IMediateService<UserDTO, UserQuery>
+    public class UserService : IEntityMediateService<UserDTO, UserQuery>
     {
         private readonly IRepository<UserDTO, UserQuery> _repository;
 

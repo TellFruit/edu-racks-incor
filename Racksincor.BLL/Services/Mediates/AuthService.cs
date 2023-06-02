@@ -6,7 +6,7 @@ using Racksincor.BLL.Interfaces.Outer;
 
 namespace Racksincor.BLL.Services.Mediates
 {
-    public class AuthService : IAuthService
+    public class AuthService : IUserMediateService
     {
         private ILoginService _loginService;
         private IRepository<UserDTO, UserQuery> _repository;

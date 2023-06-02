@@ -4,7 +4,7 @@ using Racksincor.BLL.Interfaces;
 
 namespace Racksincor.BLL.Services.Mediates
 {
-    public class PromotionService<TEntity, TQuery> : IMediateService<TEntity, TQuery>
+    public class PromotionService<TEntity, TQuery> : IEntityMediateService<TEntity, TQuery>
         where TEntity : PromotionDTO, new()
         where TQuery : PromotionQuery
     {

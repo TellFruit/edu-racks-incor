@@ -3,7 +3,7 @@ using Racksincor.BLL.DTO.User;
 
 namespace Racksincor.BLL.Interfaces
 {
-    public interface IAuthService
+    public interface IUserMediateService
     {
         Task<string> Login(UserDTO user);
 

@@ -12,9 +12,9 @@ namespace Racksincor.Controllers
     [JwtAuthorize(Roles = "Admin")]
     public class ShopController : ControllerBase
     {
-        private readonly IMediateService<ShopDTO, ShopQuery> _shopService;
+        private readonly IEntityMediateService<ShopDTO, ShopQuery> _shopService;
 
-        public ShopController(IMediateService<ShopDTO, ShopQuery> shopService)
+        public ShopController(IEntityMediateService<ShopDTO, ShopQuery> shopService)
         {
             _shopService = shopService;
         }

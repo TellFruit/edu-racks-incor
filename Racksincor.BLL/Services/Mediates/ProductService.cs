@@ -5,7 +5,7 @@ using Racksincor.BLL.Interfaces;
 
 namespace Racksincor.BLL.Services.Mediates
 {
-    public class ProductService : IMediateService<ProductDTO, ProductQuery>
+    public class ProductService : IEntityMediateService<ProductDTO, ProductQuery>
     {
         private readonly IRepository<ProductDTO, ProductQuery> _productRepository;
 
