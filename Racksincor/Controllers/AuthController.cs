@@ -11,9 +11,9 @@ namespace Racksincor.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private IAuthService _authService;
+        private IUserMediateService _authService;
 
-        public AuthController(IAuthService authService)
+        public AuthController(IUserMediateService authService)
         {
             _authService = authService;
         }

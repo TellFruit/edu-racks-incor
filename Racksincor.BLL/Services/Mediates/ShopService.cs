@@ -5,7 +5,7 @@ using Racksincor.BLL.Interfaces;
 
 namespace Racksincor.BLL.Services.Mediates
 {
-    public class ShopService : IMediateService<ShopDTO, ShopQuery>
+    public class ShopService : IEntityMediateService<ShopDTO, ShopQuery>
     {
         private readonly IRepository<ShopDTO, ShopQuery> _shopRepository;
         private readonly IValidator<ShopDTO> _shopValidator;

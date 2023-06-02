@@ -4,7 +4,7 @@ using Racksincor.BLL.Interfaces;
 
 namespace Racksincor.BLL.Services.Mediates
 {
-    public class RackService : IMediateService<RackDTO, RackQuery>
+    public class RackService : IEntityMediateService<RackDTO, RackQuery>
     {
         private readonly IRepository<RackDTO, RackQuery> _rackRepository;
 

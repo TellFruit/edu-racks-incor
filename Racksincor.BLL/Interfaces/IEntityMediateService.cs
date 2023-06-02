@@ -2,7 +2,7 @@
 
 namespace Racksincor.BLL.Interfaces
 {
-    public interface IMediateService<TEntity, TQuery> : IRepository<TEntity, TQuery>
+    public interface IEntityMediateService<TEntity, TQuery> : IRepository<TEntity, TQuery>
         where TEntity : BaseDTO
         where TQuery : BaseDTO
     {

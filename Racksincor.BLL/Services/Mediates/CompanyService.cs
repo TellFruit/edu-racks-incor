@@ -5,7 +5,7 @@ using Racksincor.BLL.Interfaces;
 
 namespace Racksincor.BLL.Services.Mediates
 {
-    public class CompanyService : IMediateService<CompanyDTO, CompanyQuery>
+    public class CompanyService : IEntityMediateService<CompanyDTO, CompanyQuery>
     {
         private readonly IRepository<CompanyDTO, CompanyQuery> _companyRepository;
         private readonly IValidator<CompanyDTO> _companyValidator;

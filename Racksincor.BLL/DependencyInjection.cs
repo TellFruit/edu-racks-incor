@@ -13,17 +13,17 @@ namespace Racksincor.BLL
     {
         public static void AddAuthMediate(this IServiceCollection services)
         {
-            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IUserMediateService, AuthService>();
         }
 
         public static void AddEntityMediates(this IServiceCollection services)
         {
-            services.AddScoped(typeof(IMediateService<,>), typeof(PromotionService<,>));
-            services.AddScoped<IMediateService<CompanyDTO, CompanyQuery>, CompanyService>();
-            services.AddScoped<IMediateService<ShopDTO, ShopQuery>, ShopService>();
-            services.AddScoped<IMediateService<RackDTO, RackQuery>, RackService>();
-            services.AddScoped<IMediateService<ReactionDTO, ReactionQuery>, ReactionService>();
-            services.AddScoped<IMediateService<ProductDTO, ProductQuery>, ProductService>();
+            services.AddScoped(typeof(IEntityMediateService<,>), typeof(PromotionService<,>));
+            services.AddScoped<IEntityMediateService<CompanyDTO, CompanyQuery>, CompanyService>();
+            services.AddScoped<IEntityMediateService<ShopDTO, ShopQuery>, ShopService>();
+            services.AddScoped<IEntityMediateService<RackDTO, RackQuery>, RackService>();
+            services.AddScoped<IEntityMediateService<ReactionDTO, ReactionQuery>, ReactionService>();
+            services.AddScoped<IEntityMediateService<ProductDTO, ProductQuery>, ProductService>();
         }
 
         public static void AddValidators(this IServiceCollection services)

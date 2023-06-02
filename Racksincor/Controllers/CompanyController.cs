@@ -12,9 +12,9 @@ namespace Racksincor.Controllers
     [JwtAuthorize(Roles = "Admin")]
     public class CompanyController : ControllerBase
     {
-        private readonly IMediateService<CompanyDTO, CompanyQuery> _companyService;
+        private readonly IEntityMediateService<CompanyDTO, CompanyQuery> _companyService;
 
-        public CompanyController(IMediateService<CompanyDTO, CompanyQuery> companyService)
+        public CompanyController(IEntityMediateService<CompanyDTO, CompanyQuery> companyService)
         {
             _companyService = companyService;
         }

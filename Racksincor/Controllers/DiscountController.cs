@@ -10,9 +10,9 @@ namespace Racksincor.Controllers
     [Route("api/[controller]")]
     public class DiscountController : ControllerBase
     {
-        private readonly IMediateService<DiscountDTO, PromotionQuery> _promotionService;
+        private readonly IEntityMediateService<DiscountDTO, PromotionQuery> _promotionService;
 
-        public DiscountController(IMediateService<DiscountDTO, PromotionQuery> promotionService)
+        public DiscountController(IEntityMediateService<DiscountDTO, PromotionQuery> promotionService)
         {
             _promotionService = promotionService;
         }

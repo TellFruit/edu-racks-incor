@@ -10,9 +10,9 @@ namespace Racksincor.Controllers
     [Route("api/[controller]")]
     public class GiftController : ControllerBase
     {
-        private readonly IMediateService<GiftDTO, PromotionQuery> _promotionService;
+        private readonly IEntityMediateService<GiftDTO, PromotionQuery> _promotionService;
 
-        public GiftController(IMediateService<GiftDTO, PromotionQuery> promotionService)
+        public GiftController(IEntityMediateService<GiftDTO, PromotionQuery> promotionService)
         {
             _promotionService = promotionService;
         }
