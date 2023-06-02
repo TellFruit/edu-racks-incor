@@ -3,9 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { getToken } from '../api/token';
 
 const PrivateRoute = () => {
-    const auth = getToken() == null ? false : true;
-
-    return auth ? <Outlet /> : <Navigate to="/login" />;
+    return getToken() == null ? <Navigate to="/login" />  : <Outlet />;
 }
 
 export default PrivateRoute;

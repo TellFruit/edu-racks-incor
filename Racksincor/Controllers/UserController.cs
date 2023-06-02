@@ -17,11 +17,13 @@ namespace Racksincor.Controllers
             _userService = userService;
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Update(UserDTO user)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, UserDTO user)
         {
             try
             {
+                user.Id = id;
+
                 await _userService.Update(user);
 
                 return Ok();
