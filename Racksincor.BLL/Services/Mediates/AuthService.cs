@@ -41,9 +41,9 @@ namespace Racksincor.BLL.Services.Mediates
         }
 
 
-        public async Task<UserDTO> Update(UserDTO user)
+        public async Task<UserDTO> Update(RegisterDTO user)
         {
-            await _userValidator.ValidateAndThrowAsync(user);
+            await _registerValidator.ValidateAndThrowAsync(user);
 
             return await _repository.Update(user);
         }
