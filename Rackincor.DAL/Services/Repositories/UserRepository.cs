@@ -47,7 +47,7 @@ namespace Racksincor.DAL.Services.Repositories
 
         public async Task Delete(UserDTO entity)
         {
-            var found = await _userManager.FindByEmailAsync(entity.Email);
+            var found = await _userManager.FindByIdAsync(entity.Id);
 
             await _userManager.DeleteAsync(found);
         }
