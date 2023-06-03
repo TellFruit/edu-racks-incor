@@ -8,6 +8,7 @@ import PrivateRoute from "./private-route";
 import LoginPage from "../pages/login";
 import CompanyPage from "../pages/company";
 import ShopPage from "../pages/shop";
+import EmployeePage from "../pages/employee";
 
 const Routes = () => {
     return (
@@ -19,6 +20,9 @@ const Routes = () => {
                 </Route>
                 <Route path="/company/:companyId/shops" element={<PrivateRoute />}>
                     <Route path="/company/:companyId/shops" element={<ShopPage />} />
+                </Route>
+                <Route path="/shop/:shopId/employees" element={<PrivateRoute />}>
+                    <Route path="/shop/:shopId/employees" element={<EmployeePage />} />
                 </Route>
             </Switch>
         </Router>
