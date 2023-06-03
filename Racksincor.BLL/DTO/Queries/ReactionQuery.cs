@@ -2,7 +2,7 @@
 
 namespace Racksincor.BLL.DTO.Queries
 {
-    public class ReactionQuery : BaseDTO
+    public class ReactionQuery : BaseDTO<int>
     {
     }
 }

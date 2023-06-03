@@ -2,7 +2,7 @@
 
 namespace Racksincor.BLL.DTO.Queries
 {
-    public class PromotionQuery : BaseDTO
+    public class PromotionQuery : BaseDTO<int>
     {
     }
 }

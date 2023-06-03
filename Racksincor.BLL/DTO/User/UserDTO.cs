@@ -2,7 +2,7 @@
 
 namespace Racksincor.BLL.DTO.User
 {
-    public class UserDTO : BaseDTO
+    public class UserDTO : BaseDTO<string>
     {
         public string Email { get; set; }
         public string? Role { get; set; }

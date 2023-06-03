@@ -18,7 +18,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, RegisterDTO user)
+        public async Task<IActionResult> Update(string id, RegisterDTO user)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
             try
             {
