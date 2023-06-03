@@ -162,7 +162,7 @@ const ShopPage = () => {
                         shops={shops}
                         onDelete={handleDelete}
                         onOpenEditModal={openEditModal}
-                        handleViewEmployees={handleViewEmployees}
+                        onViewEmployees={handleViewEmployees}
                     />
                     {selectedShop && (
                         <ShopEditModal

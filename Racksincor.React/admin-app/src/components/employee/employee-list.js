@@ -5,23 +5,23 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Pagination from '@mui/material/Pagination';
 
-const EmployeeList = ({ users, onDelete, onOpenEditModal }) => {
+const EmployeeList = ({ employees, onDelete, onOpenEditModal }) => {
   const [page, setPage] = useState(1);
-  const usersPerPage = 5;
-  const totalPages = Math.ceil(users.length / usersPerPage);
+  const employeesPerPage = 5;
+  const totalPages = Math.ceil(employees.length / employeesPerPage);
 
   const handlePageChange = (event, value) => {
     event.preventDefault();
     setPage(value);
   };
 
-  const startIndex = (page - 1) * usersPerPage;
-  const endIndex = startIndex + usersPerPage;
-  const displayedUsers = users.slice(startIndex, endIndex);
+  const startIndex = (page - 1) * employeesPerPage;
+  const endIndex = startIndex + employeesPerPage;
+  const displayedemployees = employees.slice(startIndex, endIndex);
 
   return (
     <div>
-      {displayedUsers.map((user) => (
+      {displayedemployees.map((user) => (
         <div key={user.id}>
           <Paper variant="outlined" sx={{ p: 2, mb: 2 }}>
             <Grid container spacing={2} alignItems="center">
