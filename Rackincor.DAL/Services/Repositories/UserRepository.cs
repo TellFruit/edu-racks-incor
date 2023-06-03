@@ -24,9 +24,10 @@ namespace Racksincor.DAL.Services.Repositories
             var user = new User
             {
                 UserName = entity.Email,
-                Email = entity.Email
+                Email = entity.Email,
+                ShopId = entity.ShopId
             };
-
+            
             var result = await _userManager.CreateAsync(user, entity.Password);
             if (!result.Succeeded)
             {

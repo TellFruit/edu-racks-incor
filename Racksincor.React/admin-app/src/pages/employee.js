@@ -58,6 +58,7 @@ const EmployeePage = () => {
             email,
             password,
             passwordConfirm,
+            role: "Employee",
             shopId: shopId
         },
         {
