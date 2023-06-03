@@ -52,13 +52,13 @@ namespace Racksincor.DAL.Services.Repositories
 
         public async Task<IReadOnlyList<UserDTO>> ReadWithQuery(UserQuery? obj)
         {
-            var sqlBuilder = new StringBuilder("SELECT * FROM AspNetUsers WHERE 1 = 1");
+            var sqlBuilder = new StringBuilder("SELECT * FROM \"AspNetUsers\" WHERE 1 = 1");
 
             if (obj != null)
             {
                 if (obj.ShopId != default)
                 {
-                    sqlBuilder.Append(" AND Shop = @ShopId");
+                    sqlBuilder.Append(" AND ShopId = @ShopId");
                 }
             }
 

@@ -28,9 +28,9 @@ namespace Racksincor.BLL.Services.Mediates
             return await _loginService.Login(user.Email, user.Password);
         }
 
-        public Task<IReadOnlyList<UserDTO>> ReadWithQuery(UserQuery query)
+        public async Task<IReadOnlyList<UserDTO>> ReadWithQuery(UserQuery query)
         {
-            throw new NotImplementedException();
+            return await _repository.ReadWithQuery(query);
         }
 
         public async Task<UserDTO> Register(RegisterDTO user)

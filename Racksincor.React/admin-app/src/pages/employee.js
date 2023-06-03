@@ -31,7 +31,7 @@ const EmployeePage = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setShop(response.data);
+      setShop(response.data[0]);
     } catch (error) {
       console.error("Error fetching shop:", error);
     }
