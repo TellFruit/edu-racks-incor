@@ -5,27 +5,24 @@ import Modal from "react-modal";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 
-const EmployeeCreateModal = ({ isOpen, onClose, onCreate }) => {
-    const [email, setEmail] = useState("");
+const EmployeeEditModal = ({ isOpen, onClose, employee, onUpdate }) => {
+    const [email, setEmail] = useState(employee.email);
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
 
-    const handleCreate = () => {
-        onCreate(email, password, passwordConfirm);
-        setEmail("");
-        setPassword("");
-        setPasswordConfirm("");
+    const handleUpdate = () => {
+        onUpdate(employee.id, email, password);
     };
 
     return (
         <Modal
             isOpen={isOpen}
             onRequestClose={onClose}
-            contentLabel="Create User Modal"
+            contentLabel="Edit Employee Modal"
         >
             <Container maxWidth="xs">
                 <Box sx={{ marginTop: 8 }}>
-                    <h3>Create Employee</h3>
+                    <h3>Edit Employee</h3>
                     <TextField
                         label="Email"
                         variant="outlined"
@@ -53,9 +50,9 @@ const EmployeeCreateModal = ({ isOpen, onClose, onCreate }) => {
                     <Button
                         variant="contained"
                         color="primary"
-                        onClick={handleCreate}
+                        onClick={handleUpdate}
                     >
-                        Create
+                        Update
                     </Button>
                     <Button
                         variant="contained"
@@ -71,4 +68,4 @@ const EmployeeCreateModal = ({ isOpen, onClose, onCreate }) => {
     );
 };
 
-export default EmployeeCreateModal;
+export default EmployeeEditModal;
