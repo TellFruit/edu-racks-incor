@@ -25,12 +25,12 @@ const EmployeeList = ({ employees, onDelete, onOpenEditModal }) => {
                 <div key={employee.id}>
                     <Paper variant="outlined" sx={{ p: 2, mb: 2 }}>
                         <Grid container spacing={2} alignItems="center">
-                            <Grid item xs={12}>
+                            <Grid item xs={6}>
                                 <Box>
                                     <p>Email: {employee.email}</p>
                                 </Box>
                             </Grid>
-                            <Grid item xs={12}>
+                            <Grid item xs={6}>
                                 <div
                                     style={{
                                         display: "flex",

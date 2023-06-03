@@ -49,9 +49,7 @@ namespace Racksincor.Controllers
         {
             try
             {
-                await _authService.Register(user);
-
-                return Ok();
+                return Ok(await _authService.Register(user));
             }
             catch (ValidationException ex)
             {

@@ -40,6 +40,7 @@ namespace Racksincor.DAL.Services.Repositories
 
             return new UserDTO 
             { 
+                Id = found.Id,
                 Email = found.Email
             };
         }
@@ -83,6 +84,7 @@ namespace Racksincor.DAL.Services.Repositories
                 
                 return new UserDTO
                 {
+                    Id = found.Id,
                     Email = found.Email
                 };
             }
