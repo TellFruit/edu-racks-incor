@@ -20,7 +20,7 @@ namespace Racksincor.Controllers
 
         [HttpPost]
         [Route(nameof(Login))]
-        public async Task<IActionResult> Login(UserDTO user)
+        public async Task<IActionResult> Login(LoginDTO user)
         {
             try
             {

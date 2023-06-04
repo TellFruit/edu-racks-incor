@@ -5,7 +5,7 @@ namespace Racksincor.BLL.Interfaces
 {
     public interface IUserMediateService
     {
-        Task<string> Login(UserDTO user);
+        Task<string> Login(LoginDTO user);
 
         Task<IReadOnlyList<UserDTO>> ReadWithQuery(UserQuery query); 
 

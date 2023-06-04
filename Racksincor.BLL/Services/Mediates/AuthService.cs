@@ -10,22 +10,22 @@ namespace Racksincor.BLL.Services.Mediates
     {
         private ILoginService _loginService;
         private IRepository<UserDTO, UserQuery> _repository;
-        private IValidator<UserDTO> _userValidator;
+        private IValidator<LoginDTO> _loginValidator;
         private IValidator<RegisterDTO> _registerValidator;
         private IValidator<UserUpdateDTO> _userUpdateValidator;
 
-        public AuthService(ILoginService loginService, IValidator<UserDTO> userValidator, IValidator<RegisterDTO> registerValidator, IRepository<UserDTO, UserQuery> repository, IValidator<UserUpdateDTO> userUpdateValidator)
+        public AuthService(ILoginService loginService, IValidator<RegisterDTO> registerValidator, IRepository<UserDTO, UserQuery> repository, IValidator<UserUpdateDTO> userUpdateValidator, IValidator<LoginDTO> loginValidator)
         {
             _loginService = loginService;
-            _userValidator = userValidator;
             _registerValidator = registerValidator;
             _repository = repository;
             _userUpdateValidator = userUpdateValidator;
+            _loginValidator = loginValidator;
         }
 
-        public async Task<string> Login(UserDTO user)
+        public async Task<string> Login(LoginDTO user)
         {
-            await _userValidator.ValidateAndThrowAsync(user);
+            await _loginValidator.ValidateAndThrowAsync(user);
 
             return await _loginService.Login(user.Email, user.Password);
         }
@@ -41,7 +41,6 @@ namespace Racksincor.BLL.Services.Mediates
 
             return await _repository.Create(user);
         }
-
 
         public async Task<UserDTO> Update(UserUpdateDTO user)
         {
