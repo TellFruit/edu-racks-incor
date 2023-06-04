@@ -68,7 +68,6 @@ const EmployeePage = () => {
         }
       );
       const createdEmployee = response.data;
-      console.log(createdEmployee)
       setEmployees((prevEmployees) => [...prevEmployees, createdEmployee]);
       closeCreateModal();
     } catch (error) {

@@ -1,9 +1,15 @@
-import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import { getToken } from '../api/token';
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import { getToken, isTokenExpired } from "../api/token";
 
 const PrivateRoute = () => {
-    return getToken() == null ? <Navigate to="/login" />  : <Outlet />;
-}
+    const token = getToken();
+
+    return token == null || isTokenExpired(token) ? (
+        <Navigate to="/login" />
+    ) : (
+        <Outlet />
+    );
+};
 
 export default PrivateRoute;

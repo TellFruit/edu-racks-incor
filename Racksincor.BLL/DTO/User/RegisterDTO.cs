@@ -2,6 +2,6 @@
 {
     public class RegisterDTO : UserDTO
     {
-        public string PasswordConfirm { get; set; }
+        public string? PasswordConfirm { get; set; }
     }
 }

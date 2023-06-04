@@ -69,18 +69,22 @@ namespace Racksincor.DAL.Services.Repositories
 
         public async Task<UserDTO> Update(UserDTO entity)
         {
-            var found = await _userManager.FindByEmailAsync(entity.Email);
-
-            var newPasswordHash = _userManager.PasswordHasher.HashPassword(found, entity.Password);
+            var found = await _userManager.FindByIdAsync(entity.Id);
 
             found.Email = entity.Email;
-            found.PasswordHash = newPasswordHash;
+
+            if (string.IsNullOrEmpty(entity.Password))
+            {
+                var newPasswordHash = _userManager.PasswordHasher.HashPassword(found, entity.Password);
+
+                found.PasswordHash = newPasswordHash;
+            }
 
             var result = await _userManager.UpdateAsync(found);
 
             if (result.Succeeded)
             {
-                found = await _userManager.FindByEmailAsync(entity.Email);
+                found = await _userManager.FindByEmailAsync(found.Id);
                 
                 return new UserDTO
                 {
