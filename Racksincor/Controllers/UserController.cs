@@ -18,7 +18,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(string id, RegisterDTO user)
+        public async Task<IActionResult> Update(string id, UserUpdateDTO user)
         {
             try
             {

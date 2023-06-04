@@ -11,7 +11,7 @@ namespace Racksincor.BLL.Interfaces
 
         Task<UserDTO> Register(RegisterDTO user);
 
-        Task<UserDTO> Update(RegisterDTO user);
+        Task<UserDTO> Update(UserUpdateDTO user);
 
         Task Delete(UserDTO user);
     }

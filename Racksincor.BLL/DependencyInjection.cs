@@ -32,6 +32,7 @@ namespace Racksincor.BLL
             services.AddScoped<IValidator<ShopDTO>, ShopValidator>();
             services.AddScoped<IValidator<RegisterDTO>, RegisterValidator>();
             services.AddScoped<IValidator<UserDTO>, LoginValidator>();
+            services.AddScoped<IValidator<UserUpdateDTO>, UserUpdateValidator>();
         }
     }
 }

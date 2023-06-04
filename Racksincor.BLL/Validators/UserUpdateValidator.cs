@@ -3,7 +3,7 @@ using Racksincor.BLL.DTO.User;
 
 namespace Racksincor.BLL.Validators
 {
-    public class UserUpdateValidator : AbstractValidator<RegisterDTO>
+    public class UserUpdateValidator : AbstractValidator<UserUpdateDTO>
     {
         public UserUpdateValidator()
         {
