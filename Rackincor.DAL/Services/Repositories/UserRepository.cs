@@ -21,6 +21,7 @@ namespace Racksincor.DAL.Services.Repositories
 
         public async Task<UserDTO> Create(UserDTO entity)
         {
+
             var user = new User
             {
                 UserName = entity.Email,
