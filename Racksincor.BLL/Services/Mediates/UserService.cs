@@ -45,10 +45,11 @@ namespace Racksincor.BLL.Services.Mediates
         public async Task<UserDTO> Update(UserUpdateDTO user)
         {
             await _userUpdateValidator.ValidateAndThrowAsync(user);
-
+            
             return await _repository.Update(
                 new UserDTO 
             {
+                Id = user.Id,
                 Email = user.Email,
                 Password = user.Password,
             });
