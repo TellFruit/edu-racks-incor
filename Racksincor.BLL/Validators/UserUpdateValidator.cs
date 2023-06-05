@@ -7,6 +7,10 @@ namespace Racksincor.BLL.Validators
     {
         public UserUpdateValidator()
         {
+            RuleFor(register => register.Id)
+                .NotEmpty().WithMessage("Id is required")
+                .NotNull().WithMessage("Id is required");
+
             RuleFor(register => register.Email)
                 .NotEmpty().WithMessage("Email is required.")
                 .MaximumLength(100).WithMessage("Email cannot exceed 100 characters.");
