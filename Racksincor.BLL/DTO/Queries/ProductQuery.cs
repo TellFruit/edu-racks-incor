@@ -2,7 +2,7 @@
 
 namespace Racksincor.BLL.DTO.Queries
 {
-    public class ProductQuery : BaseDTO
+    public class ProductQuery : BaseDTO<int>
     {
         public int RackId { get; set; }
     }

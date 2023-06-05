@@ -17,14 +17,14 @@ namespace Racksincor.Controllers
             _userService = userService;
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Update(UserDTO user)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(string id, UserUpdateDTO user)
         {
             try
             {
-                await _userService.Update(user);
+                user.Id = id;
 
-                return Ok();
+                return Ok(await _userService.Update(user));
             }
             catch (ValidationException ex)
             {
@@ -43,7 +43,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
             try
             {

@@ -9,9 +9,8 @@ import CompanyList from '../components/company/company-list';
 import CompanyCreateModal from '../components/company/company-create';
 import CompanyEditModal from '../components/company/company-edit';
 
-const token = getToken();
-
 const CompanyPage = () => {
+  const token = getToken();
   const [companies, setCompanies] = useState([]);
   const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
   const [editModalIsOpen, setEditModalIsOpen] = useState(false);

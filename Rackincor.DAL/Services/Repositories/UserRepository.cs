@@ -21,12 +21,14 @@ namespace Racksincor.DAL.Services.Repositories
 
         public async Task<UserDTO> Create(UserDTO entity)
         {
+
             var user = new User
             {
                 UserName = entity.Email,
-                Email = entity.Email
+                Email = entity.Email,
+                ShopId = entity.ShopId
             };
-
+            
             var result = await _userManager.CreateAsync(user, entity.Password);
             if (!result.Succeeded)
             {
@@ -39,26 +41,27 @@ namespace Racksincor.DAL.Services.Repositories
 
             return new UserDTO 
             { 
+                Id = found.Id,
                 Email = found.Email
             };
         }
 
         public async Task Delete(UserDTO entity)
         {
-            var found = await _userManager.FindByEmailAsync(entity.Email);
+            var found = await _userManager.FindByIdAsync(entity.Id);
 
             await _userManager.DeleteAsync(found);
         }
 
         public async Task<IReadOnlyList<UserDTO>> ReadWithQuery(UserQuery? obj)
         {
-            var sqlBuilder = new StringBuilder("SELECT * FROM AspNetUsers WHERE 1 = 1");
+            var sqlBuilder = new StringBuilder("SELECT * FROM \"AspNetUsers\" WHERE 1 = 1");
 
             if (obj != null)
             {
                 if (obj.ShopId != default)
                 {
-                    sqlBuilder.Append(" AND Shop = @ShopId");
+                    sqlBuilder.Append(" AND ShopId = @ShopId");
                 }
             }
 
@@ -67,21 +70,26 @@ namespace Racksincor.DAL.Services.Repositories
 
         public async Task<UserDTO> Update(UserDTO entity)
         {
-            var found = await _userManager.FindByEmailAsync(entity.Email);
-
-            var newPasswordHash = _userManager.PasswordHasher.HashPassword(found, entity.Password);
+            var found = await _userManager.FindByIdAsync(entity.Id);
 
             found.Email = entity.Email;
-            found.PasswordHash = newPasswordHash;
+
+            if (string.IsNullOrEmpty(entity.Password) == false)
+            {
+                var newPasswordHash = _userManager.PasswordHasher.HashPassword(found, entity.Password);
+
+                found.PasswordHash = newPasswordHash;
+            }
 
             var result = await _userManager.UpdateAsync(found);
 
             if (result.Succeeded)
             {
-                found = await _userManager.FindByEmailAsync(entity.Email);
+                found = await _userManager.FindByIdAsync(found.Id);
                 
                 return new UserDTO
                 {
+                    Id = found.Id,
                     Email = found.Email
                 };
             }

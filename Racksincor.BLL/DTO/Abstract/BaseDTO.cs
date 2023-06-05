@@ -1,8 +1,8 @@
 ﻿namespace Racksincor.BLL.DTO.Abstract
 {
     // TODO: Consider making it abstract
-    public class BaseDTO
+    public class BaseDTO<TId>
     {
-        public int Id { get; set; }
+        public TId Id { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace Racksincor.BLL
     {
         public static void AddAuthMediate(this IServiceCollection services)
         {
-            services.AddScoped<IUserMediateService, AuthService>();
+            services.AddScoped<IUserMediateService, UserService>();
         }
 
         public static void AddEntityMediates(this IServiceCollection services)
@@ -31,8 +31,8 @@ namespace Racksincor.BLL
             services.AddScoped<IValidator<CompanyDTO>, CompanyValidator>();
             services.AddScoped<IValidator<ShopDTO>, ShopValidator>();
             services.AddScoped<IValidator<RegisterDTO>, RegisterValidator>();
-            services.AddScoped<IValidator<UserDTO>, UserValidator>();
-
+            services.AddScoped<IValidator<LoginDTO>, LoginValidator>();
+            services.AddScoped<IValidator<UserUpdateDTO>, UserUpdateValidator>();
         }
     }
 }

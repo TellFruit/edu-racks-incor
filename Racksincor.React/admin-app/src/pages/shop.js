@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -9,15 +10,15 @@ import ShopCreateModal from "../components/shop/shop-create";
 import ShopEditModal from "../components/shop/shop-edit";
 import { getToken } from "../api/token";
 
-const token = getToken();
-
 const ShopPage = () => {
+    const token = getToken();
     const { companyId } = useParams();
     const [company, setCompany] = useState(null);
     const [shops, setShops] = useState([]);
     const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
     const [selectedShop, setSelectedShop] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchParentCompany();
@@ -113,6 +114,10 @@ const ShopPage = () => {
         }
     };
 
+    const handleViewEmployees = (shopId) => {
+      navigate(`/shop/${shopId}/employees`);
+    };
+
     const openCreateModal = () => {
         setCreateModalIsOpen(true);
     };
@@ -156,6 +161,7 @@ const ShopPage = () => {
                         shops={shops}
                         onDelete={handleDelete}
                         onOpenEditModal={openEditModal}
+                        onViewEmployees={handleViewEmployees}
                     />
                     {selectedShop && (
                         <ShopEditModal

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from "../api/instance";
 import { setToken } from "../api/token";
 import { Link } from 'react-router-dom';
@@ -8,6 +9,7 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -21,7 +23,7 @@ const LoginPage = () => {
       if (response.status === 200) {
         const token = response.data;
         setToken(token);
-        window.location.href = "/";
+        navigate('/company');
       } else {
         console.error("Login failed");
       }

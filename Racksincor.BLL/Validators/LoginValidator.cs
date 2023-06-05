@@ -3,9 +3,9 @@ using Racksincor.BLL.DTO.User;
 
 namespace Racksincor.BLL.Validators
 {
-    public class UserValidator : AbstractValidator<UserDTO>
+    public class LoginValidator : AbstractValidator<LoginDTO>
     {
-        public UserValidator()
+        public LoginValidator()
         {
             RuleFor(user => user.Email)
                 .NotEmpty().WithMessage("Email is required.")

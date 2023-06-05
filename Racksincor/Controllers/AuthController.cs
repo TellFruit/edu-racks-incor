@@ -20,7 +20,7 @@ namespace Racksincor.Controllers
 
         [HttpPost]
         [Route(nameof(Login))]
-        public async Task<IActionResult> Login(UserDTO user)
+        public async Task<IActionResult> Login(LoginDTO user)
         {
             try
             {
@@ -49,9 +49,7 @@ namespace Racksincor.Controllers
         {
             try
             {
-                await _authService.Register(user);
-
-                return Ok();
+                return Ok(await _authService.Register(user));
             }
             catch (ValidationException ex)
             {

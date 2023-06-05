@@ -2,7 +2,7 @@
 
 namespace Racksincor.BLL.DTO
 {
-    public class CompanyDTO : BaseDTO
+    public class CompanyDTO : BaseDTO<int>
     {
         public string Name { get; set; }
         public string Url { get; set; }

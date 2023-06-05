@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Pagination from '@mui/material/Pagination';
 
-const ShopList = ({ shops, onDelete, onOpenEditModal }) => {
+const ShopList = ({ shops, onDelete, onOpenEditModal, onViewEmployees }) => {
   const [page, setPage] = useState(1);
   const shopsPerPage = 5;
   const totalPages = Math.ceil(shops.length / shopsPerPage);
@@ -25,21 +25,24 @@ const ShopList = ({ shops, onDelete, onOpenEditModal }) => {
         <div key={shop.id}>
           <Paper variant="outlined" sx={{ p: 2, mb: 2 }}>
             <Grid container spacing={2} alignItems="center">
-              <Grid item xs={8}>
+              <Grid item xs={6}>
                 <Box>
                   <p>Name: {shop.name}</p>
                   <p>Address: {shop.address}</p>
                 </Box>
               </Grid>
-              <Grid item xs={4}>
-                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <Grid item xs={6}>
+              <Box display="flex" justifyContent="flex-end">
                   <Button variant="contained" color="primary" onClick={() => onOpenEditModal(shop)}>
                     Update
                   </Button>
                   <Button variant="contained" color="secondary" onClick={() => onDelete(shop.id)} sx={{ ml: 2 }}>
                     Delete
                   </Button>
-                </div>
+                  <Button variant="contained" color="primary" onClick={() => onViewEmployees(shop.id)} sx={{ ml: 2 }}>
+                    View Employees
+                  </Button>
+                </Box>
               </Grid>
             </Grid>
           </Paper>
