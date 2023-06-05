@@ -24,9 +24,7 @@ namespace Racksincor.Controllers
             {
                 user.Id = id;
 
-                await _userService.Update(user);
-
-                return Ok();
+                return Ok(await _userService.Update(user));
             }
             catch (ValidationException ex)
             {
