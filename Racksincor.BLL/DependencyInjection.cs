@@ -13,7 +13,7 @@ namespace Racksincor.BLL
     {
         public static void AddAuthMediate(this IServiceCollection services)
         {
-            services.AddScoped<IUserMediateService, AuthService>();
+            services.AddScoped<IUserMediateService, UserService>();
         }
 
         public static void AddEntityMediates(this IServiceCollection services)
