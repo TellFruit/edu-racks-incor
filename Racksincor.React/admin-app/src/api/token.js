@@ -1,5 +1,7 @@
 import jwtDecode from "jwt-decode";
 
+const enforcedRole = "Admin";
+
 export function getToken() {
     return localStorage.getItem("token");
 }
@@ -35,14 +37,14 @@ export function isTokenValid() {
     return isTokenPresent() || isTokenRelevant();
 }
 
-export function isRoleValid(role) {
+export function isRoleValid() {
     const token = getToken();
 
     if (token) {
         const decodedToken = jwtDecode(token);
         const userRole = decodedToken.role;
 
-        return userRole === role;
+        return userRole === enforcedRole;
     }
 
     return false;

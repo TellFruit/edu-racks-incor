@@ -1,9 +1,9 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { isTokenValid } from "../api/token";
+import { isTokenValid, isRoleValid } from "../api/token";
 
 const PrivateRoute = () => {
-    return isTokenValid() ? (
+    return isTokenValid() && isRoleValid() ? (
         <Outlet />
     ) : (
         <Navigate to="/login" />

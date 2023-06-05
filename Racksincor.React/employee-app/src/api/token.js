@@ -40,12 +40,12 @@ export function isTokenValid() {
 export function isRoleValid() {
     const token = getToken();
 
-    if (token) {
+    try {
         const decodedToken = jwtDecode(token);
         const userRole = decodedToken.role;
 
         return userRole === enforcedRole;
+    } catch (error) {
+        return false;
     }
-
-    return false;
 }
