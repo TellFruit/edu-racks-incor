@@ -34,3 +34,16 @@ function isTokenRelevant() {
 export function isTokenValid() {
     return isTokenPresent() || isTokenRelevant();
 }
+
+export function checkUserRole(role) {
+    const token = getToken();
+
+    if (token) {
+        const decodedToken = jwtDecode(token);
+        const userRole = decodedToken.role;
+
+        return userRole === role;
+    }
+
+    return false;
+}
