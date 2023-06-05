@@ -74,7 +74,7 @@ namespace Racksincor.DAL.Services.Repositories
 
             found.Email = entity.Email;
 
-            if (string.IsNullOrEmpty(entity.Password))
+            if (string.IsNullOrEmpty(entity.Password) == false)
             {
                 var newPasswordHash = _userManager.PasswordHasher.HashPassword(found, entity.Password);
 
@@ -85,7 +85,7 @@ namespace Racksincor.DAL.Services.Repositories
 
             if (result.Succeeded)
             {
-                found = await _userManager.FindByEmailAsync(found.Id);
+                found = await _userManager.FindByIdAsync(found.Id);
                 
                 return new UserDTO
                 {
