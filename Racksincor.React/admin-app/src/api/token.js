@@ -12,17 +12,25 @@ export function removeToken() {
     localStorage.removeItem("token");
 }
 
-export function isTokenExpired(token) {
-    if (!token) {
-        return true;
-    }
+function isTokenPresent() {
+    const token = getToken();
+
+    return token != null;
+}
+
+function isTokenRelevant() {
+    const token = getToken();
 
     try {
         const decodedToken = jwtDecode(token);
         const currentTime = Date.now() / 1000;
 
-        return decodedToken.exp < currentTime;
+        return decodedToken.exp > currentTime;
     } catch (error) {
-        return true;
+        return false;
     }
+}
+
+export function isTokenValid() {
+    return isTokenPresent() || isTokenRelevant();
 }

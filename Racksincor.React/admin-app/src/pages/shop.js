@@ -10,9 +10,8 @@ import ShopCreateModal from "../components/shop/shop-create";
 import ShopEditModal from "../components/shop/shop-edit";
 import { getToken } from "../api/token";
 
-const token = getToken();
-
 const ShopPage = () => {
+    const token = getToken();
     const { companyId } = useParams();
     const [company, setCompany] = useState(null);
     const [shops, setShops] = useState([]);

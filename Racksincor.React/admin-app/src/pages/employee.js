@@ -9,9 +9,9 @@ import EmployeeCreateModal from "../components/employee/employee-create";
 import EmployeeEditModal from "../components/employee/employee-edit";
 import { getToken } from "../api/token";
 
-const token = getToken();
 
 const EmployeePage = () => {
+  const token = getToken();
   const { shopId } = useParams();
   const [shop, setShop] = useState(null);
   const [employees, setEmployees] = useState([]);
