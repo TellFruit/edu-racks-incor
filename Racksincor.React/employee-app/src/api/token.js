@@ -1,4 +1,5 @@
 import jwtDecode from "jwt-decode";
+import { func } from "prop-types";
 
 export function getToken() {
     return localStorage.getItem("token");
@@ -33,4 +34,17 @@ function isTokenRelevant() {
 
 export function isTokenValid() {
     return isTokenPresent() || isTokenRelevant();
+}
+
+export function checkUserRole(role) {
+    const token = getToken();
+
+    if (token) {
+        const decodedToken = jwtDecode(token);
+        const userRole = decodedToken.role;
+
+        return userRole === role;
+    }
+
+    return false;
 }
