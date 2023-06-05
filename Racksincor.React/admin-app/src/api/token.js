@@ -35,7 +35,7 @@ export function isTokenValid() {
     return isTokenPresent() || isTokenRelevant();
 }
 
-export function checkUserRole(role) {
+export function isRoleValid(role) {
     const token = getToken();
 
     if (token) {

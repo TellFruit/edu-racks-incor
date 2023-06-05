@@ -1,5 +1,6 @@
 import jwtDecode from "jwt-decode";
-import { func } from "prop-types";
+
+const enforcedRole = "Employee";
 
 export function getToken() {
     return localStorage.getItem("token");
@@ -36,14 +37,14 @@ export function isTokenValid() {
     return isTokenPresent() || isTokenRelevant();
 }
 
-export function checkUserRole(role) {
+export function isRoleValid() {
     const token = getToken();
 
     if (token) {
         const decodedToken = jwtDecode(token);
         const userRole = decodedToken.role;
 
-        return userRole === role;
+        return userRole === enforcedRole;
     }
 
     return false;
