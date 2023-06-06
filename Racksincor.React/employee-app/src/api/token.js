@@ -49,3 +49,15 @@ export function isRoleValid() {
         return false;
     }
 }
+
+export function extractShopId() {
+    const token = getToken();
+
+    try {
+        const decodedToken = jwtDecode(token);
+        
+        return decodedToken.shopId;
+    } catch (error) {
+        return 0;
+    }
+}
