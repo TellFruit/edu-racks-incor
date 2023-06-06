@@ -34,6 +34,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpGet]
+        [JwtAuthorize(Roles = "Employee")]
         public async Task<IActionResult> GetAll()
         {
             try
@@ -49,6 +50,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpGet("{id}")]
+        [JwtAuthorize(Roles = "Employee")]
         public async Task<IActionResult> GetById(int id)
         {
             try
@@ -60,6 +62,31 @@ namespace Racksincor.Controllers
                 if (rack.Any())
                 {
                     return Ok(rack);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet("shop/{id}")]
+        [JwtAuthorize(Roles = "Employee")]
+        public async Task<IActionResult> GetByShopId(int id)
+        {
+            try
+            {
+                var rackQuery = new RackQuery { ShopId = id };
+
+                var racks = await _rackService.ReadWithQuery(rackQuery);
+
+                if (racks.Any())
+                {
+                    return Ok(racks);
                 }
                 else
                 {

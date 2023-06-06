@@ -1,5 +1,7 @@
 import jwtDecode from "jwt-decode";
 
+const enforcedRole = "Employee";
+
 export function getToken() {
     return localStorage.getItem("token");
 }
@@ -33,4 +35,29 @@ function isTokenRelevant() {
 
 export function isTokenValid() {
     return isTokenPresent() || isTokenRelevant();
+}
+
+export function isRoleValid() {
+    const token = getToken();
+
+    try {
+        const decodedToken = jwtDecode(token);
+        const userRole = decodedToken.role;
+
+        return userRole === enforcedRole;
+    } catch (error) {
+        return false;
+    }
+}
+
+export function getShopId() {
+    const token = getToken();
+
+    try {
+        const decodedToken = jwtDecode(token);
+
+        return decodedToken.shopId;
+    } catch (error) {
+        return 0;
+    }
 }
