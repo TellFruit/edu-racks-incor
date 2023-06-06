@@ -50,12 +50,12 @@ export function isRoleValid() {
     }
 }
 
-export function extractShopId() {
+export function getShopId() {
     const token = getToken();
 
     try {
         const decodedToken = jwtDecode(token);
-        
+
         return decodedToken.shopId;
     } catch (error) {
         return 0;
