@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import axios from "axios";
+import axios from "../api/instance";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -27,7 +27,7 @@ const ShopPage = () => {
 
     const fetchShops = async () => {
         try {
-            const response = await axios.get(`/shop/company/${companyId}/`, {
+            const response = await axios.get(`/shop/company/${companyId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -40,7 +40,7 @@ const ShopPage = () => {
 
     const fetchParentCompany = async () => {
         try {
-            const response = await axios.get(`/company/${companyId}/`, {
+            const response = await axios.get(`/company/${companyId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

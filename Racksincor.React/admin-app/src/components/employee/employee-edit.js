@@ -11,7 +11,7 @@ const EmployeeEditModal = ({ isOpen, onClose, employee, onUpdate }) => {
     const [passwordConfirm, setPasswordConfirm] = useState("");
 
     const handleUpdate = () => {
-        onUpdate(employee.id, email, password);
+        onUpdate(employee.id, email, password, passwordConfirm);
     };
 
     return (

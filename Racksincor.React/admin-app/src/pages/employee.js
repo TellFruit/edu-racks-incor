@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import axios from "../api/instance";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -8,7 +8,6 @@ import EmployeeList from "../components/employee/employee-list";
 import EmployeeCreateModal from "../components/employee/employee-create";
 import EmployeeEditModal from "../components/employee/employee-edit";
 import { getToken } from "../api/token";
-
 
 const EmployeePage = () => {
   const token = getToken();
