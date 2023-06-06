@@ -74,12 +74,14 @@ namespace Racksincor.Controllers
             }
         }
 
-        [HttpGet("shop/{id}")]
+        [HttpGet("shop")]
         [JwtAuthorize(Roles = "Employee")]
-        public async Task<IActionResult> GetByShopId(int id)
+        public async Task<IActionResult> GetByShop()
         {
             try
             {
+                var id = int.Parse(HttpContext.GetTokenClaim("shopId"));
+
                 var rackQuery = new RackQuery { ShopId = id };
 
                 var racks = await _rackService.ReadWithQuery(rackQuery);
