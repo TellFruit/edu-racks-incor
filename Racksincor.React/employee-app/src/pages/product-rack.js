@@ -45,9 +45,18 @@ const ProductRackPage = () => {
             ...prevSelectedProducts,
             product,
         ]);
+        setAvailableProducts((prevAvailableProducts) =>
+            prevAvailableProducts.filter(
+                (availableProduct) => availableProduct.id !== product.id
+            )
+        );
     };
 
     const handleRemoveProduct = (product) => {
+        setAvailableProducts((prevAvailableProducts) => [
+            ...prevAvailableProducts,
+            product,
+        ]);
         setSelectedProducts((prevSelectedProducts) =>
             prevSelectedProducts.filter(
                 (selectedProduct) => selectedProduct.id !== product.id
@@ -68,13 +77,12 @@ const ProductRackPage = () => {
                         <Typography variant="h6" gutterBottom>
                             Available Products
                         </Typography>
-                        <TableContainer>
+                        <TableContainer sx={{ height: 400, maxHeight: 400 }}>
                             <Table>
                                 <TableHead>
                                     <TableRow>
                                         <TableCell>Name</TableCell>
-                                        <TableCell>Description</TableCell>
-                                        <TableCell align="right">
+                                        <TableCell align="center">
                                             Action
                                         </TableCell>
                                     </TableRow>
@@ -85,10 +93,7 @@ const ProductRackPage = () => {
                                             <TableCell>
                                                 {product.name}
                                             </TableCell>
-                                            <TableCell>
-                                                {product.description}
-                                            </TableCell>
-                                            <TableCell align="right">
+                                            <TableCell align="center">
                                                 <Button
                                                     variant="outlined"
                                                     onClick={() =>
@@ -112,13 +117,12 @@ const ProductRackPage = () => {
                         <Typography variant="h6" gutterBottom>
                             Selected Products
                         </Typography>
-                        <TableContainer>
+                        <TableContainer sx={{ height: 400, maxHeight: 400 }}>
                             <Table>
                                 <TableHead>
                                     <TableRow>
                                         <TableCell>Name</TableCell>
-                                        <TableCell>Description</TableCell>
-                                        <TableCell align="right">
+                                        <TableCell align="center">
                                             Action
                                         </TableCell>
                                     </TableRow>
@@ -129,10 +133,7 @@ const ProductRackPage = () => {
                                             <TableCell>
                                                 {product.name}
                                             </TableCell>
-                                            <TableCell>
-                                                {product.description}
-                                            </TableCell>
-                                            <TableCell align="right">
+                                            <TableCell align="center">
                                                 <Button
                                                     variant="outlined"
                                                     onClick={() =>
