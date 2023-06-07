@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import { Container, Button, TextField, Box } from "@mui/material";
 import Modal from "react-modal";
 
 const RackEditModal = ({ isOpen, onClose, rack, onUpdate }) => {
@@ -16,26 +15,34 @@ const RackEditModal = ({ isOpen, onClose, rack, onUpdate }) => {
             onRequestClose={onClose}
             contentLabel="Edit Rack Modal"
         >
-            <h3>Edit Rack</h3>
-            <TextField
-                label="Name"
-                variant="outlined"
-                fullWidth
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                sx={{ marginBottom: 2 }}
-            />
-            <Button variant="contained" color="primary" onClick={handleUpdate}>
-                Update
-            </Button>
-            <Button
-                variant="contained"
-                color="secondary"
-                onClick={onClose}
-                sx={{ ml: 2 }}
-            >
-                Cancel
-            </Button>
+            <Container maxWidth="xs">
+                <Box sx={{ marginTop: 8 }}>
+                    <h3>Edit Rack</h3>
+                    <TextField
+                        label="Name"
+                        variant="outlined"
+                        fullWidth
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        sx={{ marginBottom: 2 }}
+                    />
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleUpdate}
+                    >
+                        Update
+                    </Button>
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={onClose}
+                        sx={{ ml: 2 }}
+                    >
+                        Cancel
+                    </Button>
+                </Box>
+            </Container>
         </Modal>
     );
 };

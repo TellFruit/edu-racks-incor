@@ -37,7 +37,7 @@ const RackPage = () => {
 
     const fetchRacks = async () => {
         try {
-            const response = await axios.get(`/rack/shop/${shopId}`, {
+            const response = await axios.get(`/rack/shop/`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
