@@ -88,7 +88,7 @@ namespace Racksincor.DAL.Services.Repositories
 
                 if (obj.ShopId != default)
                 {
-                    sqlBuilder.Append(" AND RackId = @RackId");
+                    sqlBuilder.Append(" AND ShopId = @ShopId");
                 }
             }
 
