@@ -7,6 +7,6 @@ namespace Racksincor.BLL.DTO
         public string Name { get; set; }
         public decimal Price { get; set; }
         public bool IsInStock { get; set; }
-        public int RackId { get; set; }
+        public int ShopId { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace Racksincor.DAL.Models
         // Many-to-Many relation: User and Product
         public ICollection<Reaction> Reactions { get; set; }
 
-        // Many-to-Many relation: User and Rack
+        // Many-to-Many relation: Product and Rack
         public ICollection<Rack> Racks { get; set; }
     }
 }

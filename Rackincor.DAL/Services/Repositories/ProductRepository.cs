@@ -21,14 +21,14 @@ namespace Racksincor.DAL.Services.Repositories
                     DateTime now = DateTime.Now;
 
                     await _connection.ExecuteAsync(@"
-                        INSERT INTO Products (Name, Price, IsInStock, RackId, CreatedAt, UpdatedAt)
-                            VALUES (@Name, @Price, @IsInStock, @RackId, @CreatedAt, @UpdatedAt)",
+                        INSERT INTO Products (Name, Price, IsInStock, ShopId, CreatedAt, UpdatedAt)
+                            VALUES (@Name, @Price, @IsInStock, @ShopId, @CreatedAt, @UpdatedAt)",
                         new
                         {
                             entity.Name,
                             entity.Price,
                             entity.IsInStock,
-                            entity.RackId,
+                            entity.ShopId,
                             CreatedAt = now,
                             UpdatedAt = now
                         },
@@ -87,9 +87,9 @@ namespace Racksincor.DAL.Services.Repositories
                     sqlBuilder.Append(" AND Id = @Id");
                 }
 
-                if (obj.RackId != default)
+                if (obj.ShopId != default)
                 {
-                    sqlBuilder.Append(" AND RackId = @RackId");
+                    sqlBuilder.Append(" AND ShopId = @ShopId");
                 }
             }
 
@@ -105,14 +105,13 @@ namespace Racksincor.DAL.Services.Repositories
                     DateTime now = DateTime.Now;
 
                     await _connection.ExecuteAsync(
-                        "UPDATE Products SET Name = @Name, Price = @Price, IsInStock = @IsInStock, RackId = @RackId, UpdatedAt = @UpdatedAt WHERE Id = @Id",
+                        "UPDATE Products SET Name = @Name, Price = @Price, IsInStock = @IsInStock, UpdatedAt = @UpdatedAt WHERE Id = @Id",
                         new
                         {
                             entity.Id,
                             entity.Name,
                             entity.Price,
                             entity.IsInStock,
-                            entity.RackId,
                             UpdatedAt = now
                         },
                         transaction);
