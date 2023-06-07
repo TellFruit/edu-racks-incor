@@ -82,7 +82,7 @@ namespace Racksincor.Controllers
             {
                 var id = int.Parse(HttpContext.GetTokenClaim("shopId"));
 
-                var productQuery = new ProductQuery { Id = id };
+                var productQuery = new ProductQuery { ShopId = id };
 
                 var product = await _productService.ReadWithQuery(productQuery);
 
