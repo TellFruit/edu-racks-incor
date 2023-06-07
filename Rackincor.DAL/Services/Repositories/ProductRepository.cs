@@ -22,13 +22,12 @@ namespace Racksincor.DAL.Services.Repositories
 
                     await _connection.ExecuteAsync(@"
                         INSERT INTO Products (Name, Price, IsInStock, CreatedAt, UpdatedAt)
-                            VALUES (@Name, @Price, @IsInStock, @RackId, @CreatedAt, @UpdatedAt)",
+                            VALUES (@Name, @Price, @IsInStock, @CreatedAt, @UpdatedAt)",
                         new
                         {
                             entity.Name,
                             entity.Price,
                             entity.IsInStock,
-                            entity.RackId,
                             CreatedAt = now,
                             UpdatedAt = now
                         },
@@ -87,7 +86,7 @@ namespace Racksincor.DAL.Services.Repositories
                     sqlBuilder.Append(" AND Id = @Id");
                 }
 
-                if (obj.RackId != default)
+                if (obj.ShopId != default)
                 {
                     sqlBuilder.Append(" AND RackId = @RackId");
                 }
@@ -111,7 +110,7 @@ namespace Racksincor.DAL.Services.Repositories
                             entity.Id,
                             entity.Name,
                             entity.Price,
-                            entity.IsInStock
+                            entity.IsInStock,
                             UpdatedAt = now
                         },
                         transaction);
