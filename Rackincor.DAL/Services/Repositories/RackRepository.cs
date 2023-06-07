@@ -126,7 +126,7 @@ namespace Racksincor.DAL.Services.Repositories
                     foreach(var product in entity.Products)
                     {
                         await _connection.ExecuteAsync(
-                            "INSERT INTO ProductRack (ProductsId, RacksId) VALUE (@ProductId, @RackId)",
+                            "INSERT INTO ProductRack (ProductsId, RacksId) VALUES (@ProductId, @RackId)",
                             new
                             {
                                 ProductId = product.Id,

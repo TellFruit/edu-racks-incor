@@ -75,8 +75,7 @@ const RackPage = () => {
             const response = await axios.put(
                 `/rack/${id}`,
                 {
-                    name,
-                    shopId,
+                    name
                 },
                 {
                     headers: {

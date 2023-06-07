@@ -5,8 +5,8 @@ namespace Racksincor.BLL.DTO
     public class RackDTO : BaseDTO<int>
     {
         public string Name { get; set; }
-        public int ShopId { get; set; }
+        public int? ShopId { get; set; }
 
-        public IReadOnlyList<ProductDTO> Products { get; set; }
+        public IReadOnlyList<ProductDTO>? Products { get; set; }
     }
 }

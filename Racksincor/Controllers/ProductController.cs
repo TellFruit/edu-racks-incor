@@ -74,6 +74,8 @@ namespace Racksincor.Controllers
             }
         }
 
+
+
         [HttpGet("shop")]
         [JwtAuthorize(Roles = "Employee")]
         public async Task<IActionResult> GetByShop()

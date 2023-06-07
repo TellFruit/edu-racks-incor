@@ -78,10 +78,20 @@ namespace Racksincor.DAL.Services.Repositories
 
         public async Task<IReadOnlyList<ProductDTO>> ReadWithQuery(ProductQuery? obj)
         {
-            var sqlBuilder = new StringBuilder("SELECT * FROM Products WHERE 1 = 1");
+            var sqlBuilder = new StringBuilder("SELECT * FROM Products p");
 
             if (obj != null)
             {
+                if (obj.RackId != default)
+                {
+                    sqlBuilder.Append(" INNER JOIN ProductRack pr ON p.Id = pr.ProductId");
+                    sqlBuilder.Append(" WHERE pr.RackId = @RackId");
+                }
+                else
+                {
+                    sqlBuilder.Append(" WHERE 1 = 1");
+                }
+
                 if (obj.Id != default)
                 {
                     sqlBuilder.Append(" AND Id = @Id");

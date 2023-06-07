@@ -41,7 +41,7 @@ const ProductRackPage = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setRack(response.data);
+      setRack(response.data[0]);
     } catch (error) {
       console.error("Error fetching rack:", error);
     }
@@ -71,9 +71,25 @@ const ProductRackPage = () => {
     );
   };
 
-  const handleApplyChanges = () => {
-    // Send backend request to update the rack's associated products
-    // Implement your logic here
+  const handleApplyChanges = async () => {
+    try {
+        console.log(rack);
+        await axios.put(
+            `/rack/${rackId}`,
+            {
+                id: rack.id,
+                Name: rack.name,
+                Products: selectedProducts
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+    } catch (error) {
+        console.error("Error updating rack:", error);
+    }
   };
 
   return (
