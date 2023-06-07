@@ -6,5 +6,7 @@ namespace Racksincor.BLL.DTO
     {
         public string Name { get; set; }
         public int ShopId { get; set; }
+
+        public IReadOnlyList<ProductDTO> Products { get; set; }
     }
 }

@@ -3,8 +3,8 @@ using Racksincor.BLL.Interfaces;
 using Racksincor.DAL.Services.Repositories.Abstract;
 using System.Data;
 using Dapper;
-using Racksincor.BLL.DTO;
 using System.Text;
+using Racksincor.BLL.DTO;
 
 namespace Racksincor.DAL.Services.Repositories
 {
@@ -103,15 +103,34 @@ namespace Racksincor.DAL.Services.Repositories
                     DateTime now = DateTime.Now;
 
                     await _connection.ExecuteAsync(
-                        "UPDATE Racks SET Name = @Name, ShopId = @ShopId, UpdatedAt = @UpdatedAt WHERE Id = @Id",
+                        "UPDATE Racks SET Name = @Name, UpdatedAt = @UpdatedAt WHERE Id = @Id",
                         new
                         {
                             entity.Id,
                             entity.Name,
-                            entity.ShopId,
                             UpdatedAt = now
                         },
                         transaction);
+
+                    await _connection.ExecuteAsync(
+                        "DELETE FROM ProductRack WHERE RacksId = @RackId",
+                        new
+                        {
+                            RackId = entity.Id
+                        },
+                        transaction);
+
+                    foreach(var product in entity.Products)
+                    {
+                        await _connection.ExecuteAsync(
+                            "INSERT INTO ProductRack (ProductsId, RacksId) VALUE (@ProductId, @RackId)",
+                            new
+                            {
+                                ProductId = product.Id,
+                                RackId = entity.Id
+                            },
+                            transaction);
+                    }
 
                     transaction.Commit();
 
