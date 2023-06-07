@@ -112,13 +112,16 @@ namespace Racksincor.DAL.Services.Repositories
                         },
                         transaction);
 
-                    await _connection.ExecuteAsync(
-                        "DELETE FROM ProductRack WHERE RacksId = @RackId",
-                        new
-                        {
-                            RackId = entity.Id
-                        },
-                        transaction);
+                    if (entity.Products.Any())
+                    {
+                        await _connection.ExecuteAsync(
+                            "DELETE FROM ProductRack WHERE RacksId = @RackId",
+                            new
+                            {
+                                RackId = entity.Id
+                            },
+                            transaction);
+                    }
 
                     foreach(var product in entity.Products)
                     {
