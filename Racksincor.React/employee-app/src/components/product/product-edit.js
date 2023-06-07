@@ -9,27 +9,24 @@ import {
 } from "@mui/material";
 import Modal from "react-modal";
 
-const ProductCreateModal = ({ isOpen, onClose, onCreate }) => {
-    const [name, setName] = useState("");
-    const [price, setPrice] = useState("");
-    const [isInStock, setIsInStock] = useState(true);
+const ProductEditModal = ({ isOpen, onClose, product, onUpdate }) => {
+    const [name, setName] = useState(product.name);
+    const [price, setPrice] = useState(product.price);
+    const [isInStock, setIsInStock] = useState(product.isInStock);
 
-    const handleCreate = () => {
-        onCreate(name, price, isInStock);
-        setName("");
-        setPrice("");
-        setIsInStock(true);
+    const handleUpdate = () => {
+        onUpdate(product.id, name, price, isInStock);
     };
 
     return (
         <Modal
             isOpen={isOpen}
             onRequestClose={onClose}
-            contentLabel="Create Product Modal"
+            contentLabel="Edit Product Modal"
         >
             <Container maxWidth="xs">
                 <Box sx={{ marginTop: 8 }}>
-                    <h3>Create Product</h3>
+                    <h3>Edit Product</h3>
                     <TextField
                         label="Name"
                         variant="outlined"
@@ -59,9 +56,9 @@ const ProductCreateModal = ({ isOpen, onClose, onCreate }) => {
                     <Button
                         variant="contained"
                         color="primary"
-                        onClick={handleCreate}
+                        onClick={handleUpdate}
                     >
-                        Create
+                        Update
                     </Button>
                     <Button
                         variant="contained"
@@ -77,4 +74,4 @@ const ProductCreateModal = ({ isOpen, onClose, onCreate }) => {
     );
 };
 
-export default ProductCreateModal;
+export default ProductEditModal;
