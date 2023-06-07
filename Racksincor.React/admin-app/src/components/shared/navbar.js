@@ -11,7 +11,7 @@ const Navbar = () => {
     removeToken();
     navigate('/');
   };
-  console.log(isTokenValid())
+  
   return (
     <AppBar position="static">
       <Toolbar>

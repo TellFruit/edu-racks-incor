@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../api/instance";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -29,7 +29,7 @@ const RackPage = () => {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            setShop(response.data);
+            setShop(response.data[0]);
         } catch (error) {
             console.error("Error fetching shop:", error);
         }
@@ -37,7 +37,7 @@ const RackPage = () => {
 
     const fetchRacks = async () => {
         try {
-            const response = await axios.get(`/rack/shop/${shopId}`, {
+            const response = await axios.get(`/rack/shop/`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

@@ -9,7 +9,6 @@ namespace Racksincor.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [JwtAuthorize(Roles = "Admin")]
     public class ShopController : ControllerBase
     {
         private readonly IEntityMediateService<ShopDTO, ShopQuery> _shopService;
@@ -20,6 +19,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpPost]
+        [JwtAuthorize(Roles = "Admin")]
         public async Task<IActionResult> Create(ShopDTO shop)
         {
             try
@@ -40,6 +40,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpGet]
+        [JwtAuthorize(Roles = "Admin")]
         public async Task<IActionResult> GetAll()
         {
             try
@@ -54,6 +55,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpGet("{id}")]
+        [JwtAuthorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> GetById(int id)
         {
             try
@@ -77,6 +79,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpGet("company/{id}")]
+        [JwtAuthorize(Roles = "Admin")]
         public async Task<IActionResult> GetByCompanyId(int id)
         {
             try
@@ -100,6 +103,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpPut("{id}")]
+        [JwtAuthorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, ShopDTO shop)
         {
             try
@@ -129,6 +133,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpDelete("{id}")]
+        [JwtAuthorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             try
