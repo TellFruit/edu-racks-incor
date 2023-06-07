@@ -17,8 +17,13 @@ const ProductRackPage = () => {
   const [selectedProducts, setSelectedProducts] = useState([]);
 
   useEffect(() => {
-    fetchRack();
-    fetchAvailableProducts();
+    const fetchData = async () => {
+        await fetchRack();
+        await fetchAvailableProducts();
+        await fetchSelectedProducts();
+    }
+
+    fetchData();
   }, []);
 
   const fetchAvailableProducts = async () => {
@@ -29,6 +34,19 @@ const ProductRackPage = () => {
         },
       });
       setAvailableProducts(response.data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
+
+  const fetchSelectedProducts = async () => {
+    try {
+      const response = await axios.get(`/product/rack/${rackId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setSelectedProducts(response.data);
     } catch (error) {
       console.error("Error fetching products:", error);
     }

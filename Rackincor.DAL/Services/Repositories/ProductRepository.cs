@@ -84,8 +84,8 @@ namespace Racksincor.DAL.Services.Repositories
             {
                 if (obj.RackId != default)
                 {
-                    sqlBuilder.Append(" INNER JOIN ProductRack pr ON p.Id = pr.ProductId");
-                    sqlBuilder.Append(" WHERE pr.RackId = @RackId");
+                    sqlBuilder.Append(" INNER JOIN productrack pr ON p.Id = pr.ProductsId");
+                    sqlBuilder.Append(" WHERE pr.RacksId = @RackId");
                 }
                 else
                 {
