@@ -55,7 +55,8 @@ const ProductPage = () => {
         {
           name,
           price,
-          isInStock
+          isInStock,
+          shopId: shopId
         },
         {
           headers: {

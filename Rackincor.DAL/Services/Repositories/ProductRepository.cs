@@ -21,13 +21,14 @@ namespace Racksincor.DAL.Services.Repositories
                     DateTime now = DateTime.Now;
 
                     await _connection.ExecuteAsync(@"
-                        INSERT INTO Products (Name, Price, IsInStock, CreatedAt, UpdatedAt)
-                            VALUES (@Name, @Price, @IsInStock, @CreatedAt, @UpdatedAt)",
+                        INSERT INTO Products (Name, Price, IsInStock, ShopId, CreatedAt, UpdatedAt)
+                            VALUES (@Name, @Price, @IsInStock, @ShopId, @CreatedAt, @UpdatedAt)",
                         new
                         {
                             entity.Name,
                             entity.Price,
                             entity.IsInStock,
+                            entity.ShopId,
                             CreatedAt = now,
                             UpdatedAt = now
                         },
