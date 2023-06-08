@@ -67,11 +67,6 @@ const LoginPage = () => {
                 >
                     Login
                 </Button>
-                <Box sx={{ marginTop: 2 }}>
-                    <Link to="/register">
-                        Don't have an account? Register here.
-                    </Link>
-                </Box>
             </Box>
         </Container>
     );

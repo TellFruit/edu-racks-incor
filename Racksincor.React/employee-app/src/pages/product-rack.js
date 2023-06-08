@@ -10,149 +10,166 @@ import Button from "@mui/material/Button";
 import ProductActionTable from "../components/product/product-action-table";
 
 const ProductRackPage = () => {
-  const token = getToken();
-  const { rackId } = useParams();
-  const [rack, setRack] = useState(null);
-  const [availableProducts, setAvailableProducts] = useState([]);
-  const [selectedProducts, setSelectedProducts] = useState([]);
+    const token = getToken();
+    const { rackId } = useParams();
+    const [rack, setRack] = useState(null);
+    const [availableProducts, setAvailableProducts] = useState([]);
+    const [selectedProducts, setSelectedProducts] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-        await fetchRack();
-        await fetchAvailableProducts();
-        await fetchSelectedProducts();
-    }
+    useEffect(() => {
+        const fetchData = async () => {
+            await fetchRack();
+            await fetchSelectedProducts();
+            if (selectedProducts.length > 0) {
+                await fetchAvailableProducts();
+            }
+        };
 
-    fetchData();
-  }, []);
+        fetchData();
+    }, []);
 
-  const fetchAvailableProducts = async () => {
-    try {
-      const response = await axios.get(`/product/shop/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setAvailableProducts(response.data);
-    } catch (error) {
-      console.error("Error fetching products:", error);
-    }
-  };
+    useEffect(() => {
+        if (selectedProducts.length > 0) {
+            fetchAvailableProducts();
+        }
+    }, [selectedProducts]);
 
-  const fetchSelectedProducts = async () => {
-    try {
-      const response = await axios.get(`/product/rack/${rackId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setSelectedProducts(response.data);
-    } catch (error) {
-      console.error("Error fetching products:", error);
-    }
-  };
-
-  const fetchRack = async () => {
-    try {
-      const response = await axios.get(`/rack/${rackId}/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setRack(response.data[0]);
-    } catch (error) {
-      console.error("Error fetching rack:", error);
-    }
-  };
-
-  const handleAddProduct = (product) => {
-    setSelectedProducts((prevSelectedProducts) => [
-      ...prevSelectedProducts,
-      product,
-    ]);
-    setAvailableProducts((prevAvailableProducts) =>
-      prevAvailableProducts.filter(
-        (availableProduct) => availableProduct.id !== product.id
-      )
-    );
-  };
-
-  const handleRemoveProduct = (product) => {
-    setAvailableProducts((prevAvailableProducts) => [
-      ...prevAvailableProducts,
-      product,
-    ]);
-    setSelectedProducts((prevSelectedProducts) =>
-      prevSelectedProducts.filter(
-        (selectedProduct) => selectedProduct.id !== product.id
-      )
-    );
-  };
-
-  const handleApplyChanges = async () => {
-    try {
-        console.log(rack);
-        await axios.put(
-            `/rack/${rackId}`,
-            {
-                id: rack.id,
-                Name: rack.name,
-                Products: selectedProducts
-            },
-            {
+    const fetchAvailableProducts = async () => {
+        try {
+            const response = await axios.get(`/product/shop/`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
-            }
-        );
-    } catch (error) {
-        console.error("Error updating rack:", error);
-    }
-  };
+            });
 
-  return (
-    <Container maxWidth="lg" sx={{ mt: 4 }}>
-      <Grid container spacing={4}>
-        <Grid item xs={6}>
-          <Paper variant="outlined" sx={{ p: 2, minHeight: 400 }}>
-            <Typography variant="h6" gutterBottom>
-              Available Products
-            </Typography>
-            <ProductActionTable
-              products={availableProducts}
-              onActionClick={handleAddProduct}
-              actionText="Add"
-            />
-          </Paper>
-        </Grid>
-        <Grid item xs={6}>
-          <Paper variant="outlined" sx={{ p: 2, minHeight: 400 }}>
-            <Typography variant="h6" gutterBottom>
-              Selected Products
-            </Typography>
-            <ProductActionTable
-              products={selectedProducts}
-              onActionClick={handleRemoveProduct}
-              actionText="Remove"
-            />
-          </Paper>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          sx={{ display: "flex", justifyContent: "center", mt: 4 }}
-        >
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleApplyChanges}
-          >
-            Apply Changes
-          </Button>
-        </Grid>
-      </Grid>
-    </Container>
-  );
+            const filteredProducts = response.data.filter(
+                (availableProduct) =>
+                    !selectedProducts.some(
+                        (selectedProduct) =>
+                            selectedProduct.id === availableProduct.id
+                    )
+            );
+            console.log(selectedProducts)
+            setAvailableProducts(filteredProducts);
+        } catch (error) {
+            console.error("Error fetching products:", error);
+        }
+    };
+
+    const fetchSelectedProducts = async () => {
+        try {
+            const response = await axios.get(`/product/rack/${rackId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            setSelectedProducts(response.data);
+        } catch (error) {
+            console.error("Error fetching products:", error);
+        }
+    };
+
+    const fetchRack = async () => {
+        try {
+            const response = await axios.get(`/rack/${rackId}/`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            setRack(response.data[0]);
+        } catch (error) {
+            console.error("Error fetching rack:", error);
+        }
+    };
+
+    const handleAddProduct = (product) => {
+        setSelectedProducts((prevSelectedProducts) => [
+            ...prevSelectedProducts,
+            product,
+        ]);
+        setAvailableProducts((prevAvailableProducts) =>
+            prevAvailableProducts.filter(
+                (availableProduct) => availableProduct.id !== product.id
+            )
+        );
+    };
+
+    const handleRemoveProduct = (product) => {
+        setAvailableProducts((prevAvailableProducts) => [
+            ...prevAvailableProducts,
+            product,
+        ]);
+        setSelectedProducts((prevSelectedProducts) =>
+            prevSelectedProducts.filter(
+                (selectedProduct) => selectedProduct.id !== product.id
+            )
+        );
+    };
+
+    const handleApplyChanges = async () => {
+        try {
+            console.log(rack);
+            await axios.put(
+                `/rack/${rackId}`,
+                {
+                    id: rack.id,
+                    Name: rack.name,
+                    Products: selectedProducts,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+        } catch (error) {
+            console.error("Error updating rack:", error);
+        }
+    };
+
+    return (
+        <Container maxWidth="lg" sx={{ mt: 4 }}>
+            <Grid container spacing={4}>
+                <Grid item xs={6}>
+                    <Paper variant="outlined" sx={{ p: 2, minHeight: 400 }}>
+                        <Typography variant="h6" gutterBottom>
+                            Available Products
+                        </Typography>
+                        <ProductActionTable
+                            products={availableProducts}
+                            onActionClick={handleAddProduct}
+                            actionText="Add"
+                        />
+                    </Paper>
+                </Grid>
+                <Grid item xs={6}>
+                    <Paper variant="outlined" sx={{ p: 2, minHeight: 400 }}>
+                        <Typography variant="h6" gutterBottom>
+                            Selected Products
+                        </Typography>
+                        <ProductActionTable
+                            products={selectedProducts}
+                            onActionClick={handleRemoveProduct}
+                            actionText="Remove"
+                        />
+                    </Paper>
+                </Grid>
+                <Grid
+                    item
+                    xs={12}
+                    sx={{ display: "flex", justifyContent: "center", mt: 4 }}
+                >
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleApplyChanges}
+                    >
+                        Apply Changes
+                    </Button>
+                </Grid>
+            </Grid>
+        </Container>
+    );
 };
 
 export default ProductRackPage;
