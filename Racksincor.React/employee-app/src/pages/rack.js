@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import axios from "../api/instance";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -16,6 +17,7 @@ const RackPage = () => {
     const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
     const [selectedRack, setSelectedRack] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchShop();
@@ -108,6 +110,10 @@ const RackPage = () => {
         }
     };
 
+    const handleViewProducts = (rackId) => {
+        navigate(`/rack/${rackId}/products`);
+    };
+
     const openCreateModal = () => {
         setCreateModalIsOpen(true);
     };
@@ -151,6 +157,7 @@ const RackPage = () => {
                         racks={racks}
                         onDelete={handleDelete}
                         onOpenEditModal={openEditModal}
+                        onViewProducts={handleViewProducts}
                     />
                     {selectedRack && (
                         <RackEditModal

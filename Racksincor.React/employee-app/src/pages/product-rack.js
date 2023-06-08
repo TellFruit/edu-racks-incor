@@ -20,9 +20,6 @@ const ProductRackPage = () => {
         const fetchData = async () => {
             await fetchRack();
             await fetchSelectedProducts();
-            if (selectedProducts.length > 0) {
-                await fetchAvailableProducts();
-            }
         };
 
         fetchData();
