@@ -63,6 +63,11 @@ namespace Racksincor.DAL.Services.Repositories
                         new { entity.Id },
                         transaction);
 
+                    await _connection.ExecuteAsync(
+                        "DELETE FROM ProductRack WHERE RacksId = @RackId",
+                        new { RackId = entity.Id },
+                        transaction);
+
                     transaction.Commit();
                 }
                 catch (Exception ex)
@@ -112,14 +117,16 @@ namespace Racksincor.DAL.Services.Repositories
                         },
                         transaction);
 
+                    if (entity.Products == null)
+                    {
+                        entity.Products = new List<ProductDTO>();
+                    }
+
                     if (entity.Products.Any())
                     {
                         await _connection.ExecuteAsync(
                             "DELETE FROM ProductRack WHERE RacksId = @RackId",
-                            new
-                            {
-                                RackId = entity.Id
-                            },
+                            new { RackId = entity.Id },
                             transaction);
                     }
 
