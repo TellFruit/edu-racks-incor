@@ -5,7 +5,7 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Pagination from "@mui/material/Pagination";
 
-const RackList = ({ racks, onDelete, onOpenEditModal }) => {
+const RackList = ({ racks, onDelete, onOpenEditModal, onViewProducts }) => {
     const [page, setPage] = useState(1);
     const racksPerPage = 5;
     const totalPages = Math.ceil(racks.length / racksPerPage);
@@ -46,6 +46,14 @@ const RackList = ({ racks, onDelete, onOpenEditModal }) => {
                                         sx={{ ml: 2 }}
                                     >
                                         Delete
+                                    </Button>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={() => onViewProducts(rack.id)}
+                                        sx={{ ml: 2 }}
+                                    >
+                                        View Products
                                     </Button>
                                 </Box>
                             </Grid>

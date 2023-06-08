@@ -34,7 +34,7 @@ function isTokenRelevant() {
 }
 
 export function isTokenValid() {
-    return isTokenPresent() || isTokenRelevant();
+    return isTokenPresent() && isTokenRelevant();
 }
 
 export function isRoleValid() {
@@ -43,7 +43,7 @@ export function isRoleValid() {
     try {
         const decodedToken = jwtDecode(token);
         const userRole = decodedToken.role;
-
+        
         return userRole === enforcedRole;
     } catch (error) {
         return false;

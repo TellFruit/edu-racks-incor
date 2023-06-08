@@ -9,6 +9,7 @@ import Navbar from "../components/shared/navbar";
 import LoginPage from "../pages/login";
 import RackPage from "../pages/rack";
 import ProductPage from "../pages/product";
+import ProductRackPage from "../pages/product-rack";
 
 const Routes = () => {
     return (
@@ -21,6 +22,9 @@ const Routes = () => {
                 </Route>
                 <Route path="/product" element={<PrivateRoute />}>
                     <Route path="/product" element={<ProductPage />} />
+                </Route>
+                <Route path="/rack/:rackId/products" element={<PrivateRoute />}>
+                    <Route path="/rack/:rackId/products" element={<ProductRackPage />} />
                 </Route>
             </Switch>
         </Router>

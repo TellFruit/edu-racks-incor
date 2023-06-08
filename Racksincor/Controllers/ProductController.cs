@@ -74,6 +74,31 @@ namespace Racksincor.Controllers
             }
         }
 
+        [HttpGet("rack/{id}")]
+        [JwtAuthorize(Roles = "Employee")]
+        public async Task<IActionResult> GetByRackId(int id)
+        {
+            try
+            {
+                var productQuery = new ProductQuery { RackId = id };
+
+                var product = await _productService.ReadWithQuery(productQuery);
+
+                if (product.Any())
+                {
+                    return Ok(product);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpGet("shop")]
         [JwtAuthorize(Roles = "Employee")]
         public async Task<IActionResult> GetByShop()
