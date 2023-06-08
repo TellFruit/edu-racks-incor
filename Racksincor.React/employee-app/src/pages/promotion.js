@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "../api/instance";
-import { Container, Grid, Typography, Select, MenuItem } from "@mui/material";
-import PromotionList from "./PromotionList";
+import { Container, Grid, Button, Typography, Select, MenuItem } from "@mui/material";
+import PromotionList from "../components/promotion/promotion-list";
+import PromotionCreateModal from "../components/promotion/promotion-create";
+import PromotionEditModal from "../components/promotion/promotion-edit";
 import { getToken, getShopId } from "../api/token";
 
 const PromotionsPage = () => {
@@ -164,8 +166,22 @@ const PromotionsPage = () => {
                     <Typography variant="h4" gutterBottom>
                         {`Promotions of ${shop?.name}`}
                     </Typography>
+                    <h3>Create product</h3>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={openCreateModal}
+                    >
+                        Create
+                    </Button>
+                    <PromotionCreateModal
+                        isOpen={createModalIsOpen}
+                        onClose={closeCreateModal}
+                        onCreate={handleCreate}
+                    />
                 </Grid>
                 <Grid item xs={12}>
+                    
                     <Typography variant="body1">Promotion Type:</Typography>
                     <Select
                         value={promotionType}
@@ -178,6 +194,14 @@ const PromotionsPage = () => {
                 </Grid>
                 <Grid item xs={12}>
                     <PromotionList promotions={promotions} />
+                    {selectedPromotion && (
+                        <PromotionEditModal
+                            isOpen={editModalIsOpen}
+                            onClose={closeEditModal}
+                            product={selectedPromotion}
+                            onUpdate={handleUpdate}
+                        />
+                    )}
                 </Grid>
             </Grid>
         </Container>
