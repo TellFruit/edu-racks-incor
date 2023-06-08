@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "../api/instance";
-import { Container, Grid, Button, Typography, Select, MenuItem } from "@mui/material";
+import {
+    Container,
+    Grid,
+    Button,
+    Typography,
+    Select,
+    MenuItem,
+} from "@mui/material";
 import PromotionList from "../components/promotion/promotion-list";
 import PromotionCreateModal from "../components/promotion/promotion-create";
 import PromotionEditModal from "../components/promotion/promotion-edit";
@@ -11,6 +18,7 @@ const PromotionsPage = () => {
     const shopId = getShopId();
     const [shop, setShop] = useState([]);
     const [promotions, setPromotions] = useState([]);
+    const [products, setProducts] = useState([]);
     const [promotionType, setPromotionType] = useState("discount");
     const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
@@ -47,6 +55,19 @@ const PromotionsPage = () => {
                     },
                 }
             );
+            setProducts(response.data);
+        } catch (error) {
+            console.error("Error fetching promotions:", error);
+        }
+    };
+
+    const fetchProducts = async () => {
+        try {
+            const response = await axios.get(`/product/shop`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
             setPromotions(response.data);
         } catch (error) {
             console.error("Error fetching promotions:", error);
@@ -178,10 +199,11 @@ const PromotionsPage = () => {
                         isOpen={createModalIsOpen}
                         onClose={closeCreateModal}
                         onCreate={handleCreate}
+                        product={products}
+                        promotionType={promotionType}
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    
                     <Typography variant="body1">Promotion Type:</Typography>
                     <Select
                         value={promotionType}
@@ -193,13 +215,19 @@ const PromotionsPage = () => {
                     </Select>
                 </Grid>
                 <Grid item xs={12}>
-                    <PromotionList promotions={promotions} />
+                    <PromotionList
+                        promotions={promotions}
+                        onDelete={handleDelete}
+                        onOpenEditModal={openEditModal}
+                    />
                     {selectedPromotion && (
                         <PromotionEditModal
                             isOpen={editModalIsOpen}
                             onClose={closeEditModal}
-                            product={selectedPromotion}
+                            promotion={selectedPromotion}
                             onUpdate={handleUpdate}
+                            products={products}
+                            promotionType={promotionType}
                         />
                     )}
                 </Grid>

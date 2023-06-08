@@ -16,6 +16,7 @@ const PromotionEditModal = ({
     promotion,
     onUpdate,
     products,
+    promotionType
 }) => {
     const [name, setName] = useState(promotion.name);
     const [expirationDate, setExpirationDate] = useState(promotion.expirationDate);
@@ -52,7 +53,7 @@ const PromotionEditModal = ({
                         onChange={(e) => setExpirationDate(e.target.value)}
                         sx={{ marginBottom: 2 }}
                     />
-                    {promotion.type !== "gift" && (
+                    {promotionType !== "gift" && (
                         <TextField
                             label="Percentage"
                             variant="outlined"
@@ -63,7 +64,7 @@ const PromotionEditModal = ({
                             sx={{ marginBottom: 2 }}
                         />
                     )}
-                    {promotion.type === "gift" && (
+                    {promotionType === "gift" && (
                         <div>
                             <InputLabel id="gift-product-select-label">
                                 Gift Product

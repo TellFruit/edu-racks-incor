@@ -14,8 +14,8 @@ const PromotionCreateModal = ({
     isOpen,
     onClose,
     onCreate,
-    type,
-    products,
+    promotionType,
+    products
 }) => {
     const [name, setName] = useState("");
     const [expirationDate, setExpirationDate] = useState("");
@@ -26,8 +26,8 @@ const PromotionCreateModal = ({
         const promotionData = {
             name,
             expirationDate: new Date(expirationDate),
-            percentage: type !== "discount" ? parseInt(percentage) : null,
-            giftProductId: type === "gift" ? parseInt(giftProductId) : null,
+            percentage: promotionType !== "discount" ? parseInt(percentage) : null,
+            giftProductId: promotionType === "gift" ? parseInt(giftProductId) : null,
         };
 
         onCreate(promotionData);
@@ -58,23 +58,23 @@ const PromotionCreateModal = ({
                         label="Expiration Date"
                         variant="outlined"
                         fullWidth
-                        type="date"
+                        promotionType="date"
                         value={expirationDate}
                         onChange={(e) => setExpirationDate(e.target.value)}
                         sx={{ marginBottom: 2 }}
                     />
-                    {type === "discount" && (
+                    {promotionType === "discount" && (
                         <TextField
                             label="Percentage"
                             variant="outlined"
                             fullWidth
-                            type="number"
+                            promotionType="number"
                             value={percentage}
                             onChange={(e) => setPercentage(e.target.value)}
                             sx={{ marginBottom: 2 }}
                         />
                     )}
-                    {type === "gift" && (
+                    {promotionType === "gift" && (
                         <div>
                             <InputLabel id="gift-product-select-label">
                                 Gift Product
