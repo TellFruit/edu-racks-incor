@@ -34,6 +34,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpGet]
+        [JwtAuthorize(Roles = "Employee")]
         public async Task<IActionResult> GetAll()
         {
             try
@@ -49,6 +50,7 @@ namespace Racksincor.Controllers
         }
 
         [HttpGet("{id}")]
+        [JwtAuthorize(Roles = "Employee")]
         public async Task<IActionResult> GetById(int id)
         {
             try
@@ -60,6 +62,33 @@ namespace Racksincor.Controllers
                 if (discount.Any())
                 {
                     return Ok(discount);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet("shop")]
+        [JwtAuthorize(Roles = "Employee")]
+        public async Task<IActionResult> GetByShop()
+        {
+            try
+            {
+                var id = int.Parse(HttpContext.GetTokenClaim("shopId"));
+
+                var promotionQuery = new PromotionQuery { ShopId = id };
+
+                var gift = await _promotionService.ReadWithQuery(promotionQuery);
+
+                if (gift.Any())
+                {
+                    return Ok(gift);
                 }
                 else
                 {
