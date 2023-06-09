@@ -221,6 +221,7 @@ const PromotionPage = () => {
                         promotions={promotions}
                         onDelete={handleDelete}
                         onOpenEditModal={openEditModal}
+                        products={products}
                     />
                     {selectedPromotion && (
                         <PromotionEditModal
