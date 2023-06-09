@@ -10,6 +10,7 @@ import LoginPage from "../pages/login";
 import RackPage from "../pages/rack";
 import ProductPage from "../pages/product";
 import ProductRackPage from "../pages/product-rack";
+import PromotionPage from "../pages/promotion";
 
 const Routes = () => {
     return (
@@ -22,6 +23,9 @@ const Routes = () => {
                 </Route>
                 <Route path="/product" element={<PrivateRoute />}>
                     <Route path="/product" element={<ProductPage />} />
+                </Route>
+                <Route path="/promotion" element={<PrivateRoute />}>
+                    <Route path="/promotion" element={<PromotionPage />} />
                 </Route>
                 <Route path="/rack/:rackId/products" element={<PrivateRoute />}>
                     <Route path="/rack/:rackId/products" element={<ProductRackPage />} />

@@ -13,7 +13,7 @@ import PromotionCreateModal from "../components/promotion/promotion-create";
 import PromotionEditModal from "../components/promotion/promotion-edit";
 import { getToken, getShopId } from "../api/token";
 
-const PromotionsPage = () => {
+const PromotionPage = () => {
     const token = getToken();
     const shopId = getShopId();
     const [shop, setShop] = useState([]);
@@ -26,6 +26,7 @@ const PromotionsPage = () => {
 
     useEffect(() => {
         fetchShop();
+        fetchProducts();
     });
 
     useEffect(() => {
@@ -68,7 +69,7 @@ const PromotionsPage = () => {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            setPromotions(response.data);
+            setProducts(response.data);
         } catch (error) {
             console.error("Error fetching promotions:", error);
         }
@@ -236,4 +237,4 @@ const PromotionsPage = () => {
     );
 };
 
-export default PromotionsPage;
+export default PromotionPage;
