@@ -27,7 +27,7 @@ const PromotionPage = () => {
     useEffect(() => {
         fetchShop();
         fetchProducts();
-    });
+    }, []);
 
     useEffect(() => {
         fetchPromotions();
@@ -56,7 +56,7 @@ const PromotionPage = () => {
                     },
                 }
             );
-            setProducts(response.data);
+            setPromotions(response.data);
         } catch (error) {
             console.error("Error fetching promotions:", error);
         }
@@ -79,7 +79,7 @@ const PromotionPage = () => {
         name,
         expirationDate,
         percentage,
-        giftpromotionId
+        giftPromotionId
     ) => {
         try {
             const response = await axios.post(
@@ -88,7 +88,7 @@ const PromotionPage = () => {
                     name,
                     expirationDate,
                     percentage,
-                    giftpromotionId,
+                    giftPromotionId,
                     shopId: shopId,
                 },
                 {
@@ -113,7 +113,7 @@ const PromotionPage = () => {
         name,
         expirationDate,
         percentage,
-        giftpromotionId
+        giftPromotionId
     ) => {
         try {
             const response = await axios.put(
@@ -122,7 +122,7 @@ const PromotionPage = () => {
                     name,
                     expirationDate,
                     percentage,
-                    giftpromotionId,
+                    giftPromotionId,
                 },
                 {
                     headers: {
@@ -161,6 +161,7 @@ const PromotionPage = () => {
 
     const handlePromotionTypeChange = (event) => {
         setPromotionType(event.target.value);
+        console.log(products);
     };
 
     const openCreateModal = () => {
@@ -200,7 +201,7 @@ const PromotionPage = () => {
                         isOpen={createModalIsOpen}
                         onClose={closeCreateModal}
                         onCreate={handleCreate}
-                        product={products}
+                        products={products}
                         promotionType={promotionType}
                     />
                 </Grid>
@@ -227,7 +228,7 @@ const PromotionPage = () => {
                             onClose={closeEditModal}
                             promotion={selectedPromotion}
                             onUpdate={handleUpdate}
-                            products={products}
+                            products={products || []}
                             promotionType={promotionType}
                         />
                     )}
