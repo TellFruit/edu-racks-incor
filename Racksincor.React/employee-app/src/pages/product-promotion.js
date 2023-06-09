@@ -9,16 +9,16 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ProductActionTable from "../components/product/product-action-table";
 
-const ProductRackPage = () => {
+const ProductPromotionPage = () => {
     const token = getToken();
-    const { rackId } = useParams();
-    const [rack, setRack] = useState(null);
+    const { promotionId, promotionType } = useParams();
+    const [promotion, setPromotion] = useState(null);
     const [availableProducts, setAvailableProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
-            await fetchRack();
+            await fetchPromotion();
             await fetchSelectedProducts();
         };
 
@@ -46,7 +46,6 @@ const ProductRackPage = () => {
                             selectedProduct.id === availableProduct.id
                     )
             );
-            
             setAvailableProducts(filteredProducts);
         } catch (error) {
             console.error("Error fetching products:", error);
@@ -55,27 +54,33 @@ const ProductRackPage = () => {
 
     const fetchSelectedProducts = async () => {
         try {
-            const response = await axios.get(`/product/rack/${rackId}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
+            const response = await axios.get(
+                `/product/promotion/${promotionId}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
             setSelectedProducts(response.data);
         } catch (error) {
             console.error("Error fetching products:", error);
         }
     };
 
-    const fetchRack = async () => {
+    const fetchPromotion = async () => {
         try {
-            const response = await axios.get(`/rack/${rackId}/`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            setRack(response.data[0]);
+            const response = await axios.get(
+                `/${promotionType.toLowerCase()}/${promotionId}/`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            setPromotion(response.data[0]);
         } catch (error) {
-            console.error("Error fetching rack:", error);
+            console.error("Error fetching promotion:", error);
         }
     };
 
@@ -105,12 +110,12 @@ const ProductRackPage = () => {
 
     const handleApplyChanges = async () => {
         try {
-            console.log(rack);
             await axios.put(
-                `/rack/${rackId}`,
+                `/${promotionType.toLowerCase()}/${promotionId}`,
                 {
-                    id: rack.id,
-                    Name: rack.name,
+                    id: promotion.id,
+                    Name: promotion.name,
+                    ExpirationDate: promotion.expirationDate,
                     Products: selectedProducts,
                 },
                 {
@@ -120,7 +125,7 @@ const ProductRackPage = () => {
                 }
             );
         } catch (error) {
-            console.error("Error updating rack:", error);
+            console.error("Error updating promotion:", error);
         }
     };
 
@@ -169,4 +174,4 @@ const ProductRackPage = () => {
     );
 };
 
-export default ProductRackPage;
+export default ProductPromotionPage;
