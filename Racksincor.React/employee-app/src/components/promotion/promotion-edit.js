@@ -8,6 +8,8 @@ import {
     Select,
     InputLabel,
 } from "@mui/material";
+import { DatePicker } from "@mui/x-date-pickers";
+import dayjs from "dayjs";
 import Modal from "react-modal";
 
 const PromotionEditModal = ({
@@ -16,15 +18,31 @@ const PromotionEditModal = ({
     promotion,
     onUpdate,
     products,
-    promotionType
+    promotionType,
 }) => {
     const [name, setName] = useState(promotion.name);
-    const [expirationDate, setExpirationDate] = useState(promotion.expirationDate);
-    const [percentage, setPercentage] = useState(promotion.percentage);
+    const [expirationDate, setExpirationDate] = useState(
+        dayjs(promotion.expirationDate)
+    );
+    const [percenatage, setPercenatage] = useState(promotion.percenatage);
     const [giftProductId, setGiftProductId] = useState(promotion.giftProductId);
 
     const handleUpdate = () => {
-        onUpdate(promotion.id, name, expirationDate, percentage, giftProductId);
+        const formattedExpirationDate = expirationDate
+            ? expirationDate.toISOString().split("T")[0]
+            : null;
+            
+        onUpdate(
+            promotion.id,
+            name,
+            formattedExpirationDate,
+            percenatage,
+            giftProductId
+        );
+    };
+
+    const handleFocus = (event) => {
+        event.target.blur();
     };
 
     return (
@@ -44,23 +62,25 @@ const PromotionEditModal = ({
                         onChange={(e) => setName(e.target.value)}
                         sx={{ marginBottom: 2 }}
                     />
-                    <TextField
+                     <DatePicker
                         label="Expiration Date"
-                        variant="outlined"
-                        fullWidth
-                        type="date"
                         value={expirationDate}
-                        onChange={(e) => setExpirationDate(e.target.value)}
+                        onChange={(date) => setExpirationDate(date)}
+                        fullWidth
                         sx={{ marginBottom: 2 }}
                     />
-                    {promotionType !== "gift" && (
+                    {promotionType === "discount" && (
                         <TextField
-                            label="Percentage"
+                            label="Percenatage"
                             variant="outlined"
                             fullWidth
                             type="number"
-                            value={percentage}
-                            onChange={(e) => setPercentage(e.target.value)}
+                            value={percenatage}
+                            onChange={(e) => setPercenatage(e.target.value)}
+                            inputProps={{
+                                max: -1,
+                                onFocus: handleFocus,
+                            }}
                             sx={{ marginBottom: 2 }}
                         />
                     )}

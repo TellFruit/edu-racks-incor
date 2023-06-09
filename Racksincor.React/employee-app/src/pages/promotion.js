@@ -59,6 +59,7 @@ const PromotionPage = () => {
             setPromotions(response.data);
             console.log(response.data);
         } catch (error) {
+            setPromotions([]);
             console.error("Error fetching promotions:", error);
         }
     };
