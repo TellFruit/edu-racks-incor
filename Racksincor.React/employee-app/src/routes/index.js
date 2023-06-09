@@ -35,11 +35,11 @@ const Routes = () => {
                     />
                 </Route>
                 <Route
-                    path="/:promotionType/:rackId/products"
+                    path="/:promotionType/:promotionId/products"
                     element={<PrivateRoute />}
                 >
                     <Route
-                        path="/:promotionType/:rackId/products"
+                        path="/:promotionType/:promotionId/products"
                         element={<ProductPromotionPage />}
                     />
                 </Route>
