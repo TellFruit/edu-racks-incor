@@ -24,20 +24,19 @@ const PromotionCreateModal = ({
     const [giftProductId, setGiftProductId] = useState("");
 
     const handleCreate = () => {
-        const promotionData = {
-            name,
-            expirationDate: new Date(expirationDate),
-            percentage:
-                promotionType !== "discount" ? parseInt(percentage) : null,
-            giftProductId:
-                promotionType === "gift" ? parseInt(giftProductId) : null,
-        };
+        const formattedExpirationDate = expirationDate
+            ? expirationDate.toISOString().split("T")[0]
+            : null;
 
-        onCreate(promotionData);
+        onCreate(name, formattedExpirationDate, percentage, giftProductId);
         setName("");
         setExpirationDate("");
         setPercentage("");
         setGiftProductId("");
+    };
+
+    const handleFocus = (event) => {
+        event.target.blur();
     };
 
     return (
@@ -72,6 +71,10 @@ const PromotionCreateModal = ({
                             fullWidth
                             value={percentage}
                             onChange={(e) => setPercentage(e.target.value)}
+                            inputProps={{
+                                max: -1,
+                                onFocus: handleFocus,
+                            }}
                             sx={{ marginBottom: 2 }}
                         />
                     )}
