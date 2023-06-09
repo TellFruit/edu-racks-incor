@@ -84,11 +84,11 @@ namespace Racksincor.Controllers
 
                 var promotionQuery = new PromotionQuery { ShopId = id };
 
-                var gift = await _promotionService.ReadWithQuery(promotionQuery);
+                var discount = await _promotionService.ReadWithQuery(promotionQuery);
 
-                if (gift.Any())
+                if (discount.Any())
                 {
-                    return Ok(gift);
+                    return Ok(discount);
                 }
                 else
                 {
