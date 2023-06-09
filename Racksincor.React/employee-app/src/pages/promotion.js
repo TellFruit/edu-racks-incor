@@ -78,7 +78,7 @@ const PromotionPage = () => {
     const handleCreate = async (
         name,
         expirationDate,
-        percentage,
+        percenatage,
         giftPromotionId
     ) => {
         try {
@@ -87,7 +87,7 @@ const PromotionPage = () => {
                 {
                     name,
                     expirationDate,
-                    percentage,
+                    percenatage,
                     giftPromotionId,
                     shopId: shopId,
                 },
@@ -112,7 +112,7 @@ const PromotionPage = () => {
         id,
         name,
         expirationDate,
-        percentage,
+        percenatage,
         giftPromotionId
     ) => {
         try {
@@ -121,7 +121,7 @@ const PromotionPage = () => {
                 {
                     name,
                     expirationDate,
-                    percentage,
+                    percenatage,
                     giftPromotionId,
                 },
                 {
@@ -183,7 +183,7 @@ const PromotionPage = () => {
     };
 
     return (
-        <Container maxWidth="lg" sx={{ mt: 4 }}>
+        <Container maxWidth="md" sx={{ mt: 4 }}>
             <Grid container spacing={4}>
                 <Grid item xs={12}>
                     <Typography variant="h4" gutterBottom>

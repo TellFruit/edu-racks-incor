@@ -20,7 +20,7 @@ const PromotionCreateModal = ({
 }) => {
     const [name, setName] = useState("");
     const [expirationDate, setExpirationDate] = useState(null);
-    const [percentage, setPercentage] = useState("");
+    const [percenatage, setPercenatage] = useState("");
     const [giftProductId, setGiftProductId] = useState("");
 
     const handleCreate = () => {
@@ -28,10 +28,10 @@ const PromotionCreateModal = ({
             ? expirationDate.toISOString().split("T")[0]
             : null;
 
-        onCreate(name, formattedExpirationDate, percentage, giftProductId);
+        onCreate(name, formattedExpirationDate, percenatage, giftProductId);
         setName("");
-        setExpirationDate("");
-        setPercentage("");
+        setExpirationDate(null);
+        setPercenatage("");
         setGiftProductId("");
     };
 
@@ -65,12 +65,12 @@ const PromotionCreateModal = ({
                     />
                     {promotionType === "discount" && (
                         <TextField
-                            label="Percentage"
+                            label="percenatage"
                             variant="outlined"
                             type="number"
                             fullWidth
-                            value={percentage}
-                            onChange={(e) => setPercentage(e.target.value)}
+                            value={percenatage}
+                            onChange={(e) => setPercenatage(e.target.value)}
                             inputProps={{
                                 max: -1,
                                 onFocus: handleFocus,
