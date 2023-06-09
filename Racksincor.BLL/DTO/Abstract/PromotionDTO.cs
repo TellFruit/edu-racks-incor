@@ -4,6 +4,7 @@
     {
         public string Name { get; set; }
         public DateTime ExpirationDate { get; set; }
+        public int ShopId { get; set; }
 
         public ICollection<ProductDTO>? Products { get; set; }
     }

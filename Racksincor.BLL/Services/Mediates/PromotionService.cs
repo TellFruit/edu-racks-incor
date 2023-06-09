@@ -27,6 +27,11 @@ namespace Racksincor.BLL.Services.Mediates
 
         public async Task<IReadOnlyList<TEntity>> ReadWithQuery(TQuery? obj)
         {
+            if (obj != null)
+            {
+                obj.Discriminator = typeof(TEntity).Name;
+            }
+
             return await _promotionRepository.ReadWithQuery(obj);
         }
 

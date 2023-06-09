@@ -23,8 +23,8 @@ namespace Racksincor.DAL.Services.Repositories
                     DateTime now = DateTime.Now;
 
                     await _connection.ExecuteAsync(@"
-                        INSERT INTO Promotions (Discriminator, Name, ExpirationDate, Percenatage, GiftProductId, CreatedAt, UpdatedAt)
-                            VALUES (@Discriminator, @Name, @ExpirationDate, @Percenatage, @GiftProductId, @CreatedAt, @UpdatedAt)",
+                        INSERT INTO Promotions (Discriminator, Name, ExpirationDate, Percenatage, GiftProductId, ShopId, CreatedAt, UpdatedAt)
+                            VALUES (@Discriminator, @Name, @ExpirationDate, @Percenatage, @GiftProductId, @ShopId, @CreatedAt, @UpdatedAt)",
                         new
                         {
                             Discriminator = entity.GetType().Name,
@@ -32,6 +32,7 @@ namespace Racksincor.DAL.Services.Repositories
                             ExpirationDate = entity.ExpirationDate,
                             Percenatage = entity.GetPropertyValue("Percenatage"),
                             GiftProductId = entity.GetPropertyValue("GiftProductId"),
+                            ShopId = entity.ShopId,
                             CreatedAt = now,
                             UpdatedAt = now
                         },
@@ -89,9 +90,27 @@ namespace Racksincor.DAL.Services.Repositories
                 {
                     sqlBuilder.Append(" AND Id = @Id");
                 }
+                
+                if (obj.Discriminator != default)
+                {
+                    sqlBuilder.Append(" AND Discriminator = @Discriminator");
+                }
+
+                if (obj.ShopId != default)
+                {
+                    sqlBuilder.Append(" AND ShopId = @ShopId");
+                }
             }
 
-            return (await _connection.QueryAsync<TEntity>(sqlBuilder.ToString(), obj)).ToList();
+            return (await _connection.QueryAsync<TEntity>(
+                sqlBuilder.ToString(), 
+                new
+                {
+                    Id = obj?.Id,
+                    ShopId = obj?.ShopId,
+                    Discriminator = obj?.Discriminator
+                }))
+                .ToList();
         }
 
         public async Task<TEntity> Update(TEntity entity)
