@@ -192,9 +192,7 @@ const PromotionPage = () => {
         <Container maxWidth="md" sx={{ mt: 4 }}>
             <Grid container spacing={4}>
                 <Grid item xs={12}>
-                    <Typography variant="h4" gutterBottom>
-                        {`Promotions of ${shop?.name}`}
-                    </Typography>
+                <h2>{`Promotions of ${shop?.name}`}</h2>
                     <h3>Create promotion</h3>
                     <Button
                         variant="contained"
