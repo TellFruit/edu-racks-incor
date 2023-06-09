@@ -115,9 +115,11 @@ const ProductPromotionPage = () => {
                 `/${promotionType.toLowerCase()}/${promotionId}`,
                 {
                     id: promotion.id,
-                    Name: promotion.name,
-                    ExpirationDate: promotion.expirationDate,
-                    Products: selectedProducts,
+                    name: promotion.name,
+                    expirationDate: promotion.expirationDate,
+                    percenatage: promotion.percenatage,
+                    giftProductId: promotion.giftProductId,
+                    products: selectedProducts,
                 },
                 {
                     headers: {
