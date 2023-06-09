@@ -8,6 +8,7 @@ import {
     Select,
     InputLabel,
 } from "@mui/material";
+import { DatePicker } from "@mui/x-date-pickers";
 import Modal from "react-modal";
 
 const PromotionCreateModal = ({
@@ -15,10 +16,10 @@ const PromotionCreateModal = ({
     onClose,
     onCreate,
     promotionType,
-    products
+    products,
 }) => {
     const [name, setName] = useState("");
-    const [expirationDate, setExpirationDate] = useState("");
+    const [expirationDate, setExpirationDate] = useState(null);
     const [percentage, setPercentage] = useState("");
     const [giftProductId, setGiftProductId] = useState("");
 
@@ -26,8 +27,10 @@ const PromotionCreateModal = ({
         const promotionData = {
             name,
             expirationDate: new Date(expirationDate),
-            percentage: promotionType !== "discount" ? parseInt(percentage) : null,
-            giftProductId: promotionType === "gift" ? parseInt(giftProductId) : null,
+            percentage:
+                promotionType !== "discount" ? parseInt(percentage) : null,
+            giftProductId:
+                promotionType === "gift" ? parseInt(giftProductId) : null,
         };
 
         onCreate(promotionData);
@@ -54,21 +57,19 @@ const PromotionCreateModal = ({
                         onChange={(e) => setName(e.target.value)}
                         sx={{ marginBottom: 2 }}
                     />
-                    <TextField
+                    <DatePicker
                         label="Expiration Date"
-                        variant="outlined"
-                        fullWidth
-                        promotionType="date"
                         value={expirationDate}
-                        onChange={(e) => setExpirationDate(e.target.value)}
+                        onChange={(date) => setExpirationDate(date)}
+                        fullWidth
                         sx={{ marginBottom: 2 }}
                     />
                     {promotionType === "discount" && (
                         <TextField
                             label="Percentage"
                             variant="outlined"
+                            type="number"
                             fullWidth
-                            promotionType="number"
                             value={percentage}
                             onChange={(e) => setPercentage(e.target.value)}
                             sx={{ marginBottom: 2 }}

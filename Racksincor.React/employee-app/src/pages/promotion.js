@@ -189,7 +189,7 @@ const PromotionPage = () => {
                     <Typography variant="h4" gutterBottom>
                         {`Promotions of ${shop?.name}`}
                     </Typography>
-                    <h3>Create product</h3>
+                    <h3>Create promotion</h3>
                     <Button
                         variant="contained"
                         color="primary"
@@ -228,7 +228,7 @@ const PromotionPage = () => {
                             onClose={closeEditModal}
                             promotion={selectedPromotion}
                             onUpdate={handleUpdate}
-                            products={products || []}
+                            products={products}
                             promotionType={promotionType}
                         />
                     )}
