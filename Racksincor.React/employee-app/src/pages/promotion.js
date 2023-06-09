@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import axios from "../api/instance";
 import {
     Container,
@@ -23,6 +24,7 @@ const PromotionPage = () => {
     const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
     const [selectedPromotion, setSelectedPromotion] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchShop();
@@ -164,6 +166,10 @@ const PromotionPage = () => {
         setPromotionType(event.target.value);
     };
 
+    const handleViewProducts = (rackId) => {
+        navigate(`/${promotionType.toLowerCase()}/${rackId}/products`);
+    };
+
     const openCreateModal = () => {
         setCreateModalIsOpen(true);
     };
@@ -221,6 +227,7 @@ const PromotionPage = () => {
                         promotions={promotions}
                         onDelete={handleDelete}
                         onOpenEditModal={openEditModal}
+                        onViewProducts={handleViewProducts}
                         products={products}
                     />
                     {selectedPromotion && (
