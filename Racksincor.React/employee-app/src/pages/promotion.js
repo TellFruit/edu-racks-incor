@@ -57,7 +57,6 @@ const PromotionPage = () => {
                 }
             );
             setPromotions(response.data);
-            console.log(response.data);
         } catch (error) {
             setPromotions([]);
             console.error("Error fetching promotions:", error);
@@ -81,7 +80,7 @@ const PromotionPage = () => {
         name,
         expirationDate,
         percenatage,
-        giftPromotionId
+        giftProductId
     ) => {
         try {
             const response = await axios.post(
@@ -90,7 +89,7 @@ const PromotionPage = () => {
                     name,
                     expirationDate,
                     percenatage,
-                    giftPromotionId,
+                    giftProductId,
                     shopId: shopId,
                 },
                 {
@@ -115,7 +114,7 @@ const PromotionPage = () => {
         name,
         expirationDate,
         percenatage,
-        giftPromotionId
+        giftProductId
     ) => {
         try {
             const response = await axios.put(
@@ -124,7 +123,7 @@ const PromotionPage = () => {
                     name,
                     expirationDate,
                     percenatage,
-                    giftPromotionId,
+                    giftProductId,
                 },
                 {
                     headers: {
