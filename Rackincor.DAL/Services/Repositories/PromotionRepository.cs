@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Racksincor.BLL.DTO;
 using Racksincor.BLL.DTO.Abstract;
 using Racksincor.BLL.DTO.Queries;
 using Racksincor.BLL.Interfaces;
@@ -134,6 +135,31 @@ namespace Racksincor.DAL.Services.Repositories
                             GiftProductId = entity.GetPropertyValue("GiftProductId"),
                             UpdatedAt = now
                         });
+
+                    if (entity.Products == null)
+                    {
+                        entity.Products = new List<ProductDTO>();
+                    }
+
+                    if (entity.Products.Any())
+                    {
+                        await _connection.ExecuteAsync(
+                            "DELETE FROM ProductPromotion WHERE PromotionsId = @PromotionsId",
+                            new { PromotionsId = entity.Id },
+                            transaction);
+                    }
+
+                    foreach (var product in entity.Products)
+                    {
+                        await _connection.ExecuteAsync(
+                            "INSERT INTO ProductPromotion (PromotionsId, Products) VALUES (@PromotionsId, @RackId)",
+                            new
+                            {
+                                ProductsId = product.Id,
+                                PromotionsId = entity.Id
+                            },
+                            transaction);
+                    }
 
                     transaction.Commit();
 
