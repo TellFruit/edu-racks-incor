@@ -26,7 +26,7 @@ const ProductRackPage = () => {
     }, []);
 
     useEffect(() => {
-        if (selectedProducts.length > 0) {
+        if (selectedProducts.length >= 0) {
             fetchAvailableProducts();
         }
     }, [selectedProducts]);
@@ -46,7 +46,7 @@ const ProductRackPage = () => {
                             selectedProduct.id === availableProduct.id
                     )
             );
-            
+
             setAvailableProducts(filteredProducts);
         } catch (error) {
             console.error("Error fetching products:", error);

@@ -26,7 +26,7 @@ const ProductPromotionPage = () => {
     }, []);
 
     useEffect(() => {
-        if (selectedProducts.length > 0) {
+        if (selectedProducts.length >= 0) {
             fetchAvailableProducts();
         }
     }, [selectedProducts]);
@@ -47,6 +47,7 @@ const ProductPromotionPage = () => {
                     )
             );
             setAvailableProducts(filteredProducts);
+            console.log(filteredProducts)
         } catch (error) {
             console.error("Error fetching products:", error);
         }
