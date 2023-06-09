@@ -125,19 +125,19 @@ namespace Racksincor.DAL.Services.Repositories
                     if (entity.Products.Any())
                     {
                         await _connection.ExecuteAsync(
-                            "DELETE FROM ProductRack WHERE RacksId = @RackId",
-                            new { RackId = entity.Id },
+                            "DELETE FROM ProductRack WHERE RacksId = @RacksId",
+                            new { RacksId = entity.Id },
                             transaction);
                     }
 
                     foreach(var product in entity.Products)
                     {
                         await _connection.ExecuteAsync(
-                            "INSERT INTO ProductRack (ProductsId, RacksId) VALUES (@ProductId, @RackId)",
+                            "INSERT INTO ProductRack (ProductsId, RacksId) VALUES (@ProductsId, @RacksId)",
                             new
                             {
-                                ProductId = product.Id,
-                                RackId = entity.Id
+                                ProductsId = product.Id,
+                                RacksId = entity.Id
                             },
                             transaction);
                     }
