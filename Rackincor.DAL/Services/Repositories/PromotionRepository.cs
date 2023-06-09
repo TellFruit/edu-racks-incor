@@ -23,8 +23,8 @@ namespace Racksincor.DAL.Services.Repositories
                     DateTime now = DateTime.Now;
 
                     await _connection.ExecuteAsync(@"
-                        INSERT INTO Promotions (Discriminator, Name, ExpirationDate, Percenatage, GiftProductId, CreatedAt, UpdatedAt)
-                            VALUES (@Discriminator, @Name, @ExpirationDate, @Percenatage, @GiftProductId, @CreatedAt, @UpdatedAt)",
+                        INSERT INTO Promotions (Discriminator, Name, ExpirationDate, Percenatage, GiftProductId, ShopId, CreatedAt, UpdatedAt)
+                            VALUES (@Discriminator, @Name, @ExpirationDate, @Percenatage, @GiftProductId, @ShopId, @CreatedAt, @UpdatedAt)",
                         new
                         {
                             Discriminator = entity.GetType().Name,
