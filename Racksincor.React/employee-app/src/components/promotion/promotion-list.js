@@ -5,7 +5,13 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Pagination from "@mui/material/Pagination";
 
-const PromotionList = ({ promotions, onDelete, onOpenEditModal, products }) => {
+const PromotionList = ({
+    promotions,
+    onDelete,
+    onOpenEditModal,
+    onViewProducts,
+    products,
+}) => {
     const [page, setPage] = useState(1);
     const promotionsPerPage = 5;
     const totalPages = Math.ceil(promotions.length / promotionsPerPage);
@@ -77,6 +83,16 @@ const PromotionList = ({ promotions, onDelete, onOpenEditModal, products }) => {
                                             sx={{ ml: 2 }}
                                         >
                                             Delete
+                                        </Button>
+                                        <Button
+                                            variant="contained"
+                                            color="primary"
+                                            onClick={() =>
+                                                onViewProducts(promotion.id)
+                                            }
+                                            sx={{ ml: 2 }}
+                                        >
+                                            View Products
                                         </Button>
                                     </Box>
                                 </Grid>

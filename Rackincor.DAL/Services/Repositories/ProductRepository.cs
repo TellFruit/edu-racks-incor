@@ -90,7 +90,7 @@ namespace Racksincor.DAL.Services.Repositories
                 else if (obj.PromotionId != default)
                 {
                     sqlBuilder.Append(" INNER JOIN productpromotion pp ON p.Id = pp.ProductsId");
-                    sqlBuilder.Append(" WHERE pp.PromotionsId = @PromotionsId");
+                    sqlBuilder.Append(" WHERE pp.PromotionsId = @PromotionId");
                 }
                 else
                 {

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import axios from "../api/instance";
 import {
     Container,
@@ -23,6 +24,7 @@ const PromotionPage = () => {
     const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
     const [selectedPromotion, setSelectedPromotion] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchShop();
@@ -164,6 +166,10 @@ const PromotionPage = () => {
         setPromotionType(event.target.value);
     };
 
+    const handleViewProducts = (rackId) => {
+        navigate(`/${promotionType.toLowerCase()}/${rackId}/products`);
+    };
+
     const openCreateModal = () => {
         setCreateModalIsOpen(true);
     };
@@ -186,9 +192,7 @@ const PromotionPage = () => {
         <Container maxWidth="md" sx={{ mt: 4 }}>
             <Grid container spacing={4}>
                 <Grid item xs={12}>
-                    <Typography variant="h4" gutterBottom>
-                        {`Promotions of ${shop?.name}`}
-                    </Typography>
+                <h2>{`Promotions of ${shop?.name}`}</h2>
                     <h3>Create promotion</h3>
                     <Button
                         variant="contained"
@@ -221,6 +225,7 @@ const PromotionPage = () => {
                         promotions={promotions}
                         onDelete={handleDelete}
                         onOpenEditModal={openEditModal}
+                        onViewProducts={handleViewProducts}
                         products={products}
                     />
                     {selectedPromotion && (
