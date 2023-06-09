@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Racksincor.BLL.DTO;
 using Racksincor.BLL.DTO.Abstract;
 using Racksincor.BLL.DTO.Queries;
 using Racksincor.BLL.Interfaces;
@@ -69,6 +70,11 @@ namespace Racksincor.DAL.Services.Repositories
                         new { entity.Id },
                         transaction);
 
+                    await _connection.ExecuteAsync(
+                        "DELETE FROM ProductPromotion WHERE PromotionsId = @PromotionsId",
+                        new { PromotionsId = entity.Id },
+                        transaction);
+
                     transaction.Commit();
                 }
                 catch (Exception ex)
@@ -134,6 +140,23 @@ namespace Racksincor.DAL.Services.Repositories
                             GiftProductId = entity.GetPropertyValue("GiftProductId"),
                             UpdatedAt = now
                         });
+
+                    await _connection.ExecuteAsync(
+                            "DELETE FROM ProductPromotion WHERE PromotionsId = @PromotionsId",
+                            new { PromotionsId = entity.Id },
+                            transaction);
+
+                    foreach (var product in entity.Products)
+                    {
+                        await _connection.ExecuteAsync(
+                            "INSERT INTO ProductPromotion (PromotionsId, ProductsId) VALUES (@PromotionsId, @ProductsId)",
+                            new
+                            {
+                                ProductsId = product.Id,
+                                PromotionsId = entity.Id
+                            },
+                            transaction);
+                    }
 
                     transaction.Commit();
 

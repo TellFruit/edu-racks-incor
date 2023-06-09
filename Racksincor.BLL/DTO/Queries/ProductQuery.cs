@@ -6,5 +6,6 @@ namespace Racksincor.BLL.DTO.Queries
     {
         public int ShopId { get; set; }
         public int RackId { get; set; }
+        public int PromotionId { get; set; }
     }
 }

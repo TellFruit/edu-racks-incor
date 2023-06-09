@@ -11,11 +11,12 @@ import RackPage from "../pages/rack";
 import ProductPage from "../pages/product";
 import ProductRackPage from "../pages/product-rack";
 import PromotionPage from "../pages/promotion";
+import ProductPromotionPage from "../pages/product-promotion";
 
 const Routes = () => {
     return (
         <Router>
-            <Navbar/>
+            <Navbar />
             <Switch>
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/rack" element={<PrivateRoute />}>
@@ -28,7 +29,19 @@ const Routes = () => {
                     <Route path="/promotion" element={<PromotionPage />} />
                 </Route>
                 <Route path="/rack/:rackId/products" element={<PrivateRoute />}>
-                    <Route path="/rack/:rackId/products" element={<ProductRackPage />} />
+                    <Route
+                        path="/rack/:rackId/products"
+                        element={<ProductRackPage />}
+                    />
+                </Route>
+                <Route
+                    path="/:promotionType/:promotionId/products"
+                    element={<PrivateRoute />}
+                >
+                    <Route
+                        path="/:promotionType/:promotionId/products"
+                        element={<ProductPromotionPage />}
+                    />
                 </Route>
             </Switch>
         </Router>
