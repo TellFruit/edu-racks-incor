@@ -1,11 +1,6 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
-import {
-    AppBar,
-    Typography,
-    Button,
-    Box
-} from "@mui/material";
+import { AppBar, Typography, Button, Box } from "@mui/material";
 import { FlexToolbar } from "../../material/flex-tool-bar";
 import { removeToken, isTokenValid } from "../../api/token";
 import { useNavigate } from "react-router-dom";
@@ -22,9 +17,13 @@ const Navbar = () => {
         <AppBar position="static">
             <FlexToolbar>
                 <Box>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    Racksincor
-                </Typography>
+                    <Typography
+                        variant="h6"
+                        component="div"
+                        sx={{ flexGrow: 1 }}
+                    >
+                        Racksincor
+                    </Typography>
                 </Box>
                 <Box>
                     <Button component={RouterLink} to="/rack" color="inherit">
@@ -47,11 +46,9 @@ const Navbar = () => {
                 </Box>
                 <Box>
                     {isTokenValid() ? (
-                        <>
-                            <Button color="inherit" onClick={handleLogout}>
-                                Logout
-                            </Button>
-                        </>
+                        <Button color="inherit" onClick={handleLogout}>
+                            Logout
+                        </Button>
                     ) : (
                         <Button
                             component={RouterLink}
