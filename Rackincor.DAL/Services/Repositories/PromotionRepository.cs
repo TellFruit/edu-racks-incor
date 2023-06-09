@@ -70,6 +70,11 @@ namespace Racksincor.DAL.Services.Repositories
                         new { entity.Id },
                         transaction);
 
+                    await _connection.ExecuteAsync(
+                        "DELETE FROM ProductPromotion WHERE PromotionsId = @PromotionsId",
+                        new { PromotionsId = entity.Id },
+                        transaction);
+
                     transaction.Commit();
                 }
                 catch (Exception ex)
