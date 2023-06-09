@@ -99,6 +99,31 @@ namespace Racksincor.Controllers
             }
         }
 
+        [HttpGet("promotion/{id}")]
+        [JwtAuthorize(Roles = "Employee")]
+        public async Task<IActionResult> GetByPromotionId(int id)
+        {
+            try
+            {
+                var productQuery = new ProductQuery { PromotionId = id };
+
+                var product = await _productService.ReadWithQuery(productQuery);
+
+                if (product.Any())
+                {
+                    return Ok(product);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpGet("shop")]
         [JwtAuthorize(Roles = "Employee")]
         public async Task<IActionResult> GetByShop()
