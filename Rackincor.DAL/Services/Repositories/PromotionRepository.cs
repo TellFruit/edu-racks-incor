@@ -32,6 +32,7 @@ namespace Racksincor.DAL.Services.Repositories
                             ExpirationDate = entity.ExpirationDate,
                             Percenatage = entity.GetPropertyValue("Percenatage"),
                             GiftProductId = entity.GetPropertyValue("GiftProductId"),
+                            ShopId = entity.ShopId,
                             CreatedAt = now,
                             UpdatedAt = now
                         },

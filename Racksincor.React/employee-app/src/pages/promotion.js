@@ -57,6 +57,7 @@ const PromotionPage = () => {
                 }
             );
             setPromotions(response.data);
+            console.log(response.data);
         } catch (error) {
             console.error("Error fetching promotions:", error);
         }
@@ -161,7 +162,6 @@ const PromotionPage = () => {
 
     const handlePromotionTypeChange = (event) => {
         setPromotionType(event.target.value);
-        console.log(products);
     };
 
     const openCreateModal = () => {

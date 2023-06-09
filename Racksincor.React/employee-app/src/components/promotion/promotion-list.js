@@ -30,7 +30,7 @@ const PromotionList = ({ promotions, onDelete, onOpenEditModal }) => {
                                     <p>Name: {promotion.name}</p>
                                     <p>
                                         Expiration Date:{" "}
-                                        {promotion.expirationDate}
+                                        {new Date(promotion.expirationDate).toLocaleDateString()}
                                     </p>
                                     {promotion.percentage && (
                                         <p>
