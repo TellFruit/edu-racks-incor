@@ -89,6 +89,11 @@ namespace Racksincor.DAL.Services.Repositories
                 {
                     sqlBuilder.Append(" AND Id = @Id");
                 }
+
+                if (obj.ShopId != default)
+                {
+                    sqlBuilder.Append(" AND ShopId = @ShopId");
+                }
             }
 
             return (await _connection.QueryAsync<TEntity>(sqlBuilder.ToString(), obj)).ToList();
