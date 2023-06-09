@@ -90,6 +90,11 @@ namespace Racksincor.DAL.Services.Repositories
                 {
                     sqlBuilder.Append(" AND Id = @Id");
                 }
+                
+                if (obj.Discriminator != default)
+                {
+                    sqlBuilder.Append(" AND Discriminator = @Discriminator");
+                }
 
                 if (obj.ShopId != default)
                 {
@@ -97,7 +102,15 @@ namespace Racksincor.DAL.Services.Repositories
                 }
             }
 
-            return (await _connection.QueryAsync<TEntity>(sqlBuilder.ToString(), obj)).ToList();
+            return (await _connection.QueryAsync<TEntity>(
+                sqlBuilder.ToString(), 
+                new
+                {
+                    Id = obj?.Id,
+                    ShopId = obj?.ShopId,
+                    Discriminator = obj?.Discriminator
+                }))
+                .ToList();
         }
 
         public async Task<TEntity> Update(TEntity entity)
