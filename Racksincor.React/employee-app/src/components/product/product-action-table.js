@@ -8,6 +8,7 @@ import {
     TableRow,
 } from "@mui/material";
 import Button from "@mui/material/Button";
+import i18n from "../../i18n/i18n";
 
 const ProductActionTable = ({ products, onActionClick, actionText }) => {
     return (
@@ -15,8 +16,10 @@ const ProductActionTable = ({ products, onActionClick, actionText }) => {
             <Table>
                 <TableHead>
                     <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell align="center">Action</TableCell>
+                        <TableCell>{i18n.t("productTable.name")}</TableCell>
+                        <TableCell align="center">
+                            {i18n.t("productTable.action")}
+                        </TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

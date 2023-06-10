@@ -6,5 +6,10 @@
         "login": "Увійти",
         "logout": "Вийти",
         "language": "Мова"
+    },
+    "productTable": {
+        "name": "Назва",
+        "action": "Дія",
+        "actionText": "Текст дії"
     }
 }
