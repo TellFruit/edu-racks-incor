@@ -98,5 +98,11 @@
         "updateButton": "Update",
         "deleteButton": "Delete",
         "viewProductsButton": "View Products"
+    },
+    "rackCreateModal": {
+        "titleLabel": "Create Rack",
+        "nameLabel": "Name",
+        "createButton": "Create",
+        "cancelButton": "Cancel"
     }
 }

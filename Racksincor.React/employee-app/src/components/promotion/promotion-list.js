@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Pagination from "@mui/material/Pagination";
-import i18next from "i18next";
+import i18n from "../../i18n/i18n";
 
 const PromotionList = ({
     promotions,
@@ -43,11 +43,11 @@ const PromotionList = ({
                             <Grid container spacing={2} alignItems="center">
                                 <Grid item xs={6}>
                                     <Box>
-                                        <p>{`${i18next.t(
+                                        <p>{`${i18n.t(
                                             "promotionList.nameLabel"
                                         )}: ${promotion.name}`}</p>
                                         <p>
-                                            {`${i18next.t(
+                                            {`${i18n.t(
                                                 "promotionList.expirationDateLabel"
                                             )}: ${new Date(
                                                 promotion.expirationDate
@@ -55,13 +55,13 @@ const PromotionList = ({
                                         </p>
                                         {promotion.percenatage && (
                                             <p>
-                                                {`${i18next.t(
+                                                {`${i18n.t(
                                                     "promotionList.percentageLabel"
                                                 )}: ${promotion.percenatage}%`}
                                             </p>
                                         )}
                                         {promotion.giftProductId && (
-                                            <p>{`${i18next.t(
+                                            <p>{`${i18n.t(
                                                 "promotionList.giftProductLabel"
                                             )}: ${productName}`}</p>
                                         )}
@@ -79,7 +79,7 @@ const PromotionList = ({
                                                 onOpenEditModal(promotion)
                                             }
                                         >
-                                            {i18next.t(
+                                            {i18n.t(
                                                 "promotionList.updateButton"
                                             )}
                                         </Button>
@@ -91,7 +91,7 @@ const PromotionList = ({
                                             }
                                             sx={{ ml: 2 }}
                                         >
-                                            {i18next.t(
+                                            {i18n.t(
                                                 "promotionList.deleteButton"
                                             )}
                                         </Button>
@@ -103,7 +103,7 @@ const PromotionList = ({
                                             }
                                             sx={{ ml: 2 }}
                                         >
-                                            {i18next.t(
+                                            {i18n.t(
                                                 "promotionList.viewProductsButton"
                                             )}
                                         </Button>

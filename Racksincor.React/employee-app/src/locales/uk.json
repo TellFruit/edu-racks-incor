@@ -98,5 +98,11 @@
         "updateButton": "Оновити",
         "deleteButton": "Видалити",
         "viewProductsButton": "Переглянути товари"
+    },
+    "rackCreateModal": {
+        "titleLabel": "Створити стелаж",
+        "nameLabel": "Назва",
+        "createButton": "Створити",
+        "cancelButton": "Скасувати"
     }
 }
