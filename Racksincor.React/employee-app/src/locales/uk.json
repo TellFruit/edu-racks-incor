@@ -110,5 +110,11 @@
         "nameLabel": "Назва",
         "updateButton": "Оновити",
         "cancelButton": "Скасувати"
+    },
+    "rackList": {
+        "nameLabel": "Назва",
+        "updateButton": "Оновити",
+        "deleteButton": "Видалити",
+        "viewProductsButton": "Переглянути товари"
     }
 }

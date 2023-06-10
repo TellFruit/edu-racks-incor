@@ -110,5 +110,11 @@
         "nameLabel": "Name",
         "updateButton": "Update",
         "cancelButton": "Cancel"
+    },
+    "rackList": {
+        "nameLabel": "Name",
+        "updateButton": "Update",
+        "deleteButton": "Delete",
+        "viewProductsButton": "View Products"
     }
 }

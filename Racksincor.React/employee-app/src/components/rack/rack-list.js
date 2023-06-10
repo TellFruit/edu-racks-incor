@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Pagination from "@mui/material/Pagination";
+import i18n from "../../i18n/i18n";
 
 const RackList = ({ racks, onDelete, onOpenEditModal, onViewProducts }) => {
     const [page, setPage] = useState(1);
@@ -27,7 +28,7 @@ const RackList = ({ racks, onDelete, onOpenEditModal, onViewProducts }) => {
                         <Grid container spacing={2} alignItems="center">
                             <Grid item xs={6}>
                                 <Box>
-                                    <p>Name: {rack.name}</p>
+                                    <p>{`${i18n.t("rackList.nameLabel")}: ${rack.name}`}</p>
                                 </Box>
                             </Grid>
                             <Grid item xs={6}>
@@ -37,7 +38,7 @@ const RackList = ({ racks, onDelete, onOpenEditModal, onViewProducts }) => {
                                         color="primary"
                                         onClick={() => onOpenEditModal(rack)}
                                     >
-                                        Update
+                                        {i18n.t("rackList.updateButton")}
                                     </Button>
                                     <Button
                                         variant="contained"
@@ -45,7 +46,7 @@ const RackList = ({ racks, onDelete, onOpenEditModal, onViewProducts }) => {
                                         onClick={() => onDelete(rack.id)}
                                         sx={{ ml: 2 }}
                                     >
-                                        Delete
+                                        {i18n.t("rackList.deleteButton")}
                                     </Button>
                                     <Button
                                         variant="contained"
@@ -53,7 +54,7 @@ const RackList = ({ racks, onDelete, onOpenEditModal, onViewProducts }) => {
                                         onClick={() => onViewProducts(rack.id)}
                                         sx={{ ml: 2 }}
                                     >
-                                        View Products
+                                        {i18n.t("rackList.viewProductsButton")}
                                     </Button>
                                 </Box>
                             </Grid>
