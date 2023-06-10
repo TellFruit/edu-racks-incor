@@ -1,9 +1,11 @@
 {
-    "navbar.racks": "Racks",
-    "navbar.products": "Products",
-    "navbar.promotions": "Promotions",
-    "navbar.login": "Login",
-    "navbar.logout": "Logout",
-    "navbar.language": "Language"
+    "navbar":  {
+        "racks": "Racks",
+        "products": "Products",
+        "promotions": "Promotions",
+        "login": "Login",
+        "logout": "Logout",
+        "language": "Language"
+    }
   }
   

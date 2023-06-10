@@ -60,13 +60,14 @@ const Navbar = () => {
                         {i18n.t("navbar.promotions")}
                     </Button>
                 </Box>
-                <Box>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
                     <Select
                         value={language}
                         onChange={handleLanguageChange}
                         sx={{
                             "&:before": { borderBottom: "none" },
                             color: "inherit",
+                            ml: 2,
                         }}
                     >
                         <MenuItem value="en">English</MenuItem>
