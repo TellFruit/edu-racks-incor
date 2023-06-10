@@ -62,5 +62,14 @@
         "isInStockLabel": "В наявності",
         "updateButton": "Оновити",
         "cancelButton": "Скасувати"
+    },
+    "productList": {
+        "nameLabel": "Назва",
+        "priceLabel": "Ціна",
+        "isInStockLabel": "В наявності",
+        "yesLabel": "Так",
+        "noLabel": "Ні",
+        "updateButton": "Оновити",
+        "deleteButton": "Видалити"
     }
 }

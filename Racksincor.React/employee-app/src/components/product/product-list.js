@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Pagination from "@mui/material/Pagination";
+import i18n from "../../i18n/i18n";
 
 const ProductList = ({ products, onDelete, onOpenEditModal }) => {
     const [page, setPage] = useState(1);
@@ -27,11 +28,11 @@ const ProductList = ({ products, onDelete, onOpenEditModal }) => {
                         <Grid container spacing={2} alignItems="center">
                             <Grid item xs={6}>
                                 <Box>
-                                    <p>Name: {product.name}</p>
-                                    <p>Price: ${product.price}</p>
+                                    <p>{i18n.t("productList.nameLabel")}: {product.name}</p>
+                                    <p>{i18n.t("productList.priceLabel")}: ${product.price}</p>
                                     <p>
-                                        Is In Stock:{" "}
-                                        {product.isInStock ? "Yes" : "No"}
+                                        {i18n.t("productList.isInStockLabel")}:{" "}
+                                        {product.isInStock ? i18n.t("productList.yesLabel") : i18n.t("productList.noLabel")}
                                     </p>
                                 </Box>
                             </Grid>
@@ -42,7 +43,7 @@ const ProductList = ({ products, onDelete, onOpenEditModal }) => {
                                         color="primary"
                                         onClick={() => onOpenEditModal(product)}
                                     >
-                                        Update
+                                        {i18n.t("productList.updateButton")}
                                     </Button>
                                     <Button
                                         variant="contained"
@@ -50,7 +51,7 @@ const ProductList = ({ products, onDelete, onOpenEditModal }) => {
                                         onClick={() => onDelete(product.id)}
                                         sx={{ ml: 2 }}
                                     >
-                                        Delete
+                                        {i18n.t("productList.deleteButton")}
                                     </Button>
                                 </Box>
                             </Grid>

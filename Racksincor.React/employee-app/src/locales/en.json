@@ -62,5 +62,14 @@
         "isInStockLabel": "Is In Stock",
         "updateButton": "Update",
         "cancelButton": "Cancel"
+    },
+    "productList": {
+        "nameLabel": "Name",
+        "priceLabel": "Price",
+        "isInStockLabel": "Is In Stock",
+        "yesLabel": "Yes",
+        "noLabel": "No",
+        "updateButton": "Update",
+        "deleteButton": "Delete"
     }
 }
