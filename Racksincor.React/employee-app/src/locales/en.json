@@ -46,5 +46,13 @@
         "createRack": "Create rack",
         "createButton": "Create",
         "rackList": "Rack List"
+    },
+    "createProductModal": {
+        "title": "Create Product",
+        "nameLabel": "Name",
+        "priceLabel": "Price",
+        "isInStockLabel": "Is In Stock",
+        "createButton": "Create",
+        "cancelButton": "Cancel"
     }
 }
