@@ -89,5 +89,14 @@
         "giftProductLabel": "Gift Product",
         "updateButton": "Update",
         "cancelButton": "Cancel"
+    },
+    "promotionList": {
+        "nameLabel": "Name",
+        "expirationDateLabel": "Expiration Date",
+        "percentageLabel": "Percentage",
+        "giftProductLabel": "Gift Product",
+        "updateButton": "Update",
+        "deleteButton": "Delete",
+        "viewProductsButton": "View Products"
     }
 }

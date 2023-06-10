@@ -89,5 +89,14 @@
         "giftProductLabel": "Подарунковий товар",
         "updateButton": "Оновити",
         "cancelButton": "Скасувати"
+    },
+    "promotionList": {
+        "nameLabel": "Назва",
+        "expirationDateLabel": "Дата закінчення",
+        "percentageLabel": "Відсоток",
+        "giftProductLabel": "Подарунковий товар",
+        "updateButton": "Оновити",
+        "deleteButton": "Видалити",
+        "viewProductsButton": "Переглянути товари"
     }
 }

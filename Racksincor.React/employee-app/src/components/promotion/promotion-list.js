@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Pagination from "@mui/material/Pagination";
+import i18next from "i18next";
 
 const PromotionList = ({
     promotions,
@@ -42,21 +43,27 @@ const PromotionList = ({
                             <Grid container spacing={2} alignItems="center">
                                 <Grid item xs={6}>
                                     <Box>
-                                        <p>Name: {promotion.name}</p>
+                                        <p>{`${i18next.t(
+                                            "promotionList.nameLabel"
+                                        )}: ${promotion.name}`}</p>
                                         <p>
-                                            Expiration Date:{" "}
-                                            {new Date(
+                                            {`${i18next.t(
+                                                "promotionList.expirationDateLabel"
+                                            )}: ${new Date(
                                                 promotion.expirationDate
-                                            ).toLocaleDateString()}
+                                            ).toLocaleDateString()}`}
                                         </p>
                                         {promotion.percenatage && (
                                             <p>
-                                                Percentage:{" "}
-                                                {promotion.percenatage}%
+                                                {`${i18next.t(
+                                                    "promotionList.percentageLabel"
+                                                )}: ${promotion.percenatage}%`}
                                             </p>
                                         )}
                                         {promotion.giftProductId && (
-                                            <p>Gift Product: {productName}</p>
+                                            <p>{`${i18next.t(
+                                                "promotionList.giftProductLabel"
+                                            )}: ${productName}`}</p>
                                         )}
                                     </Box>
                                 </Grid>
@@ -72,7 +79,9 @@ const PromotionList = ({
                                                 onOpenEditModal(promotion)
                                             }
                                         >
-                                            Update
+                                            {i18next.t(
+                                                "promotionList.updateButton"
+                                            )}
                                         </Button>
                                         <Button
                                             variant="contained"
@@ -82,7 +91,9 @@ const PromotionList = ({
                                             }
                                             sx={{ ml: 2 }}
                                         >
-                                            Delete
+                                            {i18next.t(
+                                                "promotionList.deleteButton"
+                                            )}
                                         </Button>
                                         <Button
                                             variant="contained"
@@ -92,7 +103,9 @@ const PromotionList = ({
                                             }
                                             sx={{ ml: 2 }}
                                         >
-                                            View Products
+                                            {i18next.t(
+                                                "promotionList.viewProductsButton"
+                                            )}
                                         </Button>
                                     </Box>
                                 </Grid>
