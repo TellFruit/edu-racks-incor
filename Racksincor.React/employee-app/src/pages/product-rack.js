@@ -8,6 +8,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ProductActionTable from "../components/product/product-action-table";
+import i18n from "../i18n/i18n";
 
 const ProductRackPage = () => {
     const token = getToken();
@@ -130,7 +131,7 @@ const ProductRackPage = () => {
                 <Grid item xs={6}>
                     <Paper variant="outlined" sx={{ p: 2, minHeight: 400 }}>
                         <Typography variant="h6" gutterBottom>
-                            Available Products
+                            {i18n.t("productRackPage.availableProducts")}
                         </Typography>
                         <ProductActionTable
                             products={availableProducts}
@@ -142,7 +143,7 @@ const ProductRackPage = () => {
                 <Grid item xs={6}>
                     <Paper variant="outlined" sx={{ p: 2, minHeight: 400 }}>
                         <Typography variant="h6" gutterBottom>
-                            Selected Products
+                            {i18n.t("productRackPage.selectedProducts")}
                         </Typography>
                         <ProductActionTable
                             products={selectedProducts}
@@ -161,7 +162,7 @@ const ProductRackPage = () => {
                         color="primary"
                         onClick={handleApplyChanges}
                     >
-                        Apply Changes
+                        {i18n.t("productRackPage.applyChangesButton")}
                     </Button>
                 </Grid>
             </Grid>

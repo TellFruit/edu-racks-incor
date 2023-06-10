@@ -21,5 +21,10 @@
         "emailLabel": "Електронна пошта",
         "passwordLabel": "Пароль",
         "loginButton": "Увійти"
+    },
+    "productRackPage": {
+        "availableProducts": "Доступні товари",
+        "selectedProducts": "Вибрані товари",
+        "applyChangesButton": "Застосувати зміни"
     }
 }

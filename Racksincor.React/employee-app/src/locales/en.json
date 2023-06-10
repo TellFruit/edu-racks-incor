@@ -21,5 +21,10 @@
         "emailLabel": "Email",
         "passwordLabel": "Password",
         "loginButton": "Login"
+    },
+    "productRackPage": {
+        "availableProducts": "Available Products",
+        "selectedProducts": "Selected Products",
+        "applyChangesButton": "Apply Changes"
     }
 }
