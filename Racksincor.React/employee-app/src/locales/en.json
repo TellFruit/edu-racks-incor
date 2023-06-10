@@ -26,5 +26,11 @@
         "availableProducts": "Available Products",
         "selectedProducts": "Selected Products",
         "applyChangesButton": "Apply Changes"
+    },
+    "productPage": {
+        "productsOf": "Products of",
+        "createProduct": "Create product",
+        "createButton": "Create",
+        "productList": "Product List"
     }
 }

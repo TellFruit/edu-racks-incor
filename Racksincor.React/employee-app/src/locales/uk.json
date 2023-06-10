@@ -26,5 +26,11 @@
         "availableProducts": "Доступні товари",
         "selectedProducts": "Вибрані товари",
         "applyChangesButton": "Застосувати зміни"
+    },
+    "productPage": {
+        "productsOf": "Товари магазину",
+        "createProduct": "Створити товар",
+        "createButton": "Створити",
+        "productList": "Список товарів"
     }
 }
