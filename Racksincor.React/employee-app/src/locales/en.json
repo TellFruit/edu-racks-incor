@@ -9,7 +9,11 @@
     },
     "productTable": {
         "name": "Name",
-        "action": "Action",
-        "actionText": "Action Text"
+        "action": "Action"
+    },
+    "productPromotionPage": {
+        "availableProducts": "Available Products",
+        "selectedProducts": "Selected Products",
+        "applyChanges": "Apply Changes"
     }
 }

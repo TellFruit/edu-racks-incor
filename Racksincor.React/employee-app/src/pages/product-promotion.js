@@ -8,6 +8,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ProductActionTable from "../components/product/product-action-table";
+import i18n from "../i18n/i18n";
 
 const ProductPromotionPage = () => {
     const token = getToken();
@@ -47,7 +48,7 @@ const ProductPromotionPage = () => {
                     )
             );
             setAvailableProducts(filteredProducts);
-            console.log(filteredProducts)
+            console.log(filteredProducts);
         } catch (error) {
             console.error("Error fetching products:", error);
         }
@@ -138,24 +139,24 @@ const ProductPromotionPage = () => {
                 <Grid item xs={6}>
                     <Paper variant="outlined" sx={{ p: 2, minHeight: 400 }}>
                         <Typography variant="h6" gutterBottom>
-                            Available Products
+                            {i18n.t("productPromotionPage.availableProducts")}
                         </Typography>
                         <ProductActionTable
                             products={availableProducts}
                             onActionClick={handleAddProduct}
-                            actionText="Add"
+                            actionText={i18n.t("productPromotionPage.add")}
                         />
                     </Paper>
                 </Grid>
                 <Grid item xs={6}>
                     <Paper variant="outlined" sx={{ p: 2, minHeight: 400 }}>
                         <Typography variant="h6" gutterBottom>
-                            Selected Products
+                            {i18n.t("productPromotionPage.selectedProducts")}
                         </Typography>
                         <ProductActionTable
                             products={selectedProducts}
                             onActionClick={handleRemoveProduct}
-                            actionText="Remove"
+                            actionText={i18n.t("productPromotionPage.remove")}
                         />
                     </Paper>
                 </Grid>
@@ -169,7 +170,7 @@ const ProductPromotionPage = () => {
                         color="primary"
                         onClick={handleApplyChanges}
                     >
-                        Apply Changes
+                        {i18n.t("productPromotionPage.applyChanges")}
                     </Button>
                 </Grid>
             </Grid>

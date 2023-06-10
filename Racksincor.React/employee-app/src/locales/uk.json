@@ -9,7 +9,11 @@
     },
     "productTable": {
         "name": "Назва",
-        "action": "Дія",
-        "actionText": "Текст дії"
+        "action": "Дія"
+    },
+    "productPromotionPage": {
+        "availableProducts": "Доступні товари",
+        "selectedProducts": "Вибрані товари",
+        "applyChanges": "Застосувати зміни"
     }
 }
