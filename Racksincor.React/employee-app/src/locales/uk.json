@@ -15,5 +15,11 @@
         "availableProducts": "Доступні товари",
         "selectedProducts": "Вибрані товари",
         "applyChanges": "Застосувати зміни"
+    },
+    "loginPage": {
+        "title": "Увійти",
+        "emailLabel": "Електронна пошта",
+        "passwordLabel": "Пароль",
+        "loginButton": "Увійти"
     }
 }
