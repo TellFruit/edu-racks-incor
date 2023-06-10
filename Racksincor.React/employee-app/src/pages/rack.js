@@ -8,9 +8,10 @@ import RackList from "../components/rack/rack-list";
 import RackCreateModal from "../components/rack/rack-create";
 import RackEditModal from "../components/rack/rack-edit";
 import { getToken, getShopId } from "../api/token";
-import i18n from "../i18n/i18n";
+import { useTranslation } from "react-i18next";
 
 const RackPage = () => {
+    const { t } = useTranslation();
     const token = getToken();
     const shopId = getShopId();
     const [shop, setShop] = useState(null);
@@ -136,15 +137,15 @@ const RackPage = () => {
     return (
         <Container maxWidth="md">
             <Box sx={{ mt: 8 }}>
-                <h2>{i18n.t("rackPage.racksOf", { name: shop?.name })}</h2>
+                <h2>{t("rackPage.racksOf", { name: shop?.name })}</h2>
                 <div>
-                    <h3>{i18n.t("rackPage.createRack")}</h3>
+                    <h3>{t("rackPage.createRack")}</h3>
                     <Button
                         variant="contained"
                         color="primary"
                         onClick={openCreateModal}
                     >
-                        {i18n.t("rackPage.createButton")}
+                        {t("rackPage.createButton")}
                     </Button>
                     <RackCreateModal
                         isOpen={createModalIsOpen}
@@ -153,7 +154,7 @@ const RackPage = () => {
                     />
                 </div>
                 <div>
-                    <h3>{i18n.t("rackPage.rackList")}</h3>
+                    <h3>{t("rackPage.rackList")}</h3>
                     <RackList
                         racks={racks}
                         onDelete={handleDelete}

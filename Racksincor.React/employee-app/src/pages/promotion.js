@@ -13,9 +13,10 @@ import PromotionList from "../components/promotion/promotion-list";
 import PromotionCreateModal from "../components/promotion/promotion-create";
 import PromotionEditModal from "../components/promotion/promotion-edit";
 import { getToken, getShopId } from "../api/token";
-import i18n from "../i18n/i18n";
+import { useTranslation } from "react-i18next";
 
 const PromotionPage = () => {
+    const { t } = useTranslation();
     const token = getToken();
     const shopId = getShopId();
     const [shop, setShop] = useState([]);
@@ -194,17 +195,17 @@ const PromotionPage = () => {
             <Grid container spacing={4}>
                 <Grid item xs={12}>
                     <h2>
-                        {`${i18n.t("promotionPage.promotionsOf")} ${
+                        {`${t("promotionPage.promotionsOf")} ${
                             shop?.name
                         }`}
                     </h2>
-                    <h3>{i18n.t("promotionPage.createPromotion")}</h3>
+                    <h3>{t("promotionPage.createPromotion")}</h3>
                     <Button
                         variant="contained"
                         color="primary"
                         onClick={openCreateModal}
                     >
-                        {i18n.t("promotionPage.createButton")}
+                        {t("promotionPage.createButton")}
                     </Button>
                     <PromotionCreateModal
                         isOpen={createModalIsOpen}
@@ -216,7 +217,7 @@ const PromotionPage = () => {
                 </Grid>
                 <Grid item xs={12}>
                     <Typography variant="body1">
-                        {i18n.t("promotionPage.promotionType")}
+                        {t("promotionPage.promotionType")}
                     </Typography>
                     <Select
                         value={promotionType}
@@ -224,10 +225,10 @@ const PromotionPage = () => {
                         sx={{ minWidth: 200 }}
                     >
                         <MenuItem value="discount">
-                            {i18n.t("promotionPage.discount")}
+                            {t("promotionPage.discount")}
                         </MenuItem>
                         <MenuItem value="gift">
-                            {i18n.t("promotionPage.gift")}
+                            {t("promotionPage.gift")}
                         </MenuItem>
                     </Select>
                 </Grid>

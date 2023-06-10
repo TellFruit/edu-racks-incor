@@ -2,7 +2,7 @@
     "navbar": {
         "racks": "Стелажі",
         "products": "Продукти",
-        "promotions": "Акції",
+        "promotions": "Промоції",
         "login": "Увійти",
         "logout": "Вийти",
         "language": "Мова"
@@ -28,7 +28,7 @@
         "applyChangesButton": "Застосувати зміни"
     },
     "productPage": {
-        "productsOf": "продукти магазину",
+        "productsOf": "Продукти магазину",
         "createProduct": "Створити продукт",
         "createButton": "Створити",
         "productList": "Список продуктів"
@@ -97,7 +97,7 @@
         "giftProductLabel": "Подарунковий продукт",
         "updateButton": "Оновити",
         "deleteButton": "Видалити",
-        "viewProductsButton": "Переглянути продукти"
+        "viewProductsButton": "Продукти"
     },
     "rackCreateModal": {
         "titleLabel": "Створити стелаж",
@@ -115,6 +115,6 @@
         "nameLabel": "Назва",
         "updateButton": "Оновити",
         "deleteButton": "Видалити",
-        "viewProductsButton": "Переглянути продукти"
+        "viewProductsButton": "Продукти"
     }
 }
