@@ -51,8 +51,16 @@
         "title": "Створити продукт",
         "nameLabel": "Назва",
         "priceLabel": "Ціна",
-        "isInStockLabel": "Наявність",
+        "isInStockLabel": "В наявності",
         "createButton": "Створити",
+        "cancelButton": "Скасувати"
+    },
+    "editProductModal": {
+        "title": "Редагувати продукт",
+        "nameLabel": "Назва",
+        "priceLabel": "Ціна",
+        "isInStockLabel": "В наявності",
+        "updateButton": "Оновити",
         "cancelButton": "Скасувати"
     }
 }

@@ -54,5 +54,13 @@
         "isInStockLabel": "Is In Stock",
         "createButton": "Create",
         "cancelButton": "Cancel"
+    },
+    "editProductModal": {
+        "title": "Edit Product",
+        "nameLabel": "Name",
+        "priceLabel": "Price",
+        "isInStockLabel": "Is In Stock",
+        "updateButton": "Update",
+        "cancelButton": "Cancel"
     }
 }

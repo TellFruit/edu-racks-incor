@@ -8,6 +8,7 @@ import {
     Checkbox,
 } from "@mui/material";
 import Modal from "react-modal";
+import i18n from "../../i18n/i18n";
 
 const ProductEditModal = ({ isOpen, onClose, product, onUpdate }) => {
     const [name, setName] = useState(product.name);
@@ -22,13 +23,13 @@ const ProductEditModal = ({ isOpen, onClose, product, onUpdate }) => {
         <Modal
             isOpen={isOpen}
             onRequestClose={onClose}
-            contentLabel="Edit Product Modal"
+            contentLabel={i18n.t("editProductModal.title")}
         >
             <Container maxWidth="xs">
                 <Box sx={{ marginTop: 8 }}>
-                    <h3>Edit Product</h3>
+                    <h3>{i18n.t("editProductModal.title")}</h3>
                     <TextField
-                        label="Name"
+                        label={i18n.t("editProductModal.nameLabel")}
                         variant="outlined"
                         fullWidth
                         value={name}
@@ -36,7 +37,7 @@ const ProductEditModal = ({ isOpen, onClose, product, onUpdate }) => {
                         sx={{ marginBottom: 2 }}
                     />
                     <TextField
-                        label="Price"
+                        label={i18n.t("editProductModal.priceLabel")}
                         variant="outlined"
                         fullWidth
                         value={price}
@@ -50,7 +51,7 @@ const ProductEditModal = ({ isOpen, onClose, product, onUpdate }) => {
                                 onChange={(e) => setIsInStock(e.target.checked)}
                             />
                         }
-                        label="Is In Stock"
+                        label={i18n.t("editProductModal.isInStockLabel")}
                         sx={{ marginBottom: 2 }}
                     />
                     <Button
@@ -58,7 +59,7 @@ const ProductEditModal = ({ isOpen, onClose, product, onUpdate }) => {
                         color="primary"
                         onClick={handleUpdate}
                     >
-                        Update
+                        {i18n.t("editProductModal.updateButton")}
                     </Button>
                     <Button
                         variant="contained"
@@ -66,7 +67,7 @@ const ProductEditModal = ({ isOpen, onClose, product, onUpdate }) => {
                         onClick={onClose}
                         sx={{ ml: 2 }}
                     >
-                        Cancel
+                        {i18n.t("editProductModal.cancelButton")}
                     </Button>
                 </Box>
             </Container>
