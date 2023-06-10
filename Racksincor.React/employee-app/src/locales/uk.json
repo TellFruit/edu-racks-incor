@@ -32,5 +32,13 @@
         "createProduct": "Створити товар",
         "createButton": "Створити",
         "productList": "Список товарів"
+    },
+    "promotionPage": {
+        "promotionsOf": "Промоції магазину",
+        "createPromotion": "Створити промоцію",
+        "createButton": "Створити",
+        "promotionType": "Тип промоції:",
+        "discount": "Знижка",
+        "gift": "Подарунок"
     }
 }

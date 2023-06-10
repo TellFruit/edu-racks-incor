@@ -13,6 +13,7 @@ import PromotionList from "../components/promotion/promotion-list";
 import PromotionCreateModal from "../components/promotion/promotion-create";
 import PromotionEditModal from "../components/promotion/promotion-edit";
 import { getToken, getShopId } from "../api/token";
+import i18n from "../i18n/i18n";
 
 const PromotionPage = () => {
     const token = getToken();
@@ -192,14 +193,18 @@ const PromotionPage = () => {
         <Container maxWidth="md" sx={{ mt: 4 }}>
             <Grid container spacing={4}>
                 <Grid item xs={12}>
-                <h2>{`Promotions of ${shop?.name}`}</h2>
-                    <h3>Create promotion</h3>
+                    <h2>
+                        {`${i18n.t("promotionPage.promotionsOf")} ${
+                            shop?.name
+                        }`}
+                    </h2>
+                    <h3>{i18n.t("promotionPage.createPromotion")}</h3>
                     <Button
                         variant="contained"
                         color="primary"
                         onClick={openCreateModal}
                     >
-                        Create
+                        {i18n.t("promotionPage.createButton")}
                     </Button>
                     <PromotionCreateModal
                         isOpen={createModalIsOpen}
@@ -210,14 +215,20 @@ const PromotionPage = () => {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography variant="body1">Promotion Type:</Typography>
+                    <Typography variant="body1">
+                        {i18n.t("promotionPage.promotionType")}
+                    </Typography>
                     <Select
                         value={promotionType}
                         onChange={handlePromotionTypeChange}
                         sx={{ minWidth: 200 }}
                     >
-                        <MenuItem value="discount">Discount</MenuItem>
-                        <MenuItem value="gift">Gift</MenuItem>
+                        <MenuItem value="discount">
+                            {i18n.t("promotionPage.discount")}
+                        </MenuItem>
+                        <MenuItem value="gift">
+                            {i18n.t("promotionPage.gift")}
+                        </MenuItem>
                     </Select>
                 </Grid>
                 <Grid item xs={12}>

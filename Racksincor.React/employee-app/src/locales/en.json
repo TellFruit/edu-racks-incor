@@ -32,5 +32,13 @@
         "createProduct": "Create product",
         "createButton": "Create",
         "productList": "Product List"
+    },
+    "promotionPage": {
+        "promotionsOf": "Promotions of",
+        "createPromotion": "Create promotion",
+        "createButton": "Create",
+        "promotionType": "Promotion Type:",
+        "discount": "Discount",
+        "gift": "Gift"
     }
 }
