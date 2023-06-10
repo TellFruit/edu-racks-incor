@@ -71,5 +71,14 @@
         "noLabel": "No",
         "updateButton": "Update",
         "deleteButton": "Delete"
+    },
+    "promotionCreateModal": {
+        "titleLabel": "Create Promotion",
+        "nameLabel": "Name",
+        "expirationDateLabel": "Expiration Date",
+        "percentageLabel": "Percentage",
+        "giftProductLabel": "Gift Product",
+        "createButton": "Create",
+        "cancelButton": "Cancel"
     }
 }

@@ -71,5 +71,14 @@
         "noLabel": "Ні",
         "updateButton": "Оновити",
         "deleteButton": "Видалити"
+    },
+    "promotionCreateModal": {
+        "titleLabel": "Створити промоцію",
+        "nameLabel": "Назва",
+        "expirationDateLabel": "Дата закінчення",
+        "percentageLabel": "Відсоток",
+        "giftProductLabel": "Подарунковий товар",
+        "createButton": "Створити",
+        "cancelButton": "Скасувати"
     }
 }
