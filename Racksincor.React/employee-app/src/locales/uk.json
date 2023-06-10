@@ -12,8 +12,8 @@
         "action": "Дія"
     },
     "productPromotionPage": {
-        "availableProducts": "Доступні товари",
-        "selectedProducts": "Вибрані товари",
+        "availableProducts": "Доступні продукти",
+        "selectedProducts": "Вибрані продукти",
         "applyChanges": "Застосувати зміни"
     },
     "loginPage": {
@@ -23,15 +23,15 @@
         "loginButton": "Увійти"
     },
     "productRackPage": {
-        "availableProducts": "Доступні товари",
-        "selectedProducts": "Вибрані товари",
+        "availableProducts": "Доступні продукти",
+        "selectedProducts": "Вибрані продукти",
         "applyChangesButton": "Застосувати зміни"
     },
     "productPage": {
-        "productsOf": "Товари магазину",
-        "createProduct": "Створити товар",
+        "productsOf": "продукти магазину",
+        "createProduct": "Створити продукт",
         "createButton": "Створити",
-        "productList": "Список товарів"
+        "productList": "Список продуктів"
     },
     "promotionPage": {
         "promotionsOf": "Промоції магазину",
@@ -77,7 +77,7 @@
         "nameLabel": "Назва",
         "expirationDateLabel": "Дата закінчення",
         "percentageLabel": "Відсоток",
-        "giftProductLabel": "Подарунковий товар",
+        "giftProductLabel": "Подарунковий продукт",
         "createButton": "Створити",
         "cancelButton": "Скасувати"
     },
@@ -86,7 +86,7 @@
         "nameLabel": "Назва",
         "expirationDateLabel": "Дата закінчення",
         "percentageLabel": "Відсоток",
-        "giftProductLabel": "Подарунковий товар",
+        "giftProductLabel": "Подарунковий продукт",
         "updateButton": "Оновити",
         "cancelButton": "Скасувати"
     },
@@ -94,10 +94,10 @@
         "nameLabel": "Назва",
         "expirationDateLabel": "Дата закінчення",
         "percentageLabel": "Відсоток",
-        "giftProductLabel": "Подарунковий товар",
+        "giftProductLabel": "Подарунковий продукт",
         "updateButton": "Оновити",
         "deleteButton": "Видалити",
-        "viewProductsButton": "Переглянути товари"
+        "viewProductsButton": "Переглянути продукти"
     },
     "rackCreateModal": {
         "titleLabel": "Створити стелаж",
@@ -106,7 +106,7 @@
         "cancelButton": "Скасувати"
     },
     "editRackModal": {
-        "titleLabel": "Редагувати полицю",
+        "titleLabel": "Редагувати стелаж",
         "nameLabel": "Назва",
         "updateButton": "Оновити",
         "cancelButton": "Скасувати"
@@ -115,6 +115,6 @@
         "nameLabel": "Назва",
         "updateButton": "Оновити",
         "deleteButton": "Видалити",
-        "viewProductsButton": "Переглянути товари"
+        "viewProductsButton": "Переглянути продукти"
     }
 }
