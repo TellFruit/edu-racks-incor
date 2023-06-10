@@ -80,5 +80,14 @@
         "giftProductLabel": "Gift Product",
         "createButton": "Create",
         "cancelButton": "Cancel"
+    },
+    "promotionEditModal": {
+        "titleLabel": "Edit Promotion",
+        "nameLabel": "Name",
+        "expirationDateLabel": "Expiration Date",
+        "percentageLabel": "Percentage",
+        "giftProductLabel": "Gift Product",
+        "updateButton": "Update",
+        "cancelButton": "Cancel"
     }
 }

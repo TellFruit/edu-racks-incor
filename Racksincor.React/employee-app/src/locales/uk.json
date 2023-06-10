@@ -80,5 +80,14 @@
         "giftProductLabel": "Подарунковий товар",
         "createButton": "Створити",
         "cancelButton": "Скасувати"
+    },
+    "promotionEditModal": {
+        "titleLabel": "Редагувати промоцію",
+        "nameLabel": "Назва",
+        "expirationDateLabel": "Дата закінчення",
+        "percentageLabel": "Відсоток",
+        "giftProductLabel": "Подарунковий товар",
+        "updateButton": "Оновити",
+        "cancelButton": "Скасувати"
     }
 }
