@@ -40,5 +40,11 @@
         "promotionType": "Тип промоції:",
         "discount": "Знижка",
         "gift": "Подарунок"
+    },
+    "rackPage": {
+        "racksOf": "Racks de {{name}}",
+        "createRack": "Créer un rack",
+        "createButton": "Créer",
+        "rackList": "Liste des racks"
     }
 }

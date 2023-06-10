@@ -40,5 +40,11 @@
         "promotionType": "Promotion Type:",
         "discount": "Discount",
         "gift": "Gift"
+    },
+    "rackPage": {
+        "racksOf": "Racks of {{name}}",
+        "createRack": "Create rack",
+        "createButton": "Create",
+        "rackList": "Rack List"
     }
 }
