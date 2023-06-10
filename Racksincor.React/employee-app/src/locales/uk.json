@@ -104,5 +104,11 @@
         "nameLabel": "Назва",
         "createButton": "Створити",
         "cancelButton": "Скасувати"
+    },
+    "editRackModal": {
+        "titleLabel": "Редагувати полицю",
+        "nameLabel": "Назва",
+        "updateButton": "Оновити",
+        "cancelButton": "Скасувати"
     }
 }

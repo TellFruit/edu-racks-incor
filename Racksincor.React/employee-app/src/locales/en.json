@@ -104,5 +104,11 @@
         "nameLabel": "Name",
         "createButton": "Create",
         "cancelButton": "Cancel"
+    },
+    "editRackModal": {
+        "titleLabel": "Edit Rack",
+        "nameLabel": "Name",
+        "updateButton": "Update",
+        "cancelButton": "Cancel"
     }
 }
