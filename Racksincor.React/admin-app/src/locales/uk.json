@@ -44,5 +44,14 @@
         "contactEmail": "Контактний Email",
         "update": "Оновити",
         "cancel": "Скасувати"
+    },
+    "companyList": {
+        "name": "Назва",
+        "url": "URL",
+        "contactPhone": "Контактний телефон",
+        "contactEmail": "Контактний Email",
+        "update": "Оновити",
+        "delete": "Видалити",
+        "viewShops": "Магазини"
     }
 }

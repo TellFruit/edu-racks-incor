@@ -44,5 +44,14 @@
         "contactEmail": "Contact Email",
         "update": "Update",
         "cancel": "Cancel"
+    },
+    "companyList": {
+        "name": "Name",
+        "url": "URL",
+        "contactPhone": "Contact Phone",
+        "contactEmail": "Contact Email",
+        "update": "Update",
+        "delete": "Delete",
+        "viewShops": "View Shops"
     }
 }
