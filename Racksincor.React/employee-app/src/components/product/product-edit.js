@@ -8,8 +8,10 @@ import {
     Checkbox,
 } from "@mui/material";
 import Modal from "react-modal";
+import { useTranslation } from "react-i18next";
 
 const ProductEditModal = ({ isOpen, onClose, product, onUpdate }) => {
+    const { t } = useTranslation();
     const [name, setName] = useState(product.name);
     const [price, setPrice] = useState(product.price);
     const [isInStock, setIsInStock] = useState(product.isInStock);
@@ -22,13 +24,13 @@ const ProductEditModal = ({ isOpen, onClose, product, onUpdate }) => {
         <Modal
             isOpen={isOpen}
             onRequestClose={onClose}
-            contentLabel="Edit Product Modal"
+            contentLabel={t("editProductModal.title")}
         >
             <Container maxWidth="xs">
                 <Box sx={{ marginTop: 8 }}>
-                    <h3>Edit Product</h3>
+                    <h3>{t("editProductModal.title")}</h3>
                     <TextField
-                        label="Name"
+                        label={t("editProductModal.nameLabel")}
                         variant="outlined"
                         fullWidth
                         value={name}
@@ -36,7 +38,7 @@ const ProductEditModal = ({ isOpen, onClose, product, onUpdate }) => {
                         sx={{ marginBottom: 2 }}
                     />
                     <TextField
-                        label="Price"
+                        label={t("editProductModal.priceLabel")}
                         variant="outlined"
                         fullWidth
                         value={price}
@@ -50,7 +52,7 @@ const ProductEditModal = ({ isOpen, onClose, product, onUpdate }) => {
                                 onChange={(e) => setIsInStock(e.target.checked)}
                             />
                         }
-                        label="Is In Stock"
+                        label={t("editProductModal.isInStockLabel")}
                         sx={{ marginBottom: 2 }}
                     />
                     <Button
@@ -58,7 +60,7 @@ const ProductEditModal = ({ isOpen, onClose, product, onUpdate }) => {
                         color="primary"
                         onClick={handleUpdate}
                     >
-                        Update
+                        {t("editProductModal.updateButton")}
                     </Button>
                     <Button
                         variant="contained"
@@ -66,7 +68,7 @@ const ProductEditModal = ({ isOpen, onClose, product, onUpdate }) => {
                         onClick={onClose}
                         sx={{ ml: 2 }}
                     >
-                        Cancel
+                        {t("editProductModal.cancelButton")}
                     </Button>
                 </Box>
             </Container>

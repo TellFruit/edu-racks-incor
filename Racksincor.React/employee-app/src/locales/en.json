@@ -1,0 +1,124 @@
+{
+    "navbar": {
+        "racks": "Racks",
+        "products": "Products",
+        "promotions": "Promotions",
+        "login": "Login",
+        "logout": "Logout",
+        "language": "Language"
+    },
+    "productTable": {
+        "name": "Name",
+        "action": "Action"
+    },
+    "productPromotionPage": {
+        "availableProducts": "Available Products",
+        "selectedProducts": "Selected Products",
+        "applyChanges": "Apply Changes",
+        "add": "Add",
+        "remove": "Remove"
+    },
+    "loginPage": {
+        "title": "Login",
+        "emailLabel": "Email",
+        "passwordLabel": "Password",
+        "loginButton": "Login"
+    },
+    "productRackPage": {
+        "availableProducts": "Available Products",
+        "selectedProducts": "Selected Products",
+        "applyChangesButton": "Apply Changes",
+        "add": "Add",
+        "remove": "Remove"
+    },
+    "productPage": {
+        "productsOf": "Products of",
+        "createProduct": "Create product",
+        "createButton": "Create",
+        "productList": "Product List"
+    },
+    "promotionPage": {
+        "promotionsOf": "Promotions of",
+        "createPromotion": "Create promotion",
+        "createButton": "Create",
+        "promotionType": "Promotion Type:",
+        "discount": "Discount",
+        "gift": "Gift"
+    },
+    "rackPage": {
+        "racksOf": "Racks of {{name}}",
+        "createRack": "Create rack",
+        "createButton": "Create",
+        "rackList": "Rack List"
+    },
+    "createProductModal": {
+        "title": "Create Product",
+        "nameLabel": "Name",
+        "priceLabel": "Price",
+        "isInStockLabel": "Is In Stock",
+        "createButton": "Create",
+        "cancelButton": "Cancel"
+    },
+    "editProductModal": {
+        "title": "Edit Product",
+        "nameLabel": "Name",
+        "priceLabel": "Price",
+        "isInStockLabel": "Is In Stock",
+        "updateButton": "Update",
+        "cancelButton": "Cancel"
+    },
+    "productList": {
+        "nameLabel": "Name",
+        "priceLabel": "Price",
+        "isInStockLabel": "Is In Stock",
+        "yesLabel": "Yes",
+        "noLabel": "No",
+        "updateButton": "Update",
+        "deleteButton": "Delete"
+    },
+    "promotionCreateModal": {
+        "titleLabel": "Create Promotion",
+        "nameLabel": "Name",
+        "expirationDateLabel": "Expiration Date",
+        "percentageLabel": "Percentage",
+        "giftProductLabel": "Gift Product",
+        "createButton": "Create",
+        "cancelButton": "Cancel"
+    },
+    "promotionEditModal": {
+        "titleLabel": "Edit Promotion",
+        "nameLabel": "Name",
+        "expirationDateLabel": "Expiration Date",
+        "percentageLabel": "Percentage",
+        "giftProductLabel": "Gift Product",
+        "updateButton": "Update",
+        "cancelButton": "Cancel"
+    },
+    "promotionList": {
+        "nameLabel": "Name",
+        "expirationDateLabel": "Expiration Date",
+        "percentageLabel": "Percentage",
+        "giftProductLabel": "Gift Product",
+        "updateButton": "Update",
+        "deleteButton": "Delete",
+        "viewProductsButton": "View Products"
+    },
+    "rackCreateModal": {
+        "titleLabel": "Create Rack",
+        "nameLabel": "Name",
+        "createButton": "Create",
+        "cancelButton": "Cancel"
+    },
+    "editRackModal": {
+        "titleLabel": "Edit Rack",
+        "nameLabel": "Name",
+        "updateButton": "Update",
+        "cancelButton": "Cancel"
+    },
+    "rackList": {
+        "nameLabel": "Name",
+        "updateButton": "Update",
+        "deleteButton": "Delete",
+        "viewProductsButton": "View Products"
+    }
+}

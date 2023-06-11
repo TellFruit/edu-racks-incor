@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import Modal from "react-modal";
+import { useTranslation } from "react-i18next";
 
 const PromotionCreateModal = ({
     isOpen,
@@ -18,6 +19,7 @@ const PromotionCreateModal = ({
     promotionType,
     products,
 }) => {
+    const { t } = useTranslation();
     const [name, setName] = useState("");
     const [expirationDate, setExpirationDate] = useState(null);
     const [percenatage, setPercenatage] = useState("");
@@ -43,13 +45,13 @@ const PromotionCreateModal = ({
         <Modal
             isOpen={isOpen}
             onRequestClose={onClose}
-            contentLabel="Create Promotion Modal"
+            contentLabel={t("promotionCreateModal.titleLabel")}
         >
             <Container maxWidth="xs">
                 <Box sx={{ marginTop: 8 }}>
-                    <h3>Create Promotion</h3>
+                    <h3>{t("promotionCreateModal.titleLabel")}</h3>
                     <TextField
-                        label="Name"
+                        label={t("promotionCreateModal.nameLabel")}
                         variant="outlined"
                         fullWidth
                         value={name}
@@ -57,7 +59,7 @@ const PromotionCreateModal = ({
                         sx={{ marginBottom: 2 }}
                     />
                     <DatePicker
-                        label="Expiration Date"
+                        label={t("promotionCreateModal.expirationDateLabel")}
                         value={expirationDate}
                         onChange={(date) => setExpirationDate(date)}
                         fullWidth
@@ -65,7 +67,7 @@ const PromotionCreateModal = ({
                     />
                     {promotionType === "discount" && (
                         <TextField
-                            label="percenatage"
+                            label={t("promotionCreateModal.percentageLabel")}
                             variant="outlined"
                             type="number"
                             fullWidth
@@ -81,7 +83,7 @@ const PromotionCreateModal = ({
                     {promotionType === "gift" && (
                         <div>
                             <InputLabel id="gift-product-select-label">
-                                Gift Product
+                                {t("promotionCreateModal.giftProductLabel")}
                             </InputLabel>
                             <Select
                                 labelId="gift-product-select-label"
@@ -110,7 +112,7 @@ const PromotionCreateModal = ({
                         color="primary"
                         onClick={handleCreate}
                     >
-                        Create
+                        {t("promotionCreateModal.createButton")}
                     </Button>
                     <Button
                         variant="contained"
@@ -118,7 +120,7 @@ const PromotionCreateModal = ({
                         onClick={onClose}
                         sx={{ ml: 2 }}
                     >
-                        Cancel
+                        {t("promotionCreateModal.cancelButton")}
                     </Button>
                 </Box>
             </Container>

@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Pagination from "@mui/material/Pagination";
+import { useTranslation } from "react-i18next";
 
 const PromotionList = ({
     promotions,
@@ -12,6 +13,7 @@ const PromotionList = ({
     onViewProducts,
     products,
 }) => {
+    const { t } = useTranslation();
     const [page, setPage] = useState(1);
     const promotionsPerPage = 5;
     const totalPages = Math.ceil(promotions.length / promotionsPerPage);
@@ -42,21 +44,27 @@ const PromotionList = ({
                             <Grid container spacing={2} alignItems="center">
                                 <Grid item xs={6}>
                                     <Box>
-                                        <p>Name: {promotion.name}</p>
+                                        <p>{`${t(
+                                            "promotionList.nameLabel"
+                                        )}: ${promotion.name}`}</p>
                                         <p>
-                                            Expiration Date:{" "}
-                                            {new Date(
+                                            {`${t(
+                                                "promotionList.expirationDateLabel"
+                                            )}: ${new Date(
                                                 promotion.expirationDate
-                                            ).toLocaleDateString()}
+                                            ).toLocaleDateString()}`}
                                         </p>
                                         {promotion.percenatage && (
                                             <p>
-                                                Percentage:{" "}
-                                                {promotion.percenatage}%
+                                                {`${t(
+                                                    "promotionList.percentageLabel"
+                                                )}: ${promotion.percenatage}%`}
                                             </p>
                                         )}
                                         {promotion.giftProductId && (
-                                            <p>Gift Product: {productName}</p>
+                                            <p>{`${t(
+                                                "promotionList.giftProductLabel"
+                                            )}: ${productName}`}</p>
                                         )}
                                     </Box>
                                 </Grid>
@@ -72,7 +80,9 @@ const PromotionList = ({
                                                 onOpenEditModal(promotion)
                                             }
                                         >
-                                            Update
+                                            {t(
+                                                "promotionList.updateButton"
+                                            )}
                                         </Button>
                                         <Button
                                             variant="contained"
@@ -82,7 +92,9 @@ const PromotionList = ({
                                             }
                                             sx={{ ml: 2 }}
                                         >
-                                            Delete
+                                            {t(
+                                                "promotionList.deleteButton"
+                                            )}
                                         </Button>
                                         <Button
                                             variant="contained"
@@ -92,7 +104,9 @@ const PromotionList = ({
                                             }
                                             sx={{ ml: 2 }}
                                         >
-                                            View Products
+                                            {t(
+                                                "promotionList.viewProductsButton"
+                                            )}
                                         </Button>
                                     </Box>
                                 </Grid>

@@ -13,8 +13,10 @@ import PromotionList from "../components/promotion/promotion-list";
 import PromotionCreateModal from "../components/promotion/promotion-create";
 import PromotionEditModal from "../components/promotion/promotion-edit";
 import { getToken, getShopId } from "../api/token";
+import { useTranslation } from "react-i18next";
 
 const PromotionPage = () => {
+    const { t } = useTranslation();
     const token = getToken();
     const shopId = getShopId();
     const [shop, setShop] = useState([]);
@@ -192,14 +194,18 @@ const PromotionPage = () => {
         <Container maxWidth="md" sx={{ mt: 4 }}>
             <Grid container spacing={4}>
                 <Grid item xs={12}>
-                <h2>{`Promotions of ${shop?.name}`}</h2>
-                    <h3>Create promotion</h3>
+                    <h2>
+                        {`${t("promotionPage.promotionsOf")} ${
+                            shop?.name
+                        }`}
+                    </h2>
+                    <h3>{t("promotionPage.createPromotion")}</h3>
                     <Button
                         variant="contained"
                         color="primary"
                         onClick={openCreateModal}
                     >
-                        Create
+                        {t("promotionPage.createButton")}
                     </Button>
                     <PromotionCreateModal
                         isOpen={createModalIsOpen}
@@ -210,14 +216,20 @@ const PromotionPage = () => {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography variant="body1">Promotion Type:</Typography>
+                    <Typography variant="body1">
+                        {t("promotionPage.promotionType")}
+                    </Typography>
                     <Select
                         value={promotionType}
                         onChange={handlePromotionTypeChange}
                         sx={{ minWidth: 200 }}
                     >
-                        <MenuItem value="discount">Discount</MenuItem>
-                        <MenuItem value="gift">Gift</MenuItem>
+                        <MenuItem value="discount">
+                            {t("promotionPage.discount")}
+                        </MenuItem>
+                        <MenuItem value="gift">
+                            {t("promotionPage.gift")}
+                        </MenuItem>
                     </Select>
                 </Grid>
                 <Grid item xs={12}>

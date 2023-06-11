@@ -8,8 +8,10 @@ import {
     Checkbox,
 } from "@mui/material";
 import Modal from "react-modal";
+import { useTranslation } from "react-i18next";
 
 const ProductCreateModal = ({ isOpen, onClose, onCreate }) => {
+    const { t } = useTranslation();
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
     const [isInStock, setIsInStock] = useState(true);
@@ -25,13 +27,13 @@ const ProductCreateModal = ({ isOpen, onClose, onCreate }) => {
         <Modal
             isOpen={isOpen}
             onRequestClose={onClose}
-            contentLabel="Create Product Modal"
+            contentLabel={t("createProductModal.title")}
         >
             <Container maxWidth="xs">
                 <Box sx={{ marginTop: 8 }}>
-                    <h3>Create Product</h3>
+                    <h3>{t("createProductModal.title")}</h3>
                     <TextField
-                        label="Name"
+                        label={t("createProductModal.nameLabel")}
                         variant="outlined"
                         fullWidth
                         value={name}
@@ -39,7 +41,7 @@ const ProductCreateModal = ({ isOpen, onClose, onCreate }) => {
                         sx={{ marginBottom: 2 }}
                     />
                     <TextField
-                        label="Price"
+                        label={t("createProductModal.priceLabel")}
                         variant="outlined"
                         fullWidth
                         value={price}
@@ -53,7 +55,7 @@ const ProductCreateModal = ({ isOpen, onClose, onCreate }) => {
                                 onChange={(e) => setIsInStock(e.target.checked)}
                             />
                         }
-                        label="Is In Stock"
+                        label={t("createProductModal.isInStockLabel")}
                         sx={{ marginBottom: 2 }}
                     />
                     <Button
@@ -61,7 +63,7 @@ const ProductCreateModal = ({ isOpen, onClose, onCreate }) => {
                         color="primary"
                         onClick={handleCreate}
                     >
-                        Create
+                        {t("createProductModal.createButton")}
                     </Button>
                     <Button
                         variant="contained"
@@ -69,7 +71,7 @@ const ProductCreateModal = ({ isOpen, onClose, onCreate }) => {
                         onClick={onClose}
                         sx={{ ml: 2 }}
                     >
-                        Cancel
+                        {t("createProductModal.cancelButton")}
                     </Button>
                 </Box>
             </Container>

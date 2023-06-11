@@ -8,8 +8,10 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ProductActionTable from "../components/product/product-action-table";
+import { useTranslation } from "react-i18next";
 
 const ProductRackPage = () => {
+    const { t } = useTranslation();
     const token = getToken();
     const { rackId } = useParams();
     const [rack, setRack] = useState(null);
@@ -130,24 +132,24 @@ const ProductRackPage = () => {
                 <Grid item xs={6}>
                     <Paper variant="outlined" sx={{ p: 2, minHeight: 400 }}>
                         <Typography variant="h6" gutterBottom>
-                            Available Products
+                            {t("productRackPage.availableProducts")}
                         </Typography>
                         <ProductActionTable
                             products={availableProducts}
                             onActionClick={handleAddProduct}
-                            actionText="Add"
+                            actionText={t("productRackPage.add")}
                         />
                     </Paper>
                 </Grid>
                 <Grid item xs={6}>
                     <Paper variant="outlined" sx={{ p: 2, minHeight: 400 }}>
                         <Typography variant="h6" gutterBottom>
-                            Selected Products
+                            {t("productRackPage.selectedProducts")}
                         </Typography>
                         <ProductActionTable
                             products={selectedProducts}
                             onActionClick={handleRemoveProduct}
-                            actionText="Remove"
+                            actionText={t("productRackPage.remove")}
                         />
                     </Paper>
                 </Grid>
@@ -161,7 +163,7 @@ const ProductRackPage = () => {
                         color="primary"
                         onClick={handleApplyChanges}
                     >
-                        Apply Changes
+                        {t("productRackPage.applyChangesButton")}
                     </Button>
                 </Grid>
             </Grid>

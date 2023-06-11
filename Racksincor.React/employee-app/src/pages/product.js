@@ -7,8 +7,10 @@ import ProductList from "../components/product/product-list";
 import ProductCreateModal from "../components/product/product-create";
 import ProductEditModal from "../components/product/product-edit";
 import { getToken, getShopId } from "../api/token";
+import { useTranslation } from "react-i18next";
 
 const ProductPage = () => {
+    const { t } = useTranslation();
     const token = getToken();
     const shopId = getShopId();
     const [shop, setShop] = useState(null);
@@ -135,15 +137,15 @@ const ProductPage = () => {
     return (
         <Container maxWidth="md">
             <Box sx={{ mt: 8 }}>
-                <h2>{`Products of ${shop?.name}`}</h2>
+                <h2>{`${t("productPage.productsOf")} ${shop?.name}`}</h2>
                 <div>
-                    <h3>Create product</h3>
+                    <h3>{t("productPage.createProduct")}</h3>
                     <Button
                         variant="contained"
                         color="primary"
                         onClick={openCreateModal}
                     >
-                        Create
+                        {t("productPage.createButton")}
                     </Button>
                     <ProductCreateModal
                         isOpen={createModalIsOpen}
@@ -152,7 +154,7 @@ const ProductPage = () => {
                     />
                 </div>
                 <div>
-                    <h3>Product List</h3>
+                    <h3>{t("productPage.productList")}</h3>
                     <ProductList
                         products={products}
                         onDelete={handleDelete}

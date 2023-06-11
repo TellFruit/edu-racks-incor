@@ -8,8 +8,10 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ProductActionTable from "../components/product/product-action-table";
+import { useTranslation } from "react-i18next";
 
 const ProductPromotionPage = () => {
+    const { t } = useTranslation();
     const token = getToken();
     const { promotionId, promotionType } = useParams();
     const [promotion, setPromotion] = useState(null);
@@ -47,7 +49,7 @@ const ProductPromotionPage = () => {
                     )
             );
             setAvailableProducts(filteredProducts);
-            console.log(filteredProducts)
+            console.log(filteredProducts);
         } catch (error) {
             console.error("Error fetching products:", error);
         }
@@ -138,24 +140,24 @@ const ProductPromotionPage = () => {
                 <Grid item xs={6}>
                     <Paper variant="outlined" sx={{ p: 2, minHeight: 400 }}>
                         <Typography variant="h6" gutterBottom>
-                            Available Products
+                            {t("productPromotionPage.availableProducts")}
                         </Typography>
                         <ProductActionTable
                             products={availableProducts}
                             onActionClick={handleAddProduct}
-                            actionText="Add"
+                            actionText={t("productPromotionPage.add")}
                         />
                     </Paper>
                 </Grid>
                 <Grid item xs={6}>
                     <Paper variant="outlined" sx={{ p: 2, minHeight: 400 }}>
                         <Typography variant="h6" gutterBottom>
-                            Selected Products
+                            {t("productPromotionPage.selectedProducts")}
                         </Typography>
                         <ProductActionTable
                             products={selectedProducts}
                             onActionClick={handleRemoveProduct}
-                            actionText="Remove"
+                            actionText={t("productPromotionPage.remove")}
                         />
                     </Paper>
                 </Grid>
@@ -169,7 +171,7 @@ const ProductPromotionPage = () => {
                         color="primary"
                         onClick={handleApplyChanges}
                     >
-                        Apply Changes
+                        {t("productPromotionPage.applyChanges")}
                     </Button>
                 </Grid>
             </Grid>

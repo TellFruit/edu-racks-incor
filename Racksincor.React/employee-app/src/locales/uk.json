@@ -1,0 +1,124 @@
+{
+    "navbar": {
+        "racks": "Стелажі",
+        "products": "Продукти",
+        "promotions": "Промоції",
+        "login": "Увійти",
+        "logout": "Вийти",
+        "language": "Мова"
+    },
+    "productTable": {
+        "name": "Назва",
+        "action": "Дія"
+    },
+    "productPromotionPage": {
+        "availableProducts": "Доступні продукти",
+        "selectedProducts": "Вибрані продукти",
+        "applyChanges": "Застосувати зміни",
+        "add": "Додати",
+        "remove": "Прибрати"
+    },
+    "loginPage": {
+        "title": "Увійти",
+        "emailLabel": "Електронна пошта",
+        "passwordLabel": "Пароль",
+        "loginButton": "Увійти"
+    },
+    "productRackPage": {
+        "availableProducts": "Доступні продукти",
+        "selectedProducts": "Вибрані продукти",
+        "applyChangesButton": "Застосувати зміни",
+        "add": "Додати",
+        "remove": "Прибрати"
+    },
+    "productPage": {
+        "productsOf": "Продукти магазину",
+        "createProduct": "Створити продукт",
+        "createButton": "Створити",
+        "productList": "Список продуктів"
+    },
+    "promotionPage": {
+        "promotionsOf": "Промоції магазину",
+        "createPromotion": "Створити промоцію",
+        "createButton": "Створити",
+        "promotionType": "Тип промоції:",
+        "discount": "Знижка",
+        "gift": "Подарунок"
+    },
+    "rackPage": {
+        "racksOf": "Стелажі магазину {{name}}",
+        "createRack": "Створити стелаж",
+        "createButton": "Створити",
+        "rackList": "Список сталежів"
+    },
+    "createProductModal": {
+        "title": "Створити продукт",
+        "nameLabel": "Назва",
+        "priceLabel": "Ціна",
+        "isInStockLabel": "В наявності",
+        "createButton": "Створити",
+        "cancelButton": "Скасувати"
+    },
+    "editProductModal": {
+        "title": "Редагувати продукт",
+        "nameLabel": "Назва",
+        "priceLabel": "Ціна",
+        "isInStockLabel": "В наявності",
+        "updateButton": "Оновити",
+        "cancelButton": "Скасувати"
+    },
+    "productList": {
+        "nameLabel": "Назва",
+        "priceLabel": "Ціна",
+        "isInStockLabel": "В наявності",
+        "yesLabel": "Так",
+        "noLabel": "Ні",
+        "updateButton": "Оновити",
+        "deleteButton": "Видалити"
+    },
+    "promotionCreateModal": {
+        "titleLabel": "Створити промоцію",
+        "nameLabel": "Назва",
+        "expirationDateLabel": "Дата закінчення",
+        "percentageLabel": "Відсоток",
+        "giftProductLabel": "Подарунковий продукт",
+        "createButton": "Створити",
+        "cancelButton": "Скасувати"
+    },
+    "promotionEditModal": {
+        "titleLabel": "Редагувати промоцію",
+        "nameLabel": "Назва",
+        "expirationDateLabel": "Дата закінчення",
+        "percentageLabel": "Відсоток",
+        "giftProductLabel": "Подарунковий продукт",
+        "updateButton": "Оновити",
+        "cancelButton": "Скасувати"
+    },
+    "promotionList": {
+        "nameLabel": "Назва",
+        "expirationDateLabel": "Дата закінчення",
+        "percentageLabel": "Відсоток",
+        "giftProductLabel": "Подарунковий продукт",
+        "updateButton": "Оновити",
+        "deleteButton": "Видалити",
+        "viewProductsButton": "Продукти"
+    },
+    "rackCreateModal": {
+        "titleLabel": "Створити стелаж",
+        "nameLabel": "Назва",
+        "createButton": "Створити",
+        "cancelButton": "Скасувати"
+    },
+    "editRackModal": {
+        "titleLabel": "Редагувати стелаж",
+        "nameLabel": "Назва",
+        "updateButton": "Оновити",
+        "cancelButton": "Скасувати"
+    },
+    "rackList": {
+        "nameLabel": "Назва",
+        "updateButton": "Оновити",
+        "deleteButton": "Видалити",
+        "viewProductsButton": "Продукти"
+    }
+}

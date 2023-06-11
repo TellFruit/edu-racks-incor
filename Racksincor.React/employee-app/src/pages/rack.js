@@ -8,8 +8,10 @@ import RackList from "../components/rack/rack-list";
 import RackCreateModal from "../components/rack/rack-create";
 import RackEditModal from "../components/rack/rack-edit";
 import { getToken, getShopId } from "../api/token";
+import { useTranslation } from "react-i18next";
 
 const RackPage = () => {
+    const { t } = useTranslation();
     const token = getToken();
     const shopId = getShopId();
     const [shop, setShop] = useState(null);
@@ -77,7 +79,7 @@ const RackPage = () => {
             const response = await axios.put(
                 `/rack/${id}`,
                 {
-                    name
+                    name,
                 },
                 {
                     headers: {
@@ -135,15 +137,15 @@ const RackPage = () => {
     return (
         <Container maxWidth="md">
             <Box sx={{ mt: 8 }}>
-                <h2>{`Racks of ${shop?.name}`}</h2>
+                <h2>{t("rackPage.racksOf", { name: shop?.name })}</h2>
                 <div>
-                    <h3>Create rack</h3>
+                    <h3>{t("rackPage.createRack")}</h3>
                     <Button
                         variant="contained"
                         color="primary"
                         onClick={openCreateModal}
                     >
-                        Create
+                        {t("rackPage.createButton")}
                     </Button>
                     <RackCreateModal
                         isOpen={createModalIsOpen}
@@ -152,7 +154,7 @@ const RackPage = () => {
                     />
                 </div>
                 <div>
-                    <h3>Rack List</h3>
+                    <h3>{t("rackPage.rackList")}</h3>
                     <RackList
                         racks={racks}
                         onDelete={handleDelete}
