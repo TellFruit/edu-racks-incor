@@ -8,6 +8,7 @@ import EmployeeList from "../components/employee/employee-list";
 import EmployeeCreateModal from "../components/employee/employee-create";
 import EmployeeEditModal from "../components/employee/employee-edit";
 import { getToken } from "../api/token";
+import { useTranslation } from "react-i18next";
 
 const EmployeePage = () => {
     const token = getToken();
@@ -17,6 +18,7 @@ const EmployeePage = () => {
     const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
     const [selectedEmployee, setSelectedEmployee] = useState(null);
+    const { t } = useTranslation();
 
     useEffect(() => {
         fetchShop();
@@ -142,15 +144,15 @@ const EmployeePage = () => {
     return (
         <Container maxWidth="md">
             <Box sx={{ mt: 8 }}>
-                <h2>{`Employees of ${shop?.name}`}</h2>
+                <h2>{t("employeePage.title", { shopName: shop?.name })}</h2>
                 <div>
-                    <h3>Create employee</h3>
+                    <h3>{t("employeePage.createEmployee")}</h3>
                     <Button
                         variant="contained"
                         color="primary"
                         onClick={openCreateModal}
                     >
-                        Create
+                        {t("employeePage.createButton")}
                     </Button>
                     <EmployeeCreateModal
                         isOpen={createModalIsOpen}
@@ -159,7 +161,7 @@ const EmployeePage = () => {
                     />
                 </div>
                 <div>
-                    <h3>Employee List</h3>
+                    <h3>{t("employeePage.employeeList")}</h3>
                     <EmployeeList
                         employees={employees}
                         onDelete={handleDelete}
