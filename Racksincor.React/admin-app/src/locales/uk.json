@@ -15,5 +15,11 @@
         "createButton": "Створити",
         "shopsOf": "Магазини компанії",
         "viewEmployees": "Співробітники"
-    }
+    },
+    "employeePage": {
+        "title": "Працівники магазину {shopName}",
+        "createEmployee": "Створити працівника",
+        "createButton": "Створити",
+        "employeeList": "Список працівників"
+      }
 }

@@ -15,5 +15,11 @@
         "createButton": "Create",
         "shopsOf": "Shops of",
         "viewEmployees": "View Employees"
+    },
+    "employeePage": {
+        "title": "Employees of {shopName}",
+        "createEmployee": "Create employee",
+        "createButton": "Create",
+        "employeeList": "Employee List"
     }
 }

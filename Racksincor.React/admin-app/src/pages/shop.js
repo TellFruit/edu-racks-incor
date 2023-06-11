@@ -141,15 +141,15 @@ const ShopPage = () => {
     return (
         <Container maxWidth="md">
             <Box sx={{ mt: 8 }}>
-                <h2>{`Shops of ${company?.name}`}</h2>
+                <h2>{t("shopPage.title", { companyName: company?.name })}</h2>
                 <div>
-                    <h3>Create shop</h3>
+                    <h3>{t("shopPage.createShop")}</h3>
                     <Button
                         variant="contained"
                         color="primary"
                         onClick={openCreateModal}
                     >
-                        Create
+                        {t("shopPage.createButton")}
                     </Button>
                     <ShopCreateModal
                         isOpen={createModalIsOpen}
@@ -158,7 +158,7 @@ const ShopPage = () => {
                     />
                 </div>
                 <div>
-                    <h3>Shop List</h3>
+                    <h3>{t("shopPage.shopList")}</h3>
                     <ShopList
                         shops={shops}
                         onDelete={handleDelete}
