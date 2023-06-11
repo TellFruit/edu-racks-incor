@@ -74,5 +74,12 @@
         "email": "Email",
         "update": "Update",
         "delete": "Delete"
+    },
+    "shopCreateModal": {
+        "createShop": "Create Shop",
+        "name": "Name",
+        "address": "Address",
+        "create": "Create",
+        "cancel": "Cancel"
     }
 }

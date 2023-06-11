@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Modal from "react-modal";
+import { useTranslation } from 'react-i18next';
 
 const ShopCreateModal = ({ isOpen, onClose, onCreate }) => {
+    const { t } = useTranslation();
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
 
@@ -19,9 +21,9 @@ const ShopCreateModal = ({ isOpen, onClose, onCreate }) => {
             onRequestClose={onClose}
             contentLabel="Create Shop Modal"
         >
-            <h3>Create Shop</h3>
+            <h3>{t('shopCreateModal.createShop')}</h3>
             <TextField
-                label="Name"
+                label={t('shopCreateModal.name')}
                 variant="outlined"
                 fullWidth
                 value={name}
@@ -29,7 +31,7 @@ const ShopCreateModal = ({ isOpen, onClose, onCreate }) => {
                 sx={{ marginBottom: 2 }}
             />
             <TextField
-                label="Address"
+                label={t('shopCreateModal.address')}
                 variant="outlined"
                 fullWidth
                 value={address}
@@ -37,10 +39,10 @@ const ShopCreateModal = ({ isOpen, onClose, onCreate }) => {
                 sx={{ marginBottom: 2 }}
             />
             <Button variant="contained" color="primary" onClick={handleCreate}>
-                Create
+                {t('shopCreateModal.create')}
             </Button>
             <Button variant="contained" color="secondary" onClick={onClose} sx={{ ml: 2 }}>
-                Cancel
+                {t('shopCreateModal.cancel')}
             </Button>
         </Modal>
     );

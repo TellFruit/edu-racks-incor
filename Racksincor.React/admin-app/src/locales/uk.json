@@ -74,5 +74,12 @@
         "email": "Електронна пошта",
         "update": "Оновити",
         "delete": "Видалити"
+    },
+    "shopCreateModal": {
+        "createShop": "Створити магазин",
+        "name": "Назва",
+        "address": "Адреса",
+        "create": "Створити",
+        "cancel": "Скасувати"
     }
 }
