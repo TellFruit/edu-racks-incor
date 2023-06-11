@@ -1,0 +1,6 @@
+{
+    "navbar": {
+        "logoutButton": "Logout",
+        "loginButton": "Login"
+    }
+}
