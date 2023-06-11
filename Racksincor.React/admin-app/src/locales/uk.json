@@ -10,16 +10,15 @@
         "loginButton": "Увійти"
     },
     "shopPage": {
+        "title": "Магазини {companyName}",
         "createShop": "Створити магазин",
         "shopList": "Список магазинів",
-        "createButton": "Створити",
-        "shopsOf": "Магазини компанії",
-        "viewEmployees": "Співробітники"
+        "createButton": "Створити"
     },
     "employeePage": {
         "title": "Працівники магазину {shopName}",
         "createEmployee": "Створити працівника",
         "createButton": "Створити",
         "employeeList": "Список працівників"
-      }
+    }
 }

@@ -10,11 +10,10 @@
         "loginButton": "Login"
     },
     "shopPage": {
+        "title": "Shops of {companyName}",
         "createShop": "Create shop",
         "shopList": "Shop List",
-        "createButton": "Create",
-        "shopsOf": "Shops of",
-        "viewEmployees": "View Employees"
+        "createButton": "Create"
     },
     "employeePage": {
         "title": "Employees of {shopName}",
