@@ -1,7 +1,12 @@
 {
     "navbar": {
-      "logoutButton": "Вийти",
-      "loginButton": "Увійти"
+        "logoutButton": "Вийти",
+        "loginButton": "Увійти"
+    },
+    "loginPage": {
+        "title": "Увійти",
+        "emailLabel": "Електронна пошта",
+        "passwordLabel": "Пароль",
+        "loginButton": "Увійти"
     }
-  }
-  
+}

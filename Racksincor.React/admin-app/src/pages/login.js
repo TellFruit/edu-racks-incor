@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../api/instance";
 import { setToken, isRoleValid } from "../api/token";
-import { Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import { useTranslation } from "react-i18next";
 
 const LoginPage = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const { t } = useTranslation();
 
     const handleLogin = async () => {
         try {
@@ -41,9 +42,9 @@ const LoginPage = () => {
     return (
         <Container maxWidth="xs">
             <Box sx={{ marginTop: 8 }}>
-                <h2>Login</h2>
+                <h2>{t("loginPage.title")}</h2>
                 <TextField
-                    label="Email"
+                    label={t("loginPage.emailLabel")}
                     variant="outlined"
                     fullWidth
                     value={email}
@@ -51,7 +52,7 @@ const LoginPage = () => {
                     sx={{ marginBottom: 2 }}
                 />
                 <TextField
-                    label="Password"
+                    label={t("loginPage.passwordLabel")}
                     variant="outlined"
                     type="password"
                     fullWidth
@@ -65,7 +66,7 @@ const LoginPage = () => {
                     fullWidth
                     onClick={handleLogin}
                 >
-                    Login
+                    {t("loginPage.loginButton")}
                 </Button>
             </Box>
         </Container>
