@@ -61,5 +61,13 @@
         "confirmPassword": "Confirm Password",
         "create": "Create",
         "cancel": "Cancel"
+    },
+    "employeeEditModal": {
+        "editEmployee": "Edit Employee",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "update": "Update",
+        "cancel": "Cancel"
     }
 }

@@ -61,5 +61,13 @@
         "confirmPassword": "Підтвердити пароль",
         "create": "Створити",
         "cancel": "Скасувати"
+    },
+    "employeeEditModal": {
+        "editEmployee": "Редагувати співробітника",
+        "email": "Електронна пошта",
+        "password": "Пароль",
+        "confirmPassword": "Підтвердити пароль",
+        "update": "Оновити",
+        "cancel": "Скасувати"
     }
 }

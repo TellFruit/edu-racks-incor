@@ -4,8 +4,10 @@ import Button from "@mui/material/Button";
 import Modal from "react-modal";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import { useTranslation } from "react-i18next";
 
 const EmployeeEditModal = ({ isOpen, onClose, employee, onUpdate }) => {
+    const { t } = useTranslation();
     const [email, setEmail] = useState(employee.email);
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -22,9 +24,9 @@ const EmployeeEditModal = ({ isOpen, onClose, employee, onUpdate }) => {
         >
             <Container maxWidth="xs">
                 <Box sx={{ marginTop: 8 }}>
-                    <h3>Edit Employee</h3>
+                    <h3>{t("employeeEditModal.editEmployee")}</h3>
                     <TextField
-                        label="Email"
+                        label={t("employeeEditModal.email")}
                         variant="outlined"
                         fullWidth
                         value={email}
@@ -32,7 +34,7 @@ const EmployeeEditModal = ({ isOpen, onClose, employee, onUpdate }) => {
                         sx={{ marginBottom: 2 }}
                     />
                     <TextField
-                        label="Password"
+                        label={t("employeeEditModal.password")}
                         variant="outlined"
                         fullWidth
                         value={password}
@@ -40,7 +42,7 @@ const EmployeeEditModal = ({ isOpen, onClose, employee, onUpdate }) => {
                         sx={{ marginBottom: 2 }}
                     />
                     <TextField
-                        label="Confirm password"
+                        label={t("employeeEditModal.confirmPassword")}
                         variant="outlined"
                         fullWidth
                         value={passwordConfirm}
@@ -52,7 +54,7 @@ const EmployeeEditModal = ({ isOpen, onClose, employee, onUpdate }) => {
                         color="primary"
                         onClick={handleUpdate}
                     >
-                        Update
+                        {t("employeeEditModal.update")}
                     </Button>
                     <Button
                         variant="contained"
@@ -60,7 +62,7 @@ const EmployeeEditModal = ({ isOpen, onClose, employee, onUpdate }) => {
                         onClick={onClose}
                         sx={{ ml: 2 }}
                     >
-                        Cancel
+                        {t("employeeEditModal.cancel")}
                     </Button>
                 </Box>
             </Container>
