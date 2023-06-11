@@ -8,9 +8,10 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ProductActionTable from "../components/product/product-action-table";
-import i18n from "../i18n/i18n";
+import { useTranslation } from "react-i18next";
 
 const ProductPromotionPage = () => {
+    const { t } = useTranslation();
     const token = getToken();
     const { promotionId, promotionType } = useParams();
     const [promotion, setPromotion] = useState(null);
@@ -139,24 +140,24 @@ const ProductPromotionPage = () => {
                 <Grid item xs={6}>
                     <Paper variant="outlined" sx={{ p: 2, minHeight: 400 }}>
                         <Typography variant="h6" gutterBottom>
-                            {i18n.t("productPromotionPage.availableProducts")}
+                            {t("productPromotionPage.availableProducts")}
                         </Typography>
                         <ProductActionTable
                             products={availableProducts}
                             onActionClick={handleAddProduct}
-                            actionText={i18n.t("productPromotionPage.add")}
+                            actionText={t("productPromotionPage.add")}
                         />
                     </Paper>
                 </Grid>
                 <Grid item xs={6}>
                     <Paper variant="outlined" sx={{ p: 2, minHeight: 400 }}>
                         <Typography variant="h6" gutterBottom>
-                            {i18n.t("productPromotionPage.selectedProducts")}
+                            {t("productPromotionPage.selectedProducts")}
                         </Typography>
                         <ProductActionTable
                             products={selectedProducts}
                             onActionClick={handleRemoveProduct}
-                            actionText={i18n.t("productPromotionPage.remove")}
+                            actionText={t("productPromotionPage.remove")}
                         />
                     </Paper>
                 </Grid>
@@ -170,7 +171,7 @@ const ProductPromotionPage = () => {
                         color="primary"
                         onClick={handleApplyChanges}
                     >
-                        {i18n.t("productPromotionPage.applyChanges")}
+                        {t("productPromotionPage.applyChanges")}
                     </Button>
                 </Grid>
             </Grid>

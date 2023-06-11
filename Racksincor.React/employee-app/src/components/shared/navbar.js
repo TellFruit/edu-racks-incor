@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import i18n from "../../i18n/i18n";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
 import {
     AppBar,
@@ -9,13 +12,11 @@ import {
     Select,
 } from "@mui/material";
 import { FlexToolbar } from "../../material/flex-tool-bar";
-import i18n from "../../i18n/i18n";
 import { removeToken, isTokenValid } from "../../api/token";
-import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
-    const [language, setLanguage] = useState(i18n.language);
 
     const handleLogout = () => {
         removeToken();
@@ -24,9 +25,7 @@ const Navbar = () => {
 
     const handleLanguageChange = (event) => {
         const selectedLanguage = event.target.value;
-        i18n.changeLanguage(selectedLanguage).then(() => {
-            setLanguage(selectedLanguage);
-        });
+        i18n.changeLanguage(selectedLanguage);
     };
 
     return (
@@ -43,26 +42,26 @@ const Navbar = () => {
                 </Box>
                 <Box>
                     <Button component={RouterLink} to="/rack" color="inherit">
-                        {i18n.t("navbar.racks")}
+                        {t("navbar.racks")}
                     </Button>
                     <Button
                         component={RouterLink}
                         to="/product"
                         color="inherit"
                     >
-                        {i18n.t("navbar.products")}
+                        {t("navbar.products")}
                     </Button>
                     <Button
                         component={RouterLink}
                         to="/promotion"
                         color="inherit"
                     >
-                        {i18n.t("navbar.promotions")}
+                        {t("navbar.promotions")}
                     </Button>
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                     <Select
-                        value={language}
+                        value={i18n.language}
                         onChange={handleLanguageChange}
                         sx={{
                             "&:before": { borderBottom: "none" },
@@ -75,7 +74,7 @@ const Navbar = () => {
                     </Select>
                     {isTokenValid() ? (
                         <Button color="inherit" onClick={handleLogout}>
-                            {i18n.t("navbar.logout")}
+                            {t("navbar.logout")}
                         </Button>
                     ) : (
                         <Button
@@ -83,7 +82,7 @@ const Navbar = () => {
                             to="/login"
                             color="inherit"
                         >
-                            {i18n.t("navbar.login")}
+                            {t("navbar.login")}
                         </Button>
                     )}
                 </Box>

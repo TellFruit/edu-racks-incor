@@ -11,7 +11,7 @@ import {
 import { DatePicker } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
 import Modal from "react-modal";
-import i18n from "../../i18n/i18n";
+import { useTranslation } from "react-i18next";
 
 const PromotionEditModal = ({
     isOpen,
@@ -21,6 +21,7 @@ const PromotionEditModal = ({
     products,
     promotionType,
 }) => {
+    const { t } = useTranslation();
     const [name, setName] = useState(promotion.name);
     const [expirationDate, setExpirationDate] = useState(
         dayjs(promotion.expirationDate)
@@ -50,13 +51,13 @@ const PromotionEditModal = ({
         <Modal
             isOpen={isOpen}
             onRequestClose={onClose}
-            contentLabel={i18n.t("promotionEditModal.titleLabel")}
+            contentLabel={t("promotionEditModal.titleLabel")}
         >
             <Container maxWidth="xs">
                 <Box sx={{ marginTop: 8 }}>
-                    <h3>{i18n.t("promotionEditModal.titleLabel")}</h3>
+                    <h3>{t("promotionEditModal.titleLabel")}</h3>
                     <TextField
-                        label={i18n.t("promotionEditModal.nameLabel")}
+                        label={t("promotionEditModal.nameLabel")}
                         variant="outlined"
                         fullWidth
                         value={name}
@@ -64,7 +65,7 @@ const PromotionEditModal = ({
                         sx={{ marginBottom: 2 }}
                     />
                      <DatePicker
-                        label={i18n.t("promotionEditModal.expirationDateLabel")}
+                        label={t("promotionEditModal.expirationDateLabel")}
                         value={expirationDate}
                         onChange={(date) => setExpirationDate(date)}
                         fullWidth
@@ -72,7 +73,7 @@ const PromotionEditModal = ({
                     />
                     {promotionType === "discount" && (
                         <TextField
-                            label={i18n.t("promotionEditModal.percentageLabel")}
+                            label={t("promotionEditModal.percentageLabel")}
                             variant="outlined"
                             fullWidth
                             type="number"
@@ -88,7 +89,7 @@ const PromotionEditModal = ({
                     {promotionType === "gift" && (
                         <div>
                             <InputLabel id="gift-product-select-label">
-                                {i18n.t("promotionEditModal.giftProductLabel")}
+                                {t("promotionEditModal.giftProductLabel")}
                             </InputLabel>
                             <Select
                                 labelId="gift-product-select-label"
@@ -117,7 +118,7 @@ const PromotionEditModal = ({
                         color="primary"
                         onClick={handleUpdate}
                     >
-                        {i18n.t("promotionEditModal.updateButton")}
+                        {t("promotionEditModal.updateButton")}
                     </Button>
                     <Button
                         variant="contained"
@@ -125,7 +126,7 @@ const PromotionEditModal = ({
                         onClick={onClose}
                         sx={{ ml: 2 }}
                     >
-                        {i18n.t("promotionEditModal.cancelButton")}
+                        {t("promotionEditModal.cancelButton")}
                     </Button>
                 </Box>
             </Container>

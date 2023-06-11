@@ -8,17 +8,19 @@ import {
     TableRow,
 } from "@mui/material";
 import Button from "@mui/material/Button";
-import i18n from "../../i18n/i18n";
+import { useTranslation } from "react-i18next";
 
 const ProductActionTable = ({ products, onActionClick, actionText }) => {
+    const { t } = useTranslation();
+    
     return (
         <TableContainer sx={{ height: 400, maxHeight: 400 }}>
             <Table>
                 <TableHead>
                     <TableRow>
-                        <TableCell>{i18n.t("productTable.name")}</TableCell>
+                        <TableCell>{t("productTable.name")}</TableCell>
                         <TableCell align="center">
-                            {i18n.t("productTable.action")}
+                            {t("productTable.action")}
                         </TableCell>
                     </TableRow>
                 </TableHead>

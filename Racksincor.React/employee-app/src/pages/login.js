@@ -6,9 +6,10 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import i18n from "../i18n/i18n";
+import { useTranslation } from "react-i18next";
 
 const LoginPage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,9 +42,9 @@ const LoginPage = () => {
   return (
     <Container maxWidth="xs">
       <Box sx={{ marginTop: 8 }}>
-        <h2>{i18n.t("loginPage.title")}</h2>
+        <h2>{t("loginPage.title")}</h2>
         <TextField
-          label={i18n.t("loginPage.emailLabel")}
+          label={t("loginPage.emailLabel")}
           variant="outlined"
           fullWidth
           value={email}
@@ -51,7 +52,7 @@ const LoginPage = () => {
           sx={{ marginBottom: 2 }}
         />
         <TextField
-          label={i18n.t("loginPage.passwordLabel")}
+          label={t("loginPage.passwordLabel")}
           variant="outlined"
           type="password"
           fullWidth
@@ -65,7 +66,7 @@ const LoginPage = () => {
           fullWidth
           onClick={handleLogin}
         >
-          {i18n.t("loginPage.loginButton")}
+          {t("loginPage.loginButton")}
         </Button>
       </Box>
     </Container>

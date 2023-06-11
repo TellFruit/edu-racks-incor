@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Container, Button, TextField, Box } from "@mui/material";
 import Modal from "react-modal";
-import i18n from "../../i18n/i18n";
+import { useTranslation } from "react-i18next";
 
 const RackEditModal = ({ isOpen, onClose, rack, onUpdate }) => {
+    const { t } = useTranslation();
     const [name, setName] = useState(rack.name);
 
     const handleUpdate = () => {
@@ -14,13 +15,13 @@ const RackEditModal = ({ isOpen, onClose, rack, onUpdate }) => {
         <Modal
             isOpen={isOpen}
             onRequestClose={onClose}
-            contentLabel={i18n.t("editRackModal.titleLabel")}
+            contentLabel={t("editRackModal.titleLabel")}
         >
             <Container maxWidth="xs">
                 <Box sx={{ marginTop: 8 }}>
-                    <h3>{i18n.t("editRackModal.titleLabel")}</h3>
+                    <h3>{t("editRackModal.titleLabel")}</h3>
                     <TextField
-                        label={i18n.t("editRackModal.nameLabel")}
+                        label={t("editRackModal.nameLabel")}
                         variant="outlined"
                         fullWidth
                         value={name}
@@ -32,7 +33,7 @@ const RackEditModal = ({ isOpen, onClose, rack, onUpdate }) => {
                         color="primary"
                         onClick={handleUpdate}
                     >
-                        {i18n.t("editRackModal.updateButton")}
+                        {t("editRackModal.updateButton")}
                     </Button>
                     <Button
                         variant="contained"
@@ -40,7 +41,7 @@ const RackEditModal = ({ isOpen, onClose, rack, onUpdate }) => {
                         onClick={onClose}
                         sx={{ ml: 2 }}
                     >
-                        {i18n.t("editRackModal.cancelButton")}
+                        {t("editRackModal.cancelButton")}
                     </Button>
                 </Box>
             </Container>
