@@ -69,5 +69,10 @@
         "confirmPassword": "Підтвердити пароль",
         "update": "Оновити",
         "cancel": "Скасувати"
+    },
+    "employeeList": {
+        "email": "Електронна пошта",
+        "update": "Оновити",
+        "delete": "Видалити"
     }
 }

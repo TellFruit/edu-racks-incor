@@ -69,5 +69,10 @@
         "confirmPassword": "Confirm Password",
         "update": "Update",
         "cancel": "Cancel"
+    },
+    "employeeList": {
+        "email": "Email",
+        "update": "Update",
+        "delete": "Delete"
     }
 }
