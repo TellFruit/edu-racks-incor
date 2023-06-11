@@ -35,5 +35,14 @@
         "contactEmail": "Контактний Email",
         "create": "Створити",
         "cancel": "Скасувати"
+    },
+    "companyEditModal": {
+        "editCompany": "Редагувати компанію",
+        "name": "Назва",
+        "url": "URL",
+        "contactPhone": "Контактний телефон",
+        "contactEmail": "Контактний Email",
+        "update": "Оновити",
+        "cancel": "Скасувати"
     }
 }

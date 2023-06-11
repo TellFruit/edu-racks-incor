@@ -35,5 +35,14 @@
         "contactEmail": "Contact Email",
         "create": "Create",
         "cancel": "Cancel"
+    },
+    "companyEditModal": {
+        "editCompany": "Edit Company",
+        "name": "Name",
+        "url": "URL",
+        "contactPhone": "Contact Phone",
+        "contactEmail": "Contact Email",
+        "update": "Update",
+        "cancel": "Cancel"
     }
 }

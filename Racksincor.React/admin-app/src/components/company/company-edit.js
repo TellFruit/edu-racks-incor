@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Modal from "react-modal";
+import { useTranslation } from "react-i18next";
 
 const CompanyEditModal = ({ isOpen, onClose, company, onUpdate }) => {
+    const { t } = useTranslation();
     const [name, setName] = useState(company.name);
     const [url, setUrl] = useState(company.url);
     const [contactPhone, setContactPhone] = useState(company.contactPhone);
@@ -19,9 +21,9 @@ const CompanyEditModal = ({ isOpen, onClose, company, onUpdate }) => {
             onRequestClose={onClose}
             contentLabel="Edit Company Modal"
         >
-            <h3>Edit Company</h3>
+            <h3>{t("companyEditModal.editCompany")}</h3>
             <TextField
-                label="Name"
+                label={t("companyEditModal.name")}
                 variant="outlined"
                 fullWidth
                 value={name}
@@ -29,7 +31,7 @@ const CompanyEditModal = ({ isOpen, onClose, company, onUpdate }) => {
                 sx={{ marginBottom: 2 }}
             />
             <TextField
-                label="URL"
+                label={t("companyEditModal.url")}
                 variant="outlined"
                 fullWidth
                 value={url}
@@ -37,7 +39,7 @@ const CompanyEditModal = ({ isOpen, onClose, company, onUpdate }) => {
                 sx={{ marginBottom: 2 }}
             />
             <TextField
-                label="Contact Phone"
+                label={t("companyEditModal.contactPhone")}
                 variant="outlined"
                 fullWidth
                 value={contactPhone}
@@ -45,7 +47,7 @@ const CompanyEditModal = ({ isOpen, onClose, company, onUpdate }) => {
                 sx={{ marginBottom: 2 }}
             />
             <TextField
-                label="Contact Email"
+                label={t("companyEditModal.contactEmail")}
                 variant="outlined"
                 fullWidth
                 value={contactEmail}
@@ -53,10 +55,15 @@ const CompanyEditModal = ({ isOpen, onClose, company, onUpdate }) => {
                 sx={{ marginBottom: 2 }}
             />
             <Button variant="contained" color="primary" onClick={handleUpdate}>
-                Update
+                {t("companyEditModal.update")}
             </Button>
-            <Button variant="contained" color="secondary" onClick={onClose} sx={{ ml: 2 }}>
-                Cancel
+            <Button
+                variant="contained"
+                color="secondary"
+                onClick={onClose}
+                sx={{ ml: 2 }}
+            >
+                {t("companyEditModal.cancel")}
             </Button>
         </Modal>
     );
