@@ -53,5 +53,13 @@
         "update": "Update",
         "delete": "Delete",
         "viewShops": "View Shops"
+    },
+    "employeeCreateModal": {
+        "createEmployee": "Create Employee",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "create": "Create",
+        "cancel": "Cancel"
     }
 }

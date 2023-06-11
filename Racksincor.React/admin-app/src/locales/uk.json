@@ -53,5 +53,13 @@
         "update": "Оновити",
         "delete": "Видалити",
         "viewShops": "Магазини"
+    },
+    "employeeCreateModal": {
+        "createEmployee": "Створити співробітника",
+        "email": "Електронна пошта",
+        "password": "Пароль",
+        "confirmPassword": "Підтвердити пароль",
+        "create": "Створити",
+        "cancel": "Скасувати"
     }
 }
