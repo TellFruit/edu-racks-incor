@@ -81,5 +81,12 @@
         "address": "Адреса",
         "create": "Створити",
         "cancel": "Скасувати"
+    },
+    "shopEditModal": {
+        "editShop": "Редагувати магазин",
+        "name": "Назва",
+        "address": "Адреса",
+        "update": "Оновити",
+        "cancel": "Скасувати"
     }
 }

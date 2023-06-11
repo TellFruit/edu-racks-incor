@@ -81,5 +81,12 @@
         "address": "Address",
         "create": "Create",
         "cancel": "Cancel"
+    },
+    "shopEditModal": {
+        "editShop": "Edit Shop",
+        "name": "Name",
+        "address": "Address",
+        "update": "Update",
+        "cancel": "Cancel"
     }
 }
