@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import axios from "../api/instance";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -9,6 +9,7 @@ import ShopList from "../components/shop/shop-list";
 import ShopCreateModal from "../components/shop/shop-create";
 import ShopEditModal from "../components/shop/shop-edit";
 import { getToken } from "../api/token";
+import { useTranslation } from "react-i18next";
 
 const ShopPage = () => {
     const token = getToken();
@@ -19,6 +20,7 @@ const ShopPage = () => {
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
     const [selectedShop, setSelectedShop] = useState(null);
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     useEffect(() => {
         fetchParentCompany();
@@ -47,7 +49,7 @@ const ShopPage = () => {
             });
             setCompany(response.data[0]);
         } catch (error) {
-            console.error("Error fetching shops:", error);
+            console.error("Error fetching parent company:", error);
         }
     };
 
@@ -58,7 +60,7 @@ const ShopPage = () => {
                 {
                     name,
                     address,
-                    companyId: companyId
+                    companyId: companyId,
                 },
                 {
                     headers: {
@@ -81,7 +83,7 @@ const ShopPage = () => {
                 {
                     name,
                     address,
-                    companyId: companyId
+                    companyId: companyId,
                 },
                 {
                     headers: {
@@ -115,7 +117,7 @@ const ShopPage = () => {
     };
 
     const handleViewEmployees = (shopId) => {
-      navigate(`/shop/${shopId}/employees`);
+        navigate(`/shop/${shopId}/employees`);
     };
 
     const openCreateModal = () => {

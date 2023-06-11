@@ -8,5 +8,12 @@
         "emailLabel": "Електронна пошта",
         "passwordLabel": "Пароль",
         "loginButton": "Увійти"
+    },
+    "shopPage": {
+        "createShop": "Створити магазин",
+        "shopList": "Список магазинів",
+        "createButton": "Створити",
+        "shopsOf": "Магазини компанії",
+        "viewEmployees": "Співробітники"
     }
 }

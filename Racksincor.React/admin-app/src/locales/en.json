@@ -8,5 +8,12 @@
         "emailLabel": "Email",
         "passwordLabel": "Password",
         "loginButton": "Login"
+    },
+    "shopPage": {
+        "createShop": "Create shop",
+        "shopList": "Shop List",
+        "createButton": "Create",
+        "shopsOf": "Shops of",
+        "viewEmployees": "View Employees"
     }
 }
