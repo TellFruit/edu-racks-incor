@@ -14,7 +14,9 @@
     "productPromotionPage": {
         "availableProducts": "Доступні продукти",
         "selectedProducts": "Вибрані продукти",
-        "applyChanges": "Застосувати зміни"
+        "applyChanges": "Застосувати зміни",
+        "add": "Додати",
+        "remove": "Прибрати"
     },
     "loginPage": {
         "title": "Увійти",
@@ -25,7 +27,9 @@
     "productRackPage": {
         "availableProducts": "Доступні продукти",
         "selectedProducts": "Вибрані продукти",
-        "applyChangesButton": "Застосувати зміни"
+        "applyChangesButton": "Застосувати зміни",
+        "add": "Додати",
+        "remove": "Прибрати"
     },
     "productPage": {
         "productsOf": "Продукти магазину",

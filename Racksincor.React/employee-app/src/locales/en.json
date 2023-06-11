@@ -14,7 +14,9 @@
     "productPromotionPage": {
         "availableProducts": "Available Products",
         "selectedProducts": "Selected Products",
-        "applyChanges": "Apply Changes"
+        "applyChanges": "Apply Changes",
+        "add": "Add",
+        "remove": "Remove"
     },
     "loginPage": {
         "title": "Login",
@@ -25,7 +27,9 @@
     "productRackPage": {
         "availableProducts": "Available Products",
         "selectedProducts": "Selected Products",
-        "applyChangesButton": "Apply Changes"
+        "applyChangesButton": "Apply Changes",
+        "add": "Add",
+        "remove": "Remove"
     },
     "productPage": {
         "productsOf": "Products of",

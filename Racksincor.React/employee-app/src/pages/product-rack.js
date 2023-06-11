@@ -137,7 +137,7 @@ const ProductRackPage = () => {
                         <ProductActionTable
                             products={availableProducts}
                             onActionClick={handleAddProduct}
-                            actionText="Add"
+                            actionText={t("productRackPage.add")}
                         />
                     </Paper>
                 </Grid>
@@ -149,7 +149,7 @@ const ProductRackPage = () => {
                         <ProductActionTable
                             products={selectedProducts}
                             onActionClick={handleRemoveProduct}
-                            actionText="Remove"
+                            actionText={t("productRackPage.remove")}
                         />
                     </Paper>
                 </Grid>
