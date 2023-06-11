@@ -4,8 +4,10 @@ import Button from "@mui/material/Button";
 import Modal from "react-modal";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import { useTranslation } from "react-i18next";
 
 const EmployeeCreateModal = ({ isOpen, onClose, onCreate }) => {
+    const { t } = useTranslation();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -25,9 +27,9 @@ const EmployeeCreateModal = ({ isOpen, onClose, onCreate }) => {
         >
             <Container maxWidth="xs">
                 <Box sx={{ marginTop: 8 }}>
-                    <h3>Create Employee</h3>
+                    <h3>{t("employeeCreateModal.createEmployee")}</h3>
                     <TextField
-                        label="Email"
+                        label={t("employeeCreateModal.email")}
                         variant="outlined"
                         fullWidth
                         value={email}
@@ -35,7 +37,7 @@ const EmployeeCreateModal = ({ isOpen, onClose, onCreate }) => {
                         sx={{ marginBottom: 2 }}
                     />
                     <TextField
-                        label="Password"
+                        label={t("employeeCreateModal.password")}
                         variant="outlined"
                         fullWidth
                         value={password}
@@ -43,7 +45,7 @@ const EmployeeCreateModal = ({ isOpen, onClose, onCreate }) => {
                         sx={{ marginBottom: 2 }}
                     />
                     <TextField
-                        label="Confirm password"
+                        label={t("employeeCreateModal.confirmPassword")}
                         variant="outlined"
                         fullWidth
                         value={passwordConfirm}
@@ -55,7 +57,7 @@ const EmployeeCreateModal = ({ isOpen, onClose, onCreate }) => {
                         color="primary"
                         onClick={handleCreate}
                     >
-                        Create
+                        {t("employeeCreateModal.create")}
                     </Button>
                     <Button
                         variant="contained"
@@ -63,7 +65,7 @@ const EmployeeCreateModal = ({ isOpen, onClose, onCreate }) => {
                         onClick={onClose}
                         sx={{ ml: 2 }}
                     >
-                        Cancel
+                        {t("employeeCreateModal.cancel")}
                     </Button>
                 </Box>
             </Container>

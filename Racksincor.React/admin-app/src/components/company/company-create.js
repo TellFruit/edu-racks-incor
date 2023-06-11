@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Modal from "react-modal";
+import { useTranslation } from "react-i18next";
 
 const CompanyCreateModal = ({ isOpen, onClose, onCreate }) => {
+    const { t } = useTranslation();
     const [name, setName] = useState("");
     const [url, setUrl] = useState("");
     const [contactPhone, setContactPhone] = useState("");
@@ -23,9 +25,9 @@ const CompanyCreateModal = ({ isOpen, onClose, onCreate }) => {
             onRequestClose={onClose}
             contentLabel="Create Company Modal"
         >
-            <h3>Create Company</h3>
+            <h3>{t("companyCreateModal.createCompany")}</h3>
             <TextField
-                label="Name"
+                label={t("companyCreateModal.name")}
                 variant="outlined"
                 fullWidth
                 value={name}
@@ -33,7 +35,7 @@ const CompanyCreateModal = ({ isOpen, onClose, onCreate }) => {
                 sx={{ marginBottom: 2 }}
             />
             <TextField
-                label="URL"
+                label={t("companyCreateModal.url")}
                 variant="outlined"
                 fullWidth
                 value={url}
@@ -41,7 +43,7 @@ const CompanyCreateModal = ({ isOpen, onClose, onCreate }) => {
                 sx={{ marginBottom: 2 }}
             />
             <TextField
-                label="Contact Phone"
+                label={t("companyCreateModal.contactPhone")}
                 variant="outlined"
                 fullWidth
                 value={contactPhone}
@@ -49,7 +51,7 @@ const CompanyCreateModal = ({ isOpen, onClose, onCreate }) => {
                 sx={{ marginBottom: 2 }}
             />
             <TextField
-                label="Contact Email"
+                label={t("companyCreateModal.contactEmail")}
                 variant="outlined"
                 fullWidth
                 value={contactEmail}
@@ -57,7 +59,7 @@ const CompanyCreateModal = ({ isOpen, onClose, onCreate }) => {
                 sx={{ marginBottom: 2 }}
             />
             <Button variant="contained" color="primary" onClick={handleCreate}>
-                Create
+                {t("companyCreateModal.create")}
             </Button>
             <Button
                 variant="contained"
@@ -65,7 +67,7 @@ const CompanyCreateModal = ({ isOpen, onClose, onCreate }) => {
                 onClick={onClose}
                 sx={{ ml: 2 }}
             >
-                Cancel
+                {t("companyCreateModal.cancel")}
             </Button>
         </Modal>
     );

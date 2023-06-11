@@ -1,0 +1,99 @@
+{
+    "navbar": {
+        "logoutButton": "Logout",
+        "loginButton": "Login"
+    },
+    "loginPage": {
+        "title": "Login",
+        "emailLabel": "Email",
+        "passwordLabel": "Password",
+        "loginButton": "Login"
+    },
+    "shopPage": {
+        "title": "Shops of {{companyName}}",
+        "createShop": "Create shop",
+        "shopList": "Shop List",
+        "createButton": "Create"
+    },
+    "employeePage": {
+        "title": "Employees of {{shopName}}",
+        "createEmployee": "Create employee",
+        "createButton": "Create",
+        "employeeList": "Employee List"
+    },
+    "companyPage": {
+        "title": "Company Page",
+        "createCompany": "Create Company",
+        "createButton": "Create",
+        "companyList": "Company List"
+    },
+    "companyCreateModal": {
+        "createCompany": "Create Company",
+        "name": "Name",
+        "url": "URL",
+        "contactPhone": "Contact Phone",
+        "contactEmail": "Contact Email",
+        "create": "Create",
+        "cancel": "Cancel"
+    },
+    "companyEditModal": {
+        "editCompany": "Edit Company",
+        "name": "Name",
+        "url": "URL",
+        "contactPhone": "Contact Phone",
+        "contactEmail": "Contact Email",
+        "update": "Update",
+        "cancel": "Cancel"
+    },
+    "companyList": {
+        "name": "Name",
+        "url": "URL",
+        "contactPhone": "Contact Phone",
+        "contactEmail": "Contact Email",
+        "update": "Update",
+        "delete": "Delete",
+        "viewShops": "View Shops"
+    },
+    "employeeCreateModal": {
+        "createEmployee": "Create Employee",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "create": "Create",
+        "cancel": "Cancel"
+    },
+    "employeeEditModal": {
+        "editEmployee": "Edit Employee",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "update": "Update",
+        "cancel": "Cancel"
+    },
+    "employeeList": {
+        "email": "Email",
+        "update": "Update",
+        "delete": "Delete"
+    },
+    "shopCreateModal": {
+        "createShop": "Create Shop",
+        "name": "Name",
+        "address": "Address",
+        "create": "Create",
+        "cancel": "Cancel"
+    },
+    "shopEditModal": {
+        "editShop": "Edit Shop",
+        "name": "Name",
+        "address": "Address",
+        "update": "Update",
+        "cancel": "Cancel"
+    },
+    "shopList": {
+        "name": "Name",
+        "address": "Address",
+        "update": "Update",
+        "delete": "Delete",
+        "viewEmployees": "View Employees"
+    }
+}

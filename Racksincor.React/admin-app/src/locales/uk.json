@@ -1,0 +1,99 @@
+{
+    "navbar": {
+        "logoutButton": "Вийти",
+        "loginButton": "Увійти"
+    },
+    "loginPage": {
+        "title": "Увійти",
+        "emailLabel": "Електронна пошта",
+        "passwordLabel": "Пароль",
+        "loginButton": "Увійти"
+    },
+    "shopPage": {
+        "title": "Магазини {{companyName}}",
+        "createShop": "Створити магазин",
+        "shopList": "Список магазинів",
+        "createButton": "Створити"
+    },
+    "employeePage": {
+        "title": "Працівники магазину {{shopName}}",
+        "createEmployee": "Створити працівника",
+        "createButton": "Створити",
+        "employeeList": "Список працівників"
+    },
+    "companyPage": {
+        "title": "Сторінка компанії",
+        "createCompany": "Створити компанію",
+        "createButton": "Створити",
+        "companyList": "Список компаній"
+    },
+    "companyCreateModal": {
+        "createCompany": "Створити компанію",
+        "name": "Назва",
+        "url": "URL",
+        "contactPhone": "Контактний телефон",
+        "contactEmail": "Контактний Email",
+        "create": "Створити",
+        "cancel": "Скасувати"
+    },
+    "companyEditModal": {
+        "editCompany": "Редагувати компанію",
+        "name": "Назва",
+        "url": "URL",
+        "contactPhone": "Контактний телефон",
+        "contactEmail": "Контактний Email",
+        "update": "Оновити",
+        "cancel": "Скасувати"
+    },
+    "companyList": {
+        "name": "Назва",
+        "url": "URL",
+        "contactPhone": "Контактний телефон",
+        "contactEmail": "Контактний Email",
+        "update": "Оновити",
+        "delete": "Видалити",
+        "viewShops": "Магазини"
+    },
+    "employeeCreateModal": {
+        "createEmployee": "Створити співробітника",
+        "email": "Електронна пошта",
+        "password": "Пароль",
+        "confirmPassword": "Підтвердити пароль",
+        "create": "Створити",
+        "cancel": "Скасувати"
+    },
+    "employeeEditModal": {
+        "editEmployee": "Редагувати співробітника",
+        "email": "Електронна пошта",
+        "password": "Пароль",
+        "confirmPassword": "Підтвердити пароль",
+        "update": "Оновити",
+        "cancel": "Скасувати"
+    },
+    "employeeList": {
+        "email": "Електронна пошта",
+        "update": "Оновити",
+        "delete": "Видалити"
+    },
+    "shopCreateModal": {
+        "createShop": "Створити магазин",
+        "name": "Назва",
+        "address": "Адреса",
+        "create": "Створити",
+        "cancel": "Скасувати"
+    },
+    "shopEditModal": {
+        "editShop": "Редагувати магазин",
+        "name": "Назва",
+        "address": "Адреса",
+        "update": "Оновити",
+        "cancel": "Скасувати"
+    },
+    "shopList": {
+        "name": "Назва",
+        "address": "Адреса",
+        "update": "Оновити",
+        "delete": "Видалити",
+        "viewEmployees": "Співробітники"
+    }
+}

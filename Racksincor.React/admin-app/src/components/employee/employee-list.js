@@ -4,8 +4,10 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Pagination from "@mui/material/Pagination";
+import { useTranslation } from "react-i18next";
 
 const EmployeeList = ({ employees, onDelete, onOpenEditModal }) => {
+    const { t } = useTranslation();
     const [page, setPage] = useState(1);
     const employeesPerPage = 5;
     const totalPages = Math.ceil(employees.length / employeesPerPage);
@@ -27,7 +29,10 @@ const EmployeeList = ({ employees, onDelete, onOpenEditModal }) => {
                         <Grid container spacing={2} alignItems="center">
                             <Grid item xs={6}>
                                 <Box>
-                                    <p>Email: {employee.email}</p>
+                                    <p>
+                                        {t("employeeList.email")}:{" "}
+                                        {employee.email}
+                                    </p>
                                 </Box>
                             </Grid>
                             <Grid item xs={6}>
@@ -44,7 +49,7 @@ const EmployeeList = ({ employees, onDelete, onOpenEditModal }) => {
                                             onOpenEditModal(employee)
                                         }
                                     >
-                                        Update
+                                        {t("employeeList.update")}
                                     </Button>
                                     <Button
                                         variant="contained"
@@ -52,7 +57,7 @@ const EmployeeList = ({ employees, onDelete, onOpenEditModal }) => {
                                         onClick={() => onDelete(employee.id)}
                                         sx={{ ml: 2 }}
                                     >
-                                        Delete
+                                        {t("employeeList.delete")}
                                     </Button>
                                 </div>
                             </Grid>
