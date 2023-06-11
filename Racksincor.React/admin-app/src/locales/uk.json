@@ -20,5 +20,11 @@
         "createEmployee": "Створити працівника",
         "createButton": "Створити",
         "employeeList": "Список працівників"
+    },
+    "companyPage": {
+        "title": "Сторінка компанії",
+        "createCompany": "Створити компанію",
+        "createButton": "Create",
+        "companyList": "Список компаній"
     }
 }

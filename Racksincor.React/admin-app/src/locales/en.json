@@ -20,5 +20,11 @@
         "createEmployee": "Create employee",
         "createButton": "Create",
         "employeeList": "Employee List"
+    },
+    "companyPage": {
+        "title": "Company Page",
+        "createCompany": "Create Company",
+        "createButton": "Create",
+        "companyList": "Company List"
     }
 }
