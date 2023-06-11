@@ -10,13 +10,13 @@
         "loginButton": "Увійти"
     },
     "shopPage": {
-        "title": "Магазини {companyName}",
+        "title": "Магазини {{companyName}}",
         "createShop": "Створити магазин",
         "shopList": "Список магазинів",
         "createButton": "Створити"
     },
     "employeePage": {
-        "title": "Працівники магазину {shopName}",
+        "title": "Працівники магазину {{shopName}}",
         "createEmployee": "Створити працівника",
         "createButton": "Створити",
         "employeeList": "Список працівників"
@@ -24,7 +24,7 @@
     "companyPage": {
         "title": "Сторінка компанії",
         "createCompany": "Створити компанію",
-        "createButton": "Create",
+        "createButton": "Створити",
         "companyList": "Список компаній"
     },
     "companyCreateModal": {
