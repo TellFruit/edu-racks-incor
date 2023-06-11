@@ -88,5 +88,12 @@
         "address": "Адреса",
         "update": "Оновити",
         "cancel": "Скасувати"
+    },
+    "shopList": {
+        "name": "Назва",
+        "address": "Адреса",
+        "update": "Оновити",
+        "delete": "Видалити",
+        "viewEmployees": "Співробітники"
     }
 }

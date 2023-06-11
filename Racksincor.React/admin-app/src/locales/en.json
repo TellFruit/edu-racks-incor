@@ -88,5 +88,12 @@
         "address": "Address",
         "update": "Update",
         "cancel": "Cancel"
+    },
+    "shopList": {
+        "name": "Name",
+        "address": "Address",
+        "update": "Update",
+        "delete": "Delete",
+        "viewEmployees": "View Employees"
     }
 }
