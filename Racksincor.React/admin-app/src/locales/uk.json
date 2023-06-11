@@ -26,5 +26,14 @@
         "createCompany": "Створити компанію",
         "createButton": "Create",
         "companyList": "Список компаній"
+    },
+    "companyCreateModal": {
+        "createCompany": "Створити компанію",
+        "name": "Назва",
+        "url": "URL",
+        "contactPhone": "Контактний телефон",
+        "contactEmail": "Контактний Email",
+        "create": "Створити",
+        "cancel": "Скасувати"
     }
 }

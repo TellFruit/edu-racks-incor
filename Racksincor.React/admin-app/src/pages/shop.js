@@ -143,7 +143,7 @@ const ShopPage = () => {
         <div>
           <h3>{t("shopPage.createShop")}</h3>
           <Button variant="contained" color="primary" onClick={openCreateModal}>
-            {t("shopPage.createShop")}
+            {t("shopPage.createButton")}
           </Button>
           <ShopCreateModal
             isOpen={createModalIsOpen}
