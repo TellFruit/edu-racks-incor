@@ -117,6 +117,11 @@ namespace Racksincor.DAL.Services.Repositories
                         },
                         transaction);
 
+                    if (entity.Products == null)
+                    {
+                        entity.Products = new List<ProductDTO>();
+                    }
+
                     await _connection.ExecuteAsync(
                             "DELETE FROM ProductRack WHERE RacksId = @RacksId",
                             new { RacksId = entity.Id },
