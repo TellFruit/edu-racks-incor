@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "../api/instance";
 import { getToken } from "../api/token";
 import Container from "@mui/material/Container";
@@ -12,6 +13,7 @@ import { useTranslation } from "react-i18next";
 
 const ProductRackPage = () => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
     const token = getToken();
     const { rackId } = useParams();
     const [rack, setRack] = useState(null);
@@ -121,6 +123,7 @@ const ProductRackPage = () => {
                     },
                 }
             );
+            navigate("/rack");
         } catch (error) {
             console.error("Error updating rack:", error);
         }

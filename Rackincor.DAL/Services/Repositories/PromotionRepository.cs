@@ -141,6 +141,11 @@ namespace Racksincor.DAL.Services.Repositories
                             UpdatedAt = now
                         });
 
+                    if (entity.Products == null)
+                    {
+                        entity.Products = new List<ProductDTO>();
+                    }
+
                     await _connection.ExecuteAsync(
                             "DELETE FROM ProductPromotion WHERE PromotionsId = @PromotionsId",
                             new { PromotionsId = entity.Id },
