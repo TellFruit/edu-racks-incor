@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "../api/instance";
 import { getToken } from "../api/token";
 import Container from "@mui/material/Container";
@@ -12,6 +13,7 @@ import { useTranslation } from "react-i18next";
 
 const ProductPromotionPage = () => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
     const token = getToken();
     const { promotionId, promotionType } = useParams();
     const [promotion, setPromotion] = useState(null);
@@ -129,6 +131,7 @@ const ProductPromotionPage = () => {
                     },
                 }
             );
+            navigate("/promotion");
         } catch (error) {
             console.error("Error updating promotion:", error);
         }

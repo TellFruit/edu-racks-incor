@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import { Container, Box, TextField, Button } from "@mui/material";
 import Modal from "react-modal";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 const ShopCreateModal = ({ isOpen, onClose, onCreate }) => {
     const { t } = useTranslation();
@@ -21,29 +20,42 @@ const ShopCreateModal = ({ isOpen, onClose, onCreate }) => {
             onRequestClose={onClose}
             contentLabel="Create Shop Modal"
         >
-            <h3>{t('shopCreateModal.createShop')}</h3>
-            <TextField
-                label={t('shopCreateModal.name')}
-                variant="outlined"
-                fullWidth
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                sx={{ marginBottom: 2 }}
-            />
-            <TextField
-                label={t('shopCreateModal.address')}
-                variant="outlined"
-                fullWidth
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                sx={{ marginBottom: 2 }}
-            />
-            <Button variant="contained" color="primary" onClick={handleCreate}>
-                {t('shopCreateModal.create')}
-            </Button>
-            <Button variant="contained" color="secondary" onClick={onClose} sx={{ ml: 2 }}>
-                {t('shopCreateModal.cancel')}
-            </Button>
+            <Container maxWidth="xs">
+                <Box sx={{ marginTop: 8 }}>
+                    <h3>{t("shopCreateModal.createShop")}</h3>
+                    <TextField
+                        label={t("shopCreateModal.name")}
+                        variant="outlined"
+                        fullWidth
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        sx={{ marginBottom: 2 }}
+                    />
+                    <TextField
+                        label={t("shopCreateModal.address")}
+                        variant="outlined"
+                        fullWidth
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        sx={{ marginBottom: 2 }}
+                    />
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleCreate}
+                    >
+                        {t("shopCreateModal.create")}
+                    </Button>
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={onClose}
+                        sx={{ ml: 2 }}
+                    >
+                        {t("shopCreateModal.cancel")}
+                    </Button>
+                </Box>
+            </Container>
         </Modal>
     );
 };

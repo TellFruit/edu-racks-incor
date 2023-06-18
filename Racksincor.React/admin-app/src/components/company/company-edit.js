@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import { Container, Box, TextField, Button } from "@mui/material";
 import Modal from "react-modal";
 import { useTranslation } from "react-i18next";
 
@@ -21,50 +20,58 @@ const CompanyEditModal = ({ isOpen, onClose, company, onUpdate }) => {
             onRequestClose={onClose}
             contentLabel="Edit Company Modal"
         >
-            <h3>{t("companyEditModal.editCompany")}</h3>
-            <TextField
-                label={t("companyEditModal.name")}
-                variant="outlined"
-                fullWidth
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                sx={{ marginBottom: 2 }}
-            />
-            <TextField
-                label={t("companyEditModal.url")}
-                variant="outlined"
-                fullWidth
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
-                sx={{ marginBottom: 2 }}
-            />
-            <TextField
-                label={t("companyEditModal.contactPhone")}
-                variant="outlined"
-                fullWidth
-                value={contactPhone}
-                onChange={(e) => setContactPhone(e.target.value)}
-                sx={{ marginBottom: 2 }}
-            />
-            <TextField
-                label={t("companyEditModal.contactEmail")}
-                variant="outlined"
-                fullWidth
-                value={contactEmail}
-                onChange={(e) => setContactEmail(e.target.value)}
-                sx={{ marginBottom: 2 }}
-            />
-            <Button variant="contained" color="primary" onClick={handleUpdate}>
-                {t("companyEditModal.update")}
-            </Button>
-            <Button
-                variant="contained"
-                color="secondary"
-                onClick={onClose}
-                sx={{ ml: 2 }}
-            >
-                {t("companyEditModal.cancel")}
-            </Button>
+            <Container maxWidth="xs">
+                <Box sx={{ marginTop: 8 }}>
+                    <h3>{t("companyEditModal.editCompany")}</h3>
+                    <TextField
+                        label={t("companyEditModal.name")}
+                        variant="outlined"
+                        fullWidth
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        sx={{ marginBottom: 2 }}
+                    />
+                    <TextField
+                        label={t("companyEditModal.url")}
+                        variant="outlined"
+                        fullWidth
+                        value={url}
+                        onChange={(e) => setUrl(e.target.value)}
+                        sx={{ marginBottom: 2 }}
+                    />
+                    <TextField
+                        label={t("companyEditModal.contactPhone")}
+                        variant="outlined"
+                        fullWidth
+                        value={contactPhone}
+                        onChange={(e) => setContactPhone(e.target.value)}
+                        sx={{ marginBottom: 2 }}
+                    />
+                    <TextField
+                        label={t("companyEditModal.contactEmail")}
+                        variant="outlined"
+                        fullWidth
+                        value={contactEmail}
+                        onChange={(e) => setContactEmail(e.target.value)}
+                        sx={{ marginBottom: 2 }}
+                    />
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleUpdate}
+                    >
+                        {t("companyEditModal.update")}
+                    </Button>
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={onClose}
+                        sx={{ ml: 2 }}
+                    >
+                        {t("companyEditModal.cancel")}
+                    </Button>
+                </Box>
+            </Container>
         </Modal>
     );
 };
